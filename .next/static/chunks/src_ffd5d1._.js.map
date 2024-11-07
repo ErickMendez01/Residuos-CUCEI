@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 7, "column": 0}, "map": {"version":3,"sources":["file:///home/erick/Escritorio/To_do_list/src/components/Providers.tsx"],"sourcesContent":["\"use client\"\nimport { NextUIProvider } from \"@nextui-org/react\";\nimport React, { ReactNode } from \"react\";\n\nexport default function Providers({ children }: { children: ReactNode }) {\n  return <NextUIProvider>{children}</NextUIProvider>;\n}\n"],"names":[],"mappings":";;;;AACA;AADA;;;AAIe,SAAS,UAAU,EAAE,QAAQ,EAA2B;IACrE,qBAAO,6LAAC,0KAAA,CAAA,iBAAc;kBAAE;;;;;;AAC1B;KAFwB"}},
+    {"offset": {"line": 30, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}}]
+}
