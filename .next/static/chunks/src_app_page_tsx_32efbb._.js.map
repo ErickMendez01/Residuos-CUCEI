@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 7, "column": 0}, "map": {"version":3,"sources":["file:///home/erick/Escritorio/To_do_list/src/app/page.tsx"],"sourcesContent":["\nimport { Button } from \"@nextui-org/react\";\nexport default function Home() {\n  return (\n    <div>\n      <h1>Home page</h1>\n    </div>\n  );\n}\n"],"names":[],"mappings":";;;;;AAEe,SAAS;IACtB,qBACE,6LAAC;kBACC,cAAA,6LAAC;sBAAG;;;;;;;;;;;AAGV;KANwB"}},
-    {"offset": {"line": 33, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}}]
-}
