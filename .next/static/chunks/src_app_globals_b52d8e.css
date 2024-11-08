@@ -2283,11 +2283,6 @@ img, video {
   font-family: ui-sans-serif, system-ui, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
 }
 
-.text-3xl {
-  font-size: 1.875rem;
-  line-height: 2.25rem;
-}
-
 .text-\[0\.55rem\] {
   font-size: .55rem;
 }
@@ -2340,10 +2335,6 @@ img, video {
 
 .font-semibold {
   font-weight: 600;
-}
-
-.font-bold {
-  font-weight: 700;
 }
 
 .tabular-nums {
@@ -2478,11 +2469,6 @@ img, video {
 
 .text-primary\/80 {
   color: hsl(var(--nextui-primary) / .8);
-}
-
-.text-red-500 {
-  --tw-text-opacity: 1;
-  color: rgb(239 68 68 / var(--tw-text-opacity));
 }
 
 .text-secondary {
@@ -7387,14 +7373,6 @@ img, video {
     margin-bottom: 4rem;
   }
 
-  .sm\:flex {
-    display: flex;
-  }
-
-  .sm\:hidden {
-    display: none;
-  }
-
   .sm\:items-start {
     align-items: flex-start;
   }
@@ -7437,12 +7415,6 @@ img, video {
 
   .group[data-hover="true"] .sm\:group-data-\[hover\=true\]\:data-\[visible\=true\]\:opacity-100[data-visible="true"] {
     opacity: 1;
-  }
-}
-
-@media (width >= 1024px) {
-  .lg\:flex {
-    display: flex;
   }
 }
 

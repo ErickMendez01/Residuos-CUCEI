@@ -1,64 +1,29 @@
 "use client";
-import Link from "next/link";
-import {
-  Navbar,
-  NavbarBrand,
-  NavbarContent,
-  NavbarItem,
-} from "@nextui-org/react";
 
-export default function NavBar() {
-    return (
-      <Navbar isBordered>
-        <NavbarBrand>
-          <p className="font-bold text-inherit">Check Task</p>
-        </NavbarBrand>
-          <NavbarContent className="hidden sm:flex gap-4" justify="center">
-          <NavbarItem>
-            <Link color="foreground" href="#">
-              Funcionalidades
-            </Link>
+import Link from "next/link";
+import { Navbar, NavbarBrand, NavbarContent, NavbarItem } from "@nextui-org/react";
+import { MainNavItem } from "@/types";
+
+interface MainNavProps {
+  items?: MainNavItem[];
+  children?: React.ReactNode;
+}
+
+export function MainNav({ items = [], children }: MainNavProps) {
+  return (
+    <Navbar isBordered>
+      <NavbarBrand>
+        <Link href="/">Ckeck task</Link>
+      </NavbarBrand>
+      <NavbarContent>
+        {items.map((item, index) => (
+          <NavbarItem key={index}>
+              <Link href={item.href}>{item.title}</Link>
           </NavbarItem>
-          <NavbarItem isActive>
-            <Link href="#" aria-current="page">
-              Conocenos
-            </Link>
-          </NavbarItem>
-          <NavbarItem>
-            <Link color="foreground" href="#">
-              Contacto
-            </Link>
-          </NavbarItem>
-        </NavbarContent>
-          <NavbarContent className="flex sm:hidden gap-4" justify="center">
-          <NavbarItem>
-            <Link href="#">Funcionalidades</Link>
-          </NavbarItem>
-          <NavbarItem isActive>
-            <Link href="#" aria-current="page">
-              Conocenos
-            </Link>
-          </NavbarItem>
-          <NavbarItem>
-            <Link href="#">Contacto</Link>
-          </NavbarItem>
-        </NavbarContent>
-          <NavbarContent justify="end">
-          <NavbarItem className="hidden lg:flex">
-            <Link href="#">Sign In</Link>
-          </NavbarItem>
-          <NavbarItem className="hidden lg:flex">
-            <Link href="#">Sign Up</Link>
-          </NavbarItem>
-        </NavbarContent>
-          <NavbarContent className="flex sm:hidden justify-end">
-          <NavbarItem>
-            <Link href="#">Sign In</Link>
-          </NavbarItem>
-          <NavbarItem>
-            <Link href="#">Sign Up</Link>
-          </NavbarItem>
-        </NavbarContent>
-      </Navbar>
-    );
-  }
+        ))}
+      </NavbarContent>
+      {children}
+    </Navbar>
+  );
+}
+

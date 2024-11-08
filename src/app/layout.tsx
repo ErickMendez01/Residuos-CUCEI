@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Providers from "@/components/Providers";
-import Navbar from "@/components/navbar";
-
+import { MainNav } from "@/components/navbar";
+import { DashboardConfig } from "@/types";
+import { dashboardConfig } from "@/config/dashboard";
 export const metadata: Metadata = {
   title: "To do list",
-  description: "Manega tu dia ahora!",
+  description: "Maneja tu dia ahora!",
 };
 
 export default function RootLayout({
@@ -16,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Navbar/>
+        <MainNav items={dashboardConfig.mainNav}/>
         <Providers>{children}</Providers>
       </body>
     </html>
