@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <MainNav items={dashboardConfig.mainNav}/>
+        <MainNav items={dashboardConfig.mainNav} />
         <Providers>{children}</Providers>
       </body>
     </html>
