@@ -1,13 +1,11 @@
 export type NavItem = {
+  title: string;
+  href: string;
+  disabled?: boolean;
+};
 
-    title: string 
-    href: string 
-    disabled?:boolean
-}
+export type MainNavItem = NavItem;
 
-export type MainNavItem = NavItem
-
-
-export type DashboardConfig ={
-    mainNav: MainNavItem[]
-}
+export type DashboardConfig = {
+  mainNav: MainNavItem[];
+};
