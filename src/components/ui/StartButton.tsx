@@ -1,9 +1,17 @@
-"use client";
-
 import { forwardRef } from "react";
 import { useButton, Ripple, Spinner } from "@nextui-org/react";
 
-const MyButton = forwardRef((props, ref) => {
+interface MyButtonProps {
+  children?: React.ReactNode;
+  spinnerSize?: string;
+  spinnerPlacement?: "start" | "end";
+  startContent?: React.ReactNode;
+  endContent?: React.ReactNode;
+  isLoading?: boolean;
+  disableRipple?: boolean;
+}
+
+const MyButton = forwardRef<HTMLButtonElement, MyButtonProps>((props, ref) => {
   const {
     domRef,
     children = "Comenzar",
