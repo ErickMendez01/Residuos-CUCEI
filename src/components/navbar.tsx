@@ -13,7 +13,6 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import LoginForm from "./loginForm";
 import RegisterForm from "./registerForm";
-import { div } from "framer-motion/client";
 
 interface MainNavProps {
   items?: MainNavItem[];
@@ -21,14 +20,20 @@ interface MainNavProps {
 }
 
 export function MainNav({ items = [], children }: MainNavProps) {
-  const pathname = usePathname();
+  const pathname = usePathname() || ""; // Fallback para evitar errores en SSR
   const [isLoginOpen, setLoginOpen] = useState(false);
   const [isRegisterOpen, setRegisterOpen] = useState(false);
 
+  const isActive = (href: string) => pathname === href;
+
   return (
     <div>
-      <LoginForm isOpen={isLoginOpen} onClose={() => setLoginOpen(false)} />
-      <RegisterForm isOpen={isRegisterOpen} onClose={() => setRegisterOpen(false)} />
+      {isLoginOpen && (
+        <LoginForm isOpen={isLoginOpen} onClose={() => setLoginOpen(false)} />
+      )}
+      {isRegisterOpen && (
+        <RegisterForm isOpen={isRegisterOpen} onClose={() => setRegisterOpen(false)} />
+      )}
       <Navbar
         isBordered
         classNames={{
@@ -44,15 +49,13 @@ export function MainNav({ items = [], children }: MainNavProps) {
         <NavbarContent justify="center">
           {items.map((item, index) => (
             <NavbarItem
-              isActive={pathname === item.href}
-              className={`font-medium ${
-                pathname === item.href ? "text-blue" : ""
-              }`}
+              isActive={isActive(item.href)}
+              className={`font-medium ${isActive(item.href) ? "text-blue" : ""}`}
               key={index}
             >
               <Link
                 href={item.href}
-                className={pathname === item.href ? "text-blue" : ""}
+                className={isActive(item.href) ? "text-blue" : ""}
               >
                 {item.title}
               </Link>

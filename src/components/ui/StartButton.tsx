@@ -3,7 +3,7 @@
 import { forwardRef, useRef } from "react";
 import { useButton, Ripple, Spinner } from "@nextui-org/react";
 
-const MyButton = forwardRef<HTMLButtonElement, any>((props, ref) => {
+const StartButton = forwardRef<HTMLButtonElement, any>((props, ref) => {
   const {
     domRef,
     children = "Comenzar",
@@ -35,6 +35,6 @@ const MyButton = forwardRef<HTMLButtonElement, any>((props, ref) => {
   );
 });
 
-MyButton.displayName = "MyButton";
+StartButton.displayName = "MyButton";
 
-export default MyButton;
+export default StartButton;

@@ -1,13 +1,13 @@
-import { Button } from "@nextui-org/react";
 import StartButton from "@/components/ui/StartButton";
 import Card from "@/components/ui/card";
-import { img } from "framer-motion/client";
 
 export default function Home() {
   return (
     <div>
       <div>
-        <h1>Check Task</h1>
+        <div>
+          <h1>Check Task</h1>
+        </div>
         <h2>
           Planifica tu día y proyectos profesionales <br /> con "Check Task",
           nuestra plataforma Open-Source <br /> de organización de tareas.
@@ -114,7 +114,6 @@ export default function Home() {
           }
         />
       </div>
-      <div></div>
     </div>
   );
 }
