@@ -1,6 +1,7 @@
 import StartButton from "@/components/ui/StartButton";
 import Card from "@/components/ui/card";
 import PresentationCard from "@/components/ui/presentationCard";
+import DevProfile from "@/components/ui/DevProfile";
 
 export default function Home() {
   return (
@@ -114,7 +115,39 @@ export default function Home() {
         />
       </div>
       <PresentationCard />
-      <div></div>
+      <div>
+        <DevProfile
+          image=""
+          title="Desarrollador Front-end"
+          content={
+            <p>
+              Ulises Estrada
+              <br />
+              Ingeniero Informático
+              <br />
+              Desarrollador con experiencia en Tecnologias Front-end como:
+              JavaScript y diversos frameworks como React y Vue.js
+              <br />Y manejo de C++ y fundamentos en el Framework Laravel.
+            </p>
+          }
+        />
+        <DevProfile
+          image=""
+          title="Desarrollador Back-end"
+          content={
+            <p>
+              Erick Méndez
+              <br />
+              Ingeniero Informático
+              <br />
+              Desarrollador con experiencia en Tecnologias Back-end como: PHP ,
+              C++ y bases de datos relacionales (MySql y PostgreSQL). De igual
+              manera; Experiencia en Frameworks como Laravel y Next.js.
+              <br />Y manejo de fundamentos en HTML, CSS y Javascript.
+            </p>
+          }
+        />
+      </div>
     </div>
   );
 }

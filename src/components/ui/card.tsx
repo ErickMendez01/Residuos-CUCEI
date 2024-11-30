@@ -18,12 +18,7 @@ export default function CustomCard({
     <Card className="max-w-[340px]">
       <CardHeader className="flex items-center gap-4">
         <div className="justify-center">
-          {iconSrc && (
-            <img
-              src={iconSrc}
-              className="w-10 h-10" // Estilo para imagen circular
-            />
-          )}
+          {iconSrc && <img src={iconSrc} className="w-10 h-10" />}
           <h4 className="text-md">{title}</h4>
         </div>
       </CardHeader>
