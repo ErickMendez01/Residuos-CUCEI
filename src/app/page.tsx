@@ -1,7 +1,6 @@
-import { Button } from "@nextui-org/react";
 import StartButton from "@/components/ui/StartButton";
 import Card from "@/components/ui/card";
-import { img } from "framer-motion/client";
+import PresentationCard from "@/components/ui/presentationCard";
 
 export default function Home() {
   return (
@@ -114,6 +113,7 @@ export default function Home() {
           }
         />
       </div>
+      <PresentationCard />
       <div></div>
     </div>
   );
