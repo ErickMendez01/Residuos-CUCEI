@@ -1,12 +1,9 @@
 import type { Metadata } from "next";
-import "./globals.css";
 import Providers from "@/components/Providers";
-import { MainNav } from "@/components/navbar";
-import { dashboardConfig } from "@/config/dashboard";
-import { ThemeSwitcher } from "@/components/ThemeSwitcher";
+import "@/app/globals.css";
 export const metadata: Metadata = {
-  title: "To do list",
-  description: "Maneja tu dia ahora!",
+  title: "Reciclaje CUCEI",
+  description: "Administra los residuos electronícos dentro de la institución!",
 };
 
 export default function RootLayout({
@@ -18,8 +15,6 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Providers>
-          <MainNav items={dashboardConfig.mainNav} />
-          <ThemeSwitcher />
           {children}
         </Providers>
       </body>

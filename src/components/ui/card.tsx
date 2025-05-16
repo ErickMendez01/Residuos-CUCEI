@@ -1,29 +1,63 @@
-"use client";
+import * as React from "react"
+import {
+  Card as NextUICard,
+  CardHeader as NextUICardHeader,
+  CardBody as NextUICardBody,
+  CardFooter as NextUICardFooter,
+  type CardProps as NextUICardProps,
+} from "@nextui-org/react"
 
-import React from "react";
-import { Card, CardHeader, CardBody, Divider, Image } from "@nextui-org/react";
+import { cn } from "@/lib/utils"
 
-type CustomCardProps = {
-  iconSrc?: string; // Icono
-  title: string;
-  content: React.ReactNode; // Permite cualquier contenido React en el cuerpo
-};
+const Card = React.forwardRef<HTMLDivElement, NextUICardProps>(
+  ({ className, ...props }, ref) => (
+    <NextUICard
+      ref={ref}
+      as="div"
+      className={cn("bg-white dark:bg-neutral-900", className)}
+      {...props}
+    />
+  )
+)
+Card.displayName = "Card"
 
-export default function CustomCard({
-  iconSrc,
-  title,
-  content,
-}: CustomCardProps) {
-  return (
-    <Card className="max-w-[340px]">
-      <CardHeader className="flex items-center gap-4">
-        <div className="justify-center">
-          {iconSrc && <img src={iconSrc} className="w-10 h-10" />}
-          <h4 className="text-md">{title}</h4>
-        </div>
-      </CardHeader>
-      <Divider />
-      <CardBody>{content}</CardBody>
-    </Card>
-  );
-}
+const CardHeader = React.forwardRef<
+  HTMLDivElement,
+  React.ComponentPropsWithRef<typeof NextUICardHeader>
+>(({ className, ...props }, ref) => (
+  <NextUICardHeader
+    ref={ref}
+    as="div"
+    className={cn("font-semibold text-lg p-4", className)}
+    {...props}
+  />
+))
+CardHeader.displayName = "CardHeader"
+
+const CardBody = React.forwardRef<
+  HTMLDivElement,
+  React.ComponentPropsWithRef<typeof NextUICardBody>
+>(({ className, ...props }, ref) => (
+  <NextUICardBody
+    ref={ref}
+    as="div"
+    className={cn("text-sm text-gray-600 dark:text-gray-300 px-4 py-2", className)}
+    {...props}
+  />
+))
+CardBody.displayName = "CardBody"
+
+const CardFooter = React.forwardRef<
+  HTMLDivElement,
+  React.ComponentPropsWithRef<typeof NextUICardFooter>
+>(({ className, ...props }, ref) => (
+  <NextUICardFooter
+    ref={ref}
+    as="div"
+    className={cn("flex justify-end gap-2 p-4 pt-0", className)}
+    {...props}
+  />
+))
+CardFooter.displayName = "CardFooter"
+
+export { Card, CardHeader, CardBody, CardFooter }

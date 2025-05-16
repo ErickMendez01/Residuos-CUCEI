@@ -6,13 +6,5 @@ export const dashboardConfig : DashboardConfig = {
             title: "Funcionalidades",
             href:"#funcionalidades",
         },
-        {
-            title: "Conocenos",
-            href:"#Conocenos",
-        },
-        {
-            title: "Contacto",
-            href:"#Contacto",
-        }
     ],
 }
