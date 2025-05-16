@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import {
   Modal,
   ModalContent,
@@ -11,24 +11,38 @@ import { useForm } from "react-hook-form";
 import { Input } from "@nextui-org/react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { registerSchema, RegisterSchema } from "@/lib/register-schema";
+import { registerUser } from "@/actions/authActions";
 interface RegisterFormProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-const onSubmit = (data: RegisterSchema) => {
-  console.log(data);
-};
-
 const RegisterForm = ({ isOpen, onClose }: RegisterFormProps) => {
   const {
     register,
+    setError,
     handleSubmit,
-    formState: { errors, isValid },
+    formState: { errors, isValid, isSubmitting },
   } = useForm<RegisterSchema>({
     resolver: zodResolver(registerSchema),
     mode: "onTouched",
   });
+
+  const onSubmit = async (data: RegisterSchema) => {
+    const result = await registerUser(data);
+    if (result.status === "success") {
+      console.log("Usuario registrado:", result.data);
+    } else {
+      if (Array.isArray(result.error)) {
+        result.error.forEach((e) => {
+          const fieldName = e.path.join(".") as "email" | "password" | "name";
+          setError(fieldName, { message: e.message });
+        });
+      } else {
+        setError("root.serverError", { message: result.error });
+      }
+    }
+  };
 
   return (
     <Modal isOpen={isOpen} onOpenChange={(open) => !open && onClose()}>
@@ -39,7 +53,7 @@ const RegisterForm = ({ isOpen, onClose }: RegisterFormProps) => {
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="space-y-4 px-2">
                 <Input
-                  label ="Nombre"
+                  label="Nombre"
                   defaultValue=""
                   variant="bordered"
                   type="text"
@@ -68,19 +82,21 @@ const RegisterForm = ({ isOpen, onClose }: RegisterFormProps) => {
                   isInvalid={!!errors.password}
                   errorMessage={errors.password?.message}
                 />
+                {errors.root?.serverError && (
+                  <p className="text-danger text-sm">{errors.root.serverError.message}</p>
+                )}
+                <Button
+                  type="submit"
+                  isLoading={isSubmitting}
+                  fullWidth
+                  isDisabled={!isValid}
+                  className="bg-black text-white dark:bg-white dark:text-black px-4 py-2 rounded-lg font-bold"
+                >
+                  Registrarse
+                </Button>
               </div>
             </form>
           </ModalBody>
-          <ModalFooter>
-            <Button
-              type="submit"
-              isDisabled={!isValid}
-              className="bg-black text-white dark:bg-white dark:text-black px-4 py-2 rounded-lg font-bold"
-              onClick={onClose}
-            >
-              Registrarse
-            </Button>
-          </ModalFooter>
         </>
       </ModalContent>
     </Modal>
