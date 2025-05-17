@@ -6,7 +6,7 @@ export const publicRoutes = [
 
 export const privateRoutes = [
     '/residuos',
-    '/chat',
+    '/chatbot',
     '/usuarios',
     '/perfil',
 ]

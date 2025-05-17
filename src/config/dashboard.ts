@@ -2,14 +2,6 @@ import { DashboardConfig } from "@/types";
 
 export const dashboardConfig : DashboardConfig = {
     mainNav:[
-        {
-            title: "Cursos",
-            href:"/cursos",
-        },
-         {
-            title: "Articulos",
-            href:"/articulos",
-        },
     ],
 
     sideBarNav: [
@@ -20,7 +12,7 @@ export const dashboardConfig : DashboardConfig = {
         },
           {
             title: "Chat",
-            href: "/chat",
+            href: "/chatbot",
             icon: "comment",
         },
         {

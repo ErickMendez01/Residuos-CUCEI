@@ -30,7 +30,7 @@ export const config = {
   matcher: [
     "/",               // Redirigir root
     "/residuos/:path*",
-    "/chat/:path*",
+    "/chatbot/:path*",
     "/usuarios/:path*",
     "/perfil/:path*",
   ],
