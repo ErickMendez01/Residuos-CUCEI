@@ -4,33 +4,33 @@ export const dashboardConfig : DashboardConfig = {
     mainNav:[
         {
             title: "Cursos",
-            href:"#",
+            href:"/cursos",
         },
          {
             title: "Articulos",
-            href:"#",
+            href:"/articulos",
         },
     ],
 
     sideBarNav: [
         {
             title: "Residuos",
-            href: "/app/residuos",
+            href: "/residuos",
             icon: "trash",
         },
           {
             title: "Chat",
-            href: "/app/chat",
+            href: "/chat",
             icon: "comment",
         },
         {
             title: "Usuarios",
-            href: "/app/usuarios",
+            href: "/usuarios",
             icon: "users",
         },
         {
             title: "Perfil",
-            href: "/app/perfil",
+            href: "/perfil",
             icon: "user",
         },
     ]

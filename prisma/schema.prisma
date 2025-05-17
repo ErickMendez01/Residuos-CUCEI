@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
   output   = "../src/generated/prisma"
@@ -15,17 +9,25 @@ datasource db {
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
-  name      String?
-  email     String?  @unique
-  emilVerified Boolean  @default(false)
-  image     String?
-  password  String?
-  accounts   Account[]
+  id            Int           @id @default(autoincrement())
+  name          String?
+  email         String?       @unique
+  emailVerified Boolean       @default(false)
+  image         String?
+  password      String?
+  gender        String?
+  birthDate     DateTime?
+  country       String?
+  city          String?
+  university    String?
+  career        String?
+  accounts      Account[]
+  dispositivos  Dispositivo[]
+  componentes   Componente[]
 }
 
 model Account {
-  id                String   @id @default(cuid())
+  id                String  @id @default(cuid())
   userId            Int
   type              String
   provider          String
@@ -41,4 +43,50 @@ model Account {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
+}
+
+model Dispositivo {
+  id_dispositivo   Int                    @id @default(autoincrement())
+  nombre           String
+  marca            String
+  modelo           String
+  año_fabricacion Int
+  estado_general   EstadoGeneral
+  resultado        ResultadoClasificacion
+  justificacion    String?
+  descripcion      String?
+  categoria        String?
+  numero           String?                @unique
+  ubicacion        String?
+  fecha_registro   DateTime               @default(now())
+  id_usuario       Int
+  usuario          User                   @relation(fields: [id_usuario], references: [id], onDelete: Cascade)
+}
+
+model Componente {
+  id_componente    Int                    @id @default(autoincrement())
+  tipo_componente  String
+  estado_general   EstadoGeneral
+  resultado        ResultadoClasificacion
+  justificacion    String?
+  observaciones    String?
+  marca            String?
+  modelo           String?
+  numero           String?                @unique
+  fecha_extraccion DateTime?
+  ubicacion        String?
+  id_usuario       Int
+  usuario          User                   @relation(fields: [id_usuario], references: [id], onDelete: Cascade)
+}
+
+enum ResultadoClasificacion {
+  REUTILIZAR
+  RECICLAR
+  DESECHABLE
+}
+
+enum EstadoGeneral {
+  FUNCIONAL
+  PARCIALMENTE_FUNCIONAL
+  DAÑADO
 }

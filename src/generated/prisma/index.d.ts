@@ -23,6 +23,47 @@ export type User = $Result.DefaultSelection<Prisma.$UserPayload>
  * 
  */
 export type Account = $Result.DefaultSelection<Prisma.$AccountPayload>
+/**
+ * Model Dispositivo
+ * 
+ */
+export type Dispositivo = $Result.DefaultSelection<Prisma.$DispositivoPayload>
+/**
+ * Model Componente
+ * 
+ */
+export type Componente = $Result.DefaultSelection<Prisma.$ComponentePayload>
+
+/**
+ * Enums
+ */
+export namespace $Enums {
+  export const ResultadoClasificacion: {
+  REUTILIZAR: 'REUTILIZAR',
+  RECICLAR: 'RECICLAR',
+  DESECHABLE: 'DESECHABLE'
+};
+
+export type ResultadoClasificacion = (typeof ResultadoClasificacion)[keyof typeof ResultadoClasificacion]
+
+
+export const EstadoGeneral: {
+  FUNCIONAL: 'FUNCIONAL',
+  PARCIALMENTE_FUNCIONAL: 'PARCIALMENTE_FUNCIONAL',
+  DAÑADO: 'DAÑADO'
+};
+
+export type EstadoGeneral = (typeof EstadoGeneral)[keyof typeof EstadoGeneral]
+
+}
+
+export type ResultadoClasificacion = $Enums.ResultadoClasificacion
+
+export const ResultadoClasificacion: typeof $Enums.ResultadoClasificacion
+
+export type EstadoGeneral = $Enums.EstadoGeneral
+
+export const EstadoGeneral: typeof $Enums.EstadoGeneral
 
 /**
  * ##  Prisma Client ʲˢ
@@ -168,6 +209,26 @@ export class PrismaClient<
     * ```
     */
   get account(): Prisma.AccountDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.dispositivo`: Exposes CRUD operations for the **Dispositivo** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Dispositivos
+    * const dispositivos = await prisma.dispositivo.findMany()
+    * ```
+    */
+  get dispositivo(): Prisma.DispositivoDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.componente`: Exposes CRUD operations for the **Componente** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Componentes
+    * const componentes = await prisma.componente.findMany()
+    * ```
+    */
+  get componente(): Prisma.ComponenteDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -609,7 +670,9 @@ export namespace Prisma {
 
   export const ModelName: {
     User: 'User',
-    Account: 'Account'
+    Account: 'Account',
+    Dispositivo: 'Dispositivo',
+    Componente: 'Componente'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -628,7 +691,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "account"
+      modelProps: "user" | "account" | "dispositivo" | "componente"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -780,6 +843,154 @@ export namespace Prisma {
           }
         }
       }
+      Dispositivo: {
+        payload: Prisma.$DispositivoPayload<ExtArgs>
+        fields: Prisma.DispositivoFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.DispositivoFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DispositivoPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.DispositivoFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DispositivoPayload>
+          }
+          findFirst: {
+            args: Prisma.DispositivoFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DispositivoPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.DispositivoFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DispositivoPayload>
+          }
+          findMany: {
+            args: Prisma.DispositivoFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DispositivoPayload>[]
+          }
+          create: {
+            args: Prisma.DispositivoCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DispositivoPayload>
+          }
+          createMany: {
+            args: Prisma.DispositivoCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.DispositivoCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DispositivoPayload>[]
+          }
+          delete: {
+            args: Prisma.DispositivoDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DispositivoPayload>
+          }
+          update: {
+            args: Prisma.DispositivoUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DispositivoPayload>
+          }
+          deleteMany: {
+            args: Prisma.DispositivoDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.DispositivoUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.DispositivoUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DispositivoPayload>[]
+          }
+          upsert: {
+            args: Prisma.DispositivoUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DispositivoPayload>
+          }
+          aggregate: {
+            args: Prisma.DispositivoAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateDispositivo>
+          }
+          groupBy: {
+            args: Prisma.DispositivoGroupByArgs<ExtArgs>
+            result: $Utils.Optional<DispositivoGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.DispositivoCountArgs<ExtArgs>
+            result: $Utils.Optional<DispositivoCountAggregateOutputType> | number
+          }
+        }
+      }
+      Componente: {
+        payload: Prisma.$ComponentePayload<ExtArgs>
+        fields: Prisma.ComponenteFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ComponenteFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ComponentePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ComponenteFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ComponentePayload>
+          }
+          findFirst: {
+            args: Prisma.ComponenteFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ComponentePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ComponenteFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ComponentePayload>
+          }
+          findMany: {
+            args: Prisma.ComponenteFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ComponentePayload>[]
+          }
+          create: {
+            args: Prisma.ComponenteCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ComponentePayload>
+          }
+          createMany: {
+            args: Prisma.ComponenteCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ComponenteCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ComponentePayload>[]
+          }
+          delete: {
+            args: Prisma.ComponenteDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ComponentePayload>
+          }
+          update: {
+            args: Prisma.ComponenteUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ComponentePayload>
+          }
+          deleteMany: {
+            args: Prisma.ComponenteDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ComponenteUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ComponenteUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ComponentePayload>[]
+          }
+          upsert: {
+            args: Prisma.ComponenteUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ComponentePayload>
+          }
+          aggregate: {
+            args: Prisma.ComponenteAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateComponente>
+          }
+          groupBy: {
+            args: Prisma.ComponenteGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ComponenteGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ComponenteCountArgs<ExtArgs>
+            result: $Utils.Optional<ComponenteCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -866,6 +1077,8 @@ export namespace Prisma {
   export type GlobalOmitConfig = {
     user?: UserOmit
     account?: AccountOmit
+    dispositivo?: DispositivoOmit
+    componente?: ComponenteOmit
   }
 
   /* Types for Logging */
@@ -961,10 +1174,14 @@ export namespace Prisma {
 
   export type UserCountOutputType = {
     accounts: number
+    dispositivos: number
+    componentes: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     accounts?: boolean | UserCountOutputTypeCountAccountsArgs
+    dispositivos?: boolean | UserCountOutputTypeCountDispositivosArgs
+    componentes?: boolean | UserCountOutputTypeCountComponentesArgs
   }
 
   // Custom InputTypes
@@ -983,6 +1200,20 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountAccountsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: AccountWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountDispositivosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DispositivoWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountComponentesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ComponenteWhereInput
   }
 
 
@@ -1014,27 +1245,45 @@ export namespace Prisma {
     id: number | null
     name: string | null
     email: string | null
-    emilVerified: boolean | null
+    emailVerified: boolean | null
     image: string | null
     password: string | null
+    gender: string | null
+    birthDate: Date | null
+    country: string | null
+    city: string | null
+    university: string | null
+    career: string | null
   }
 
   export type UserMaxAggregateOutputType = {
     id: number | null
     name: string | null
     email: string | null
-    emilVerified: boolean | null
+    emailVerified: boolean | null
     image: string | null
     password: string | null
+    gender: string | null
+    birthDate: Date | null
+    country: string | null
+    city: string | null
+    university: string | null
+    career: string | null
   }
 
   export type UserCountAggregateOutputType = {
     id: number
     name: number
     email: number
-    emilVerified: number
+    emailVerified: number
     image: number
     password: number
+    gender: number
+    birthDate: number
+    country: number
+    city: number
+    university: number
+    career: number
     _all: number
   }
 
@@ -1051,27 +1300,45 @@ export namespace Prisma {
     id?: true
     name?: true
     email?: true
-    emilVerified?: true
+    emailVerified?: true
     image?: true
     password?: true
+    gender?: true
+    birthDate?: true
+    country?: true
+    city?: true
+    university?: true
+    career?: true
   }
 
   export type UserMaxAggregateInputType = {
     id?: true
     name?: true
     email?: true
-    emilVerified?: true
+    emailVerified?: true
     image?: true
     password?: true
+    gender?: true
+    birthDate?: true
+    country?: true
+    city?: true
+    university?: true
+    career?: true
   }
 
   export type UserCountAggregateInputType = {
     id?: true
     name?: true
     email?: true
-    emilVerified?: true
+    emailVerified?: true
     image?: true
     password?: true
+    gender?: true
+    birthDate?: true
+    country?: true
+    city?: true
+    university?: true
+    career?: true
     _all?: true
   }
 
@@ -1165,9 +1432,15 @@ export namespace Prisma {
     id: number
     name: string | null
     email: string | null
-    emilVerified: boolean
+    emailVerified: boolean
     image: string | null
     password: string | null
+    gender: string | null
+    birthDate: Date | null
+    country: string | null
+    city: string | null
+    university: string | null
+    career: string | null
     _count: UserCountAggregateOutputType | null
     _avg: UserAvgAggregateOutputType | null
     _sum: UserSumAggregateOutputType | null
@@ -1193,10 +1466,18 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     email?: boolean
-    emilVerified?: boolean
+    emailVerified?: boolean
     image?: boolean
     password?: boolean
+    gender?: boolean
+    birthDate?: boolean
+    country?: boolean
+    city?: boolean
+    university?: boolean
+    career?: boolean
     accounts?: boolean | User$accountsArgs<ExtArgs>
+    dispositivos?: boolean | User$dispositivosArgs<ExtArgs>
+    componentes?: boolean | User$componentesArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -1204,32 +1485,52 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     email?: boolean
-    emilVerified?: boolean
+    emailVerified?: boolean
     image?: boolean
     password?: boolean
+    gender?: boolean
+    birthDate?: boolean
+    country?: boolean
+    city?: boolean
+    university?: boolean
+    career?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
     email?: boolean
-    emilVerified?: boolean
+    emailVerified?: boolean
     image?: boolean
     password?: boolean
+    gender?: boolean
+    birthDate?: boolean
+    country?: boolean
+    city?: boolean
+    university?: boolean
+    career?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
     id?: boolean
     name?: boolean
     email?: boolean
-    emilVerified?: boolean
+    emailVerified?: boolean
     image?: boolean
     password?: boolean
+    gender?: boolean
+    birthDate?: boolean
+    country?: boolean
+    city?: boolean
+    university?: boolean
+    career?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "emilVerified" | "image" | "password", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "emailVerified" | "image" | "password" | "gender" | "birthDate" | "country" | "city" | "university" | "career", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     accounts?: boolean | User$accountsArgs<ExtArgs>
+    dispositivos?: boolean | User$dispositivosArgs<ExtArgs>
+    componentes?: boolean | User$componentesArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -1239,14 +1540,22 @@ export namespace Prisma {
     name: "User"
     objects: {
       accounts: Prisma.$AccountPayload<ExtArgs>[]
+      dispositivos: Prisma.$DispositivoPayload<ExtArgs>[]
+      componentes: Prisma.$ComponentePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       name: string | null
       email: string | null
-      emilVerified: boolean
+      emailVerified: boolean
       image: string | null
       password: string | null
+      gender: string | null
+      birthDate: Date | null
+      country: string | null
+      city: string | null
+      university: string | null
+      career: string | null
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -1642,6 +1951,8 @@ export namespace Prisma {
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     accounts<T extends User$accountsArgs<ExtArgs> = {}>(args?: Subset<T, User$accountsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AccountPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    dispositivos<T extends User$dispositivosArgs<ExtArgs> = {}>(args?: Subset<T, User$dispositivosArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DispositivoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    componentes<T extends User$componentesArgs<ExtArgs> = {}>(args?: Subset<T, User$componentesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ComponentePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1674,9 +1985,15 @@ export namespace Prisma {
     readonly id: FieldRef<"User", 'Int'>
     readonly name: FieldRef<"User", 'String'>
     readonly email: FieldRef<"User", 'String'>
-    readonly emilVerified: FieldRef<"User", 'Boolean'>
+    readonly emailVerified: FieldRef<"User", 'Boolean'>
     readonly image: FieldRef<"User", 'String'>
     readonly password: FieldRef<"User", 'String'>
+    readonly gender: FieldRef<"User", 'String'>
+    readonly birthDate: FieldRef<"User", 'DateTime'>
+    readonly country: FieldRef<"User", 'String'>
+    readonly city: FieldRef<"User", 'String'>
+    readonly university: FieldRef<"User", 'String'>
+    readonly career: FieldRef<"User", 'String'>
   }
     
 
@@ -2086,6 +2403,54 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: AccountScalarFieldEnum | AccountScalarFieldEnum[]
+  }
+
+  /**
+   * User.dispositivos
+   */
+  export type User$dispositivosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Dispositivo
+     */
+    select?: DispositivoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Dispositivo
+     */
+    omit?: DispositivoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DispositivoInclude<ExtArgs> | null
+    where?: DispositivoWhereInput
+    orderBy?: DispositivoOrderByWithRelationInput | DispositivoOrderByWithRelationInput[]
+    cursor?: DispositivoWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: DispositivoScalarFieldEnum | DispositivoScalarFieldEnum[]
+  }
+
+  /**
+   * User.componentes
+   */
+  export type User$componentesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Componente
+     */
+    select?: ComponenteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Componente
+     */
+    omit?: ComponenteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComponenteInclude<ExtArgs> | null
+    where?: ComponenteWhereInput
+    orderBy?: ComponenteOrderByWithRelationInput | ComponenteOrderByWithRelationInput[]
+    cursor?: ComponenteWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ComponenteScalarFieldEnum | ComponenteScalarFieldEnum[]
   }
 
   /**
@@ -3295,6 +3660,2410 @@ export namespace Prisma {
 
 
   /**
+   * Model Dispositivo
+   */
+
+  export type AggregateDispositivo = {
+    _count: DispositivoCountAggregateOutputType | null
+    _avg: DispositivoAvgAggregateOutputType | null
+    _sum: DispositivoSumAggregateOutputType | null
+    _min: DispositivoMinAggregateOutputType | null
+    _max: DispositivoMaxAggregateOutputType | null
+  }
+
+  export type DispositivoAvgAggregateOutputType = {
+    id_dispositivo: number | null
+    año_fabricacion: number | null
+    id_usuario: number | null
+  }
+
+  export type DispositivoSumAggregateOutputType = {
+    id_dispositivo: number | null
+    año_fabricacion: number | null
+    id_usuario: number | null
+  }
+
+  export type DispositivoMinAggregateOutputType = {
+    id_dispositivo: number | null
+    nombre: string | null
+    marca: string | null
+    modelo: string | null
+    año_fabricacion: number | null
+    estado_general: $Enums.EstadoGeneral | null
+    resultado: $Enums.ResultadoClasificacion | null
+    justificacion: string | null
+    descripcion: string | null
+    categoria: string | null
+    numero: string | null
+    ubicacion: string | null
+    fecha_registro: Date | null
+    id_usuario: number | null
+  }
+
+  export type DispositivoMaxAggregateOutputType = {
+    id_dispositivo: number | null
+    nombre: string | null
+    marca: string | null
+    modelo: string | null
+    año_fabricacion: number | null
+    estado_general: $Enums.EstadoGeneral | null
+    resultado: $Enums.ResultadoClasificacion | null
+    justificacion: string | null
+    descripcion: string | null
+    categoria: string | null
+    numero: string | null
+    ubicacion: string | null
+    fecha_registro: Date | null
+    id_usuario: number | null
+  }
+
+  export type DispositivoCountAggregateOutputType = {
+    id_dispositivo: number
+    nombre: number
+    marca: number
+    modelo: number
+    año_fabricacion: number
+    estado_general: number
+    resultado: number
+    justificacion: number
+    descripcion: number
+    categoria: number
+    numero: number
+    ubicacion: number
+    fecha_registro: number
+    id_usuario: number
+    _all: number
+  }
+
+
+  export type DispositivoAvgAggregateInputType = {
+    id_dispositivo?: true
+    año_fabricacion?: true
+    id_usuario?: true
+  }
+
+  export type DispositivoSumAggregateInputType = {
+    id_dispositivo?: true
+    año_fabricacion?: true
+    id_usuario?: true
+  }
+
+  export type DispositivoMinAggregateInputType = {
+    id_dispositivo?: true
+    nombre?: true
+    marca?: true
+    modelo?: true
+    año_fabricacion?: true
+    estado_general?: true
+    resultado?: true
+    justificacion?: true
+    descripcion?: true
+    categoria?: true
+    numero?: true
+    ubicacion?: true
+    fecha_registro?: true
+    id_usuario?: true
+  }
+
+  export type DispositivoMaxAggregateInputType = {
+    id_dispositivo?: true
+    nombre?: true
+    marca?: true
+    modelo?: true
+    año_fabricacion?: true
+    estado_general?: true
+    resultado?: true
+    justificacion?: true
+    descripcion?: true
+    categoria?: true
+    numero?: true
+    ubicacion?: true
+    fecha_registro?: true
+    id_usuario?: true
+  }
+
+  export type DispositivoCountAggregateInputType = {
+    id_dispositivo?: true
+    nombre?: true
+    marca?: true
+    modelo?: true
+    año_fabricacion?: true
+    estado_general?: true
+    resultado?: true
+    justificacion?: true
+    descripcion?: true
+    categoria?: true
+    numero?: true
+    ubicacion?: true
+    fecha_registro?: true
+    id_usuario?: true
+    _all?: true
+  }
+
+  export type DispositivoAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Dispositivo to aggregate.
+     */
+    where?: DispositivoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Dispositivos to fetch.
+     */
+    orderBy?: DispositivoOrderByWithRelationInput | DispositivoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: DispositivoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Dispositivos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Dispositivos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Dispositivos
+    **/
+    _count?: true | DispositivoCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: DispositivoAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: DispositivoSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: DispositivoMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: DispositivoMaxAggregateInputType
+  }
+
+  export type GetDispositivoAggregateType<T extends DispositivoAggregateArgs> = {
+        [P in keyof T & keyof AggregateDispositivo]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateDispositivo[P]>
+      : GetScalarType<T[P], AggregateDispositivo[P]>
+  }
+
+
+
+
+  export type DispositivoGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DispositivoWhereInput
+    orderBy?: DispositivoOrderByWithAggregationInput | DispositivoOrderByWithAggregationInput[]
+    by: DispositivoScalarFieldEnum[] | DispositivoScalarFieldEnum
+    having?: DispositivoScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: DispositivoCountAggregateInputType | true
+    _avg?: DispositivoAvgAggregateInputType
+    _sum?: DispositivoSumAggregateInputType
+    _min?: DispositivoMinAggregateInputType
+    _max?: DispositivoMaxAggregateInputType
+  }
+
+  export type DispositivoGroupByOutputType = {
+    id_dispositivo: number
+    nombre: string
+    marca: string
+    modelo: string
+    año_fabricacion: number
+    estado_general: $Enums.EstadoGeneral
+    resultado: $Enums.ResultadoClasificacion
+    justificacion: string | null
+    descripcion: string | null
+    categoria: string | null
+    numero: string | null
+    ubicacion: string | null
+    fecha_registro: Date
+    id_usuario: number
+    _count: DispositivoCountAggregateOutputType | null
+    _avg: DispositivoAvgAggregateOutputType | null
+    _sum: DispositivoSumAggregateOutputType | null
+    _min: DispositivoMinAggregateOutputType | null
+    _max: DispositivoMaxAggregateOutputType | null
+  }
+
+  type GetDispositivoGroupByPayload<T extends DispositivoGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<DispositivoGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof DispositivoGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], DispositivoGroupByOutputType[P]>
+            : GetScalarType<T[P], DispositivoGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type DispositivoSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id_dispositivo?: boolean
+    nombre?: boolean
+    marca?: boolean
+    modelo?: boolean
+    año_fabricacion?: boolean
+    estado_general?: boolean
+    resultado?: boolean
+    justificacion?: boolean
+    descripcion?: boolean
+    categoria?: boolean
+    numero?: boolean
+    ubicacion?: boolean
+    fecha_registro?: boolean
+    id_usuario?: boolean
+    usuario?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["dispositivo"]>
+
+  export type DispositivoSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id_dispositivo?: boolean
+    nombre?: boolean
+    marca?: boolean
+    modelo?: boolean
+    año_fabricacion?: boolean
+    estado_general?: boolean
+    resultado?: boolean
+    justificacion?: boolean
+    descripcion?: boolean
+    categoria?: boolean
+    numero?: boolean
+    ubicacion?: boolean
+    fecha_registro?: boolean
+    id_usuario?: boolean
+    usuario?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["dispositivo"]>
+
+  export type DispositivoSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id_dispositivo?: boolean
+    nombre?: boolean
+    marca?: boolean
+    modelo?: boolean
+    año_fabricacion?: boolean
+    estado_general?: boolean
+    resultado?: boolean
+    justificacion?: boolean
+    descripcion?: boolean
+    categoria?: boolean
+    numero?: boolean
+    ubicacion?: boolean
+    fecha_registro?: boolean
+    id_usuario?: boolean
+    usuario?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["dispositivo"]>
+
+  export type DispositivoSelectScalar = {
+    id_dispositivo?: boolean
+    nombre?: boolean
+    marca?: boolean
+    modelo?: boolean
+    año_fabricacion?: boolean
+    estado_general?: boolean
+    resultado?: boolean
+    justificacion?: boolean
+    descripcion?: boolean
+    categoria?: boolean
+    numero?: boolean
+    ubicacion?: boolean
+    fecha_registro?: boolean
+    id_usuario?: boolean
+  }
+
+  export type DispositivoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_dispositivo" | "nombre" | "marca" | "modelo" | "año_fabricacion" | "estado_general" | "resultado" | "justificacion" | "descripcion" | "categoria" | "numero" | "ubicacion" | "fecha_registro" | "id_usuario", ExtArgs["result"]["dispositivo"]>
+  export type DispositivoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    usuario?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type DispositivoIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    usuario?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type DispositivoIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    usuario?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $DispositivoPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Dispositivo"
+    objects: {
+      usuario: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id_dispositivo: number
+      nombre: string
+      marca: string
+      modelo: string
+      año_fabricacion: number
+      estado_general: $Enums.EstadoGeneral
+      resultado: $Enums.ResultadoClasificacion
+      justificacion: string | null
+      descripcion: string | null
+      categoria: string | null
+      numero: string | null
+      ubicacion: string | null
+      fecha_registro: Date
+      id_usuario: number
+    }, ExtArgs["result"]["dispositivo"]>
+    composites: {}
+  }
+
+  type DispositivoGetPayload<S extends boolean | null | undefined | DispositivoDefaultArgs> = $Result.GetResult<Prisma.$DispositivoPayload, S>
+
+  type DispositivoCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<DispositivoFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: DispositivoCountAggregateInputType | true
+    }
+
+  export interface DispositivoDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Dispositivo'], meta: { name: 'Dispositivo' } }
+    /**
+     * Find zero or one Dispositivo that matches the filter.
+     * @param {DispositivoFindUniqueArgs} args - Arguments to find a Dispositivo
+     * @example
+     * // Get one Dispositivo
+     * const dispositivo = await prisma.dispositivo.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends DispositivoFindUniqueArgs>(args: SelectSubset<T, DispositivoFindUniqueArgs<ExtArgs>>): Prisma__DispositivoClient<$Result.GetResult<Prisma.$DispositivoPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Dispositivo that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {DispositivoFindUniqueOrThrowArgs} args - Arguments to find a Dispositivo
+     * @example
+     * // Get one Dispositivo
+     * const dispositivo = await prisma.dispositivo.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends DispositivoFindUniqueOrThrowArgs>(args: SelectSubset<T, DispositivoFindUniqueOrThrowArgs<ExtArgs>>): Prisma__DispositivoClient<$Result.GetResult<Prisma.$DispositivoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Dispositivo that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DispositivoFindFirstArgs} args - Arguments to find a Dispositivo
+     * @example
+     * // Get one Dispositivo
+     * const dispositivo = await prisma.dispositivo.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends DispositivoFindFirstArgs>(args?: SelectSubset<T, DispositivoFindFirstArgs<ExtArgs>>): Prisma__DispositivoClient<$Result.GetResult<Prisma.$DispositivoPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Dispositivo that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DispositivoFindFirstOrThrowArgs} args - Arguments to find a Dispositivo
+     * @example
+     * // Get one Dispositivo
+     * const dispositivo = await prisma.dispositivo.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends DispositivoFindFirstOrThrowArgs>(args?: SelectSubset<T, DispositivoFindFirstOrThrowArgs<ExtArgs>>): Prisma__DispositivoClient<$Result.GetResult<Prisma.$DispositivoPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Dispositivos that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DispositivoFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Dispositivos
+     * const dispositivos = await prisma.dispositivo.findMany()
+     * 
+     * // Get first 10 Dispositivos
+     * const dispositivos = await prisma.dispositivo.findMany({ take: 10 })
+     * 
+     * // Only select the `id_dispositivo`
+     * const dispositivoWithId_dispositivoOnly = await prisma.dispositivo.findMany({ select: { id_dispositivo: true } })
+     * 
+     */
+    findMany<T extends DispositivoFindManyArgs>(args?: SelectSubset<T, DispositivoFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DispositivoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Dispositivo.
+     * @param {DispositivoCreateArgs} args - Arguments to create a Dispositivo.
+     * @example
+     * // Create one Dispositivo
+     * const Dispositivo = await prisma.dispositivo.create({
+     *   data: {
+     *     // ... data to create a Dispositivo
+     *   }
+     * })
+     * 
+     */
+    create<T extends DispositivoCreateArgs>(args: SelectSubset<T, DispositivoCreateArgs<ExtArgs>>): Prisma__DispositivoClient<$Result.GetResult<Prisma.$DispositivoPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Dispositivos.
+     * @param {DispositivoCreateManyArgs} args - Arguments to create many Dispositivos.
+     * @example
+     * // Create many Dispositivos
+     * const dispositivo = await prisma.dispositivo.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends DispositivoCreateManyArgs>(args?: SelectSubset<T, DispositivoCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Dispositivos and returns the data saved in the database.
+     * @param {DispositivoCreateManyAndReturnArgs} args - Arguments to create many Dispositivos.
+     * @example
+     * // Create many Dispositivos
+     * const dispositivo = await prisma.dispositivo.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Dispositivos and only return the `id_dispositivo`
+     * const dispositivoWithId_dispositivoOnly = await prisma.dispositivo.createManyAndReturn({
+     *   select: { id_dispositivo: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends DispositivoCreateManyAndReturnArgs>(args?: SelectSubset<T, DispositivoCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DispositivoPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Dispositivo.
+     * @param {DispositivoDeleteArgs} args - Arguments to delete one Dispositivo.
+     * @example
+     * // Delete one Dispositivo
+     * const Dispositivo = await prisma.dispositivo.delete({
+     *   where: {
+     *     // ... filter to delete one Dispositivo
+     *   }
+     * })
+     * 
+     */
+    delete<T extends DispositivoDeleteArgs>(args: SelectSubset<T, DispositivoDeleteArgs<ExtArgs>>): Prisma__DispositivoClient<$Result.GetResult<Prisma.$DispositivoPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Dispositivo.
+     * @param {DispositivoUpdateArgs} args - Arguments to update one Dispositivo.
+     * @example
+     * // Update one Dispositivo
+     * const dispositivo = await prisma.dispositivo.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends DispositivoUpdateArgs>(args: SelectSubset<T, DispositivoUpdateArgs<ExtArgs>>): Prisma__DispositivoClient<$Result.GetResult<Prisma.$DispositivoPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Dispositivos.
+     * @param {DispositivoDeleteManyArgs} args - Arguments to filter Dispositivos to delete.
+     * @example
+     * // Delete a few Dispositivos
+     * const { count } = await prisma.dispositivo.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends DispositivoDeleteManyArgs>(args?: SelectSubset<T, DispositivoDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Dispositivos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DispositivoUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Dispositivos
+     * const dispositivo = await prisma.dispositivo.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends DispositivoUpdateManyArgs>(args: SelectSubset<T, DispositivoUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Dispositivos and returns the data updated in the database.
+     * @param {DispositivoUpdateManyAndReturnArgs} args - Arguments to update many Dispositivos.
+     * @example
+     * // Update many Dispositivos
+     * const dispositivo = await prisma.dispositivo.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Dispositivos and only return the `id_dispositivo`
+     * const dispositivoWithId_dispositivoOnly = await prisma.dispositivo.updateManyAndReturn({
+     *   select: { id_dispositivo: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends DispositivoUpdateManyAndReturnArgs>(args: SelectSubset<T, DispositivoUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DispositivoPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Dispositivo.
+     * @param {DispositivoUpsertArgs} args - Arguments to update or create a Dispositivo.
+     * @example
+     * // Update or create a Dispositivo
+     * const dispositivo = await prisma.dispositivo.upsert({
+     *   create: {
+     *     // ... data to create a Dispositivo
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Dispositivo we want to update
+     *   }
+     * })
+     */
+    upsert<T extends DispositivoUpsertArgs>(args: SelectSubset<T, DispositivoUpsertArgs<ExtArgs>>): Prisma__DispositivoClient<$Result.GetResult<Prisma.$DispositivoPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Dispositivos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DispositivoCountArgs} args - Arguments to filter Dispositivos to count.
+     * @example
+     * // Count the number of Dispositivos
+     * const count = await prisma.dispositivo.count({
+     *   where: {
+     *     // ... the filter for the Dispositivos we want to count
+     *   }
+     * })
+    **/
+    count<T extends DispositivoCountArgs>(
+      args?: Subset<T, DispositivoCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], DispositivoCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Dispositivo.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DispositivoAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends DispositivoAggregateArgs>(args: Subset<T, DispositivoAggregateArgs>): Prisma.PrismaPromise<GetDispositivoAggregateType<T>>
+
+    /**
+     * Group by Dispositivo.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DispositivoGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends DispositivoGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: DispositivoGroupByArgs['orderBy'] }
+        : { orderBy?: DispositivoGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, DispositivoGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetDispositivoGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Dispositivo model
+   */
+  readonly fields: DispositivoFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Dispositivo.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__DispositivoClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    usuario<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Dispositivo model
+   */
+  interface DispositivoFieldRefs {
+    readonly id_dispositivo: FieldRef<"Dispositivo", 'Int'>
+    readonly nombre: FieldRef<"Dispositivo", 'String'>
+    readonly marca: FieldRef<"Dispositivo", 'String'>
+    readonly modelo: FieldRef<"Dispositivo", 'String'>
+    readonly año_fabricacion: FieldRef<"Dispositivo", 'Int'>
+    readonly estado_general: FieldRef<"Dispositivo", 'EstadoGeneral'>
+    readonly resultado: FieldRef<"Dispositivo", 'ResultadoClasificacion'>
+    readonly justificacion: FieldRef<"Dispositivo", 'String'>
+    readonly descripcion: FieldRef<"Dispositivo", 'String'>
+    readonly categoria: FieldRef<"Dispositivo", 'String'>
+    readonly numero: FieldRef<"Dispositivo", 'String'>
+    readonly ubicacion: FieldRef<"Dispositivo", 'String'>
+    readonly fecha_registro: FieldRef<"Dispositivo", 'DateTime'>
+    readonly id_usuario: FieldRef<"Dispositivo", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Dispositivo findUnique
+   */
+  export type DispositivoFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Dispositivo
+     */
+    select?: DispositivoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Dispositivo
+     */
+    omit?: DispositivoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DispositivoInclude<ExtArgs> | null
+    /**
+     * Filter, which Dispositivo to fetch.
+     */
+    where: DispositivoWhereUniqueInput
+  }
+
+  /**
+   * Dispositivo findUniqueOrThrow
+   */
+  export type DispositivoFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Dispositivo
+     */
+    select?: DispositivoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Dispositivo
+     */
+    omit?: DispositivoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DispositivoInclude<ExtArgs> | null
+    /**
+     * Filter, which Dispositivo to fetch.
+     */
+    where: DispositivoWhereUniqueInput
+  }
+
+  /**
+   * Dispositivo findFirst
+   */
+  export type DispositivoFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Dispositivo
+     */
+    select?: DispositivoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Dispositivo
+     */
+    omit?: DispositivoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DispositivoInclude<ExtArgs> | null
+    /**
+     * Filter, which Dispositivo to fetch.
+     */
+    where?: DispositivoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Dispositivos to fetch.
+     */
+    orderBy?: DispositivoOrderByWithRelationInput | DispositivoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Dispositivos.
+     */
+    cursor?: DispositivoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Dispositivos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Dispositivos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Dispositivos.
+     */
+    distinct?: DispositivoScalarFieldEnum | DispositivoScalarFieldEnum[]
+  }
+
+  /**
+   * Dispositivo findFirstOrThrow
+   */
+  export type DispositivoFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Dispositivo
+     */
+    select?: DispositivoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Dispositivo
+     */
+    omit?: DispositivoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DispositivoInclude<ExtArgs> | null
+    /**
+     * Filter, which Dispositivo to fetch.
+     */
+    where?: DispositivoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Dispositivos to fetch.
+     */
+    orderBy?: DispositivoOrderByWithRelationInput | DispositivoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Dispositivos.
+     */
+    cursor?: DispositivoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Dispositivos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Dispositivos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Dispositivos.
+     */
+    distinct?: DispositivoScalarFieldEnum | DispositivoScalarFieldEnum[]
+  }
+
+  /**
+   * Dispositivo findMany
+   */
+  export type DispositivoFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Dispositivo
+     */
+    select?: DispositivoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Dispositivo
+     */
+    omit?: DispositivoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DispositivoInclude<ExtArgs> | null
+    /**
+     * Filter, which Dispositivos to fetch.
+     */
+    where?: DispositivoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Dispositivos to fetch.
+     */
+    orderBy?: DispositivoOrderByWithRelationInput | DispositivoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Dispositivos.
+     */
+    cursor?: DispositivoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Dispositivos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Dispositivos.
+     */
+    skip?: number
+    distinct?: DispositivoScalarFieldEnum | DispositivoScalarFieldEnum[]
+  }
+
+  /**
+   * Dispositivo create
+   */
+  export type DispositivoCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Dispositivo
+     */
+    select?: DispositivoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Dispositivo
+     */
+    omit?: DispositivoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DispositivoInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Dispositivo.
+     */
+    data: XOR<DispositivoCreateInput, DispositivoUncheckedCreateInput>
+  }
+
+  /**
+   * Dispositivo createMany
+   */
+  export type DispositivoCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Dispositivos.
+     */
+    data: DispositivoCreateManyInput | DispositivoCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Dispositivo createManyAndReturn
+   */
+  export type DispositivoCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Dispositivo
+     */
+    select?: DispositivoSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Dispositivo
+     */
+    omit?: DispositivoOmit<ExtArgs> | null
+    /**
+     * The data used to create many Dispositivos.
+     */
+    data: DispositivoCreateManyInput | DispositivoCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DispositivoIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Dispositivo update
+   */
+  export type DispositivoUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Dispositivo
+     */
+    select?: DispositivoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Dispositivo
+     */
+    omit?: DispositivoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DispositivoInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Dispositivo.
+     */
+    data: XOR<DispositivoUpdateInput, DispositivoUncheckedUpdateInput>
+    /**
+     * Choose, which Dispositivo to update.
+     */
+    where: DispositivoWhereUniqueInput
+  }
+
+  /**
+   * Dispositivo updateMany
+   */
+  export type DispositivoUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Dispositivos.
+     */
+    data: XOR<DispositivoUpdateManyMutationInput, DispositivoUncheckedUpdateManyInput>
+    /**
+     * Filter which Dispositivos to update
+     */
+    where?: DispositivoWhereInput
+    /**
+     * Limit how many Dispositivos to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Dispositivo updateManyAndReturn
+   */
+  export type DispositivoUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Dispositivo
+     */
+    select?: DispositivoSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Dispositivo
+     */
+    omit?: DispositivoOmit<ExtArgs> | null
+    /**
+     * The data used to update Dispositivos.
+     */
+    data: XOR<DispositivoUpdateManyMutationInput, DispositivoUncheckedUpdateManyInput>
+    /**
+     * Filter which Dispositivos to update
+     */
+    where?: DispositivoWhereInput
+    /**
+     * Limit how many Dispositivos to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DispositivoIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Dispositivo upsert
+   */
+  export type DispositivoUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Dispositivo
+     */
+    select?: DispositivoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Dispositivo
+     */
+    omit?: DispositivoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DispositivoInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Dispositivo to update in case it exists.
+     */
+    where: DispositivoWhereUniqueInput
+    /**
+     * In case the Dispositivo found by the `where` argument doesn't exist, create a new Dispositivo with this data.
+     */
+    create: XOR<DispositivoCreateInput, DispositivoUncheckedCreateInput>
+    /**
+     * In case the Dispositivo was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<DispositivoUpdateInput, DispositivoUncheckedUpdateInput>
+  }
+
+  /**
+   * Dispositivo delete
+   */
+  export type DispositivoDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Dispositivo
+     */
+    select?: DispositivoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Dispositivo
+     */
+    omit?: DispositivoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DispositivoInclude<ExtArgs> | null
+    /**
+     * Filter which Dispositivo to delete.
+     */
+    where: DispositivoWhereUniqueInput
+  }
+
+  /**
+   * Dispositivo deleteMany
+   */
+  export type DispositivoDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Dispositivos to delete
+     */
+    where?: DispositivoWhereInput
+    /**
+     * Limit how many Dispositivos to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Dispositivo without action
+   */
+  export type DispositivoDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Dispositivo
+     */
+    select?: DispositivoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Dispositivo
+     */
+    omit?: DispositivoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DispositivoInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Componente
+   */
+
+  export type AggregateComponente = {
+    _count: ComponenteCountAggregateOutputType | null
+    _avg: ComponenteAvgAggregateOutputType | null
+    _sum: ComponenteSumAggregateOutputType | null
+    _min: ComponenteMinAggregateOutputType | null
+    _max: ComponenteMaxAggregateOutputType | null
+  }
+
+  export type ComponenteAvgAggregateOutputType = {
+    id_componente: number | null
+    id_usuario: number | null
+  }
+
+  export type ComponenteSumAggregateOutputType = {
+    id_componente: number | null
+    id_usuario: number | null
+  }
+
+  export type ComponenteMinAggregateOutputType = {
+    id_componente: number | null
+    tipo_componente: string | null
+    estado_general: $Enums.EstadoGeneral | null
+    resultado: $Enums.ResultadoClasificacion | null
+    justificacion: string | null
+    observaciones: string | null
+    marca: string | null
+    modelo: string | null
+    numero: string | null
+    fecha_extraccion: Date | null
+    ubicacion: string | null
+    id_usuario: number | null
+  }
+
+  export type ComponenteMaxAggregateOutputType = {
+    id_componente: number | null
+    tipo_componente: string | null
+    estado_general: $Enums.EstadoGeneral | null
+    resultado: $Enums.ResultadoClasificacion | null
+    justificacion: string | null
+    observaciones: string | null
+    marca: string | null
+    modelo: string | null
+    numero: string | null
+    fecha_extraccion: Date | null
+    ubicacion: string | null
+    id_usuario: number | null
+  }
+
+  export type ComponenteCountAggregateOutputType = {
+    id_componente: number
+    tipo_componente: number
+    estado_general: number
+    resultado: number
+    justificacion: number
+    observaciones: number
+    marca: number
+    modelo: number
+    numero: number
+    fecha_extraccion: number
+    ubicacion: number
+    id_usuario: number
+    _all: number
+  }
+
+
+  export type ComponenteAvgAggregateInputType = {
+    id_componente?: true
+    id_usuario?: true
+  }
+
+  export type ComponenteSumAggregateInputType = {
+    id_componente?: true
+    id_usuario?: true
+  }
+
+  export type ComponenteMinAggregateInputType = {
+    id_componente?: true
+    tipo_componente?: true
+    estado_general?: true
+    resultado?: true
+    justificacion?: true
+    observaciones?: true
+    marca?: true
+    modelo?: true
+    numero?: true
+    fecha_extraccion?: true
+    ubicacion?: true
+    id_usuario?: true
+  }
+
+  export type ComponenteMaxAggregateInputType = {
+    id_componente?: true
+    tipo_componente?: true
+    estado_general?: true
+    resultado?: true
+    justificacion?: true
+    observaciones?: true
+    marca?: true
+    modelo?: true
+    numero?: true
+    fecha_extraccion?: true
+    ubicacion?: true
+    id_usuario?: true
+  }
+
+  export type ComponenteCountAggregateInputType = {
+    id_componente?: true
+    tipo_componente?: true
+    estado_general?: true
+    resultado?: true
+    justificacion?: true
+    observaciones?: true
+    marca?: true
+    modelo?: true
+    numero?: true
+    fecha_extraccion?: true
+    ubicacion?: true
+    id_usuario?: true
+    _all?: true
+  }
+
+  export type ComponenteAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Componente to aggregate.
+     */
+    where?: ComponenteWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Componentes to fetch.
+     */
+    orderBy?: ComponenteOrderByWithRelationInput | ComponenteOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ComponenteWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Componentes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Componentes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Componentes
+    **/
+    _count?: true | ComponenteCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ComponenteAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ComponenteSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ComponenteMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ComponenteMaxAggregateInputType
+  }
+
+  export type GetComponenteAggregateType<T extends ComponenteAggregateArgs> = {
+        [P in keyof T & keyof AggregateComponente]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateComponente[P]>
+      : GetScalarType<T[P], AggregateComponente[P]>
+  }
+
+
+
+
+  export type ComponenteGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ComponenteWhereInput
+    orderBy?: ComponenteOrderByWithAggregationInput | ComponenteOrderByWithAggregationInput[]
+    by: ComponenteScalarFieldEnum[] | ComponenteScalarFieldEnum
+    having?: ComponenteScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ComponenteCountAggregateInputType | true
+    _avg?: ComponenteAvgAggregateInputType
+    _sum?: ComponenteSumAggregateInputType
+    _min?: ComponenteMinAggregateInputType
+    _max?: ComponenteMaxAggregateInputType
+  }
+
+  export type ComponenteGroupByOutputType = {
+    id_componente: number
+    tipo_componente: string
+    estado_general: $Enums.EstadoGeneral
+    resultado: $Enums.ResultadoClasificacion
+    justificacion: string | null
+    observaciones: string | null
+    marca: string | null
+    modelo: string | null
+    numero: string | null
+    fecha_extraccion: Date | null
+    ubicacion: string | null
+    id_usuario: number
+    _count: ComponenteCountAggregateOutputType | null
+    _avg: ComponenteAvgAggregateOutputType | null
+    _sum: ComponenteSumAggregateOutputType | null
+    _min: ComponenteMinAggregateOutputType | null
+    _max: ComponenteMaxAggregateOutputType | null
+  }
+
+  type GetComponenteGroupByPayload<T extends ComponenteGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ComponenteGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ComponenteGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ComponenteGroupByOutputType[P]>
+            : GetScalarType<T[P], ComponenteGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ComponenteSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id_componente?: boolean
+    tipo_componente?: boolean
+    estado_general?: boolean
+    resultado?: boolean
+    justificacion?: boolean
+    observaciones?: boolean
+    marca?: boolean
+    modelo?: boolean
+    numero?: boolean
+    fecha_extraccion?: boolean
+    ubicacion?: boolean
+    id_usuario?: boolean
+    usuario?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["componente"]>
+
+  export type ComponenteSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id_componente?: boolean
+    tipo_componente?: boolean
+    estado_general?: boolean
+    resultado?: boolean
+    justificacion?: boolean
+    observaciones?: boolean
+    marca?: boolean
+    modelo?: boolean
+    numero?: boolean
+    fecha_extraccion?: boolean
+    ubicacion?: boolean
+    id_usuario?: boolean
+    usuario?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["componente"]>
+
+  export type ComponenteSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id_componente?: boolean
+    tipo_componente?: boolean
+    estado_general?: boolean
+    resultado?: boolean
+    justificacion?: boolean
+    observaciones?: boolean
+    marca?: boolean
+    modelo?: boolean
+    numero?: boolean
+    fecha_extraccion?: boolean
+    ubicacion?: boolean
+    id_usuario?: boolean
+    usuario?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["componente"]>
+
+  export type ComponenteSelectScalar = {
+    id_componente?: boolean
+    tipo_componente?: boolean
+    estado_general?: boolean
+    resultado?: boolean
+    justificacion?: boolean
+    observaciones?: boolean
+    marca?: boolean
+    modelo?: boolean
+    numero?: boolean
+    fecha_extraccion?: boolean
+    ubicacion?: boolean
+    id_usuario?: boolean
+  }
+
+  export type ComponenteOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_componente" | "tipo_componente" | "estado_general" | "resultado" | "justificacion" | "observaciones" | "marca" | "modelo" | "numero" | "fecha_extraccion" | "ubicacion" | "id_usuario", ExtArgs["result"]["componente"]>
+  export type ComponenteInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    usuario?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type ComponenteIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    usuario?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type ComponenteIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    usuario?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $ComponentePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Componente"
+    objects: {
+      usuario: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id_componente: number
+      tipo_componente: string
+      estado_general: $Enums.EstadoGeneral
+      resultado: $Enums.ResultadoClasificacion
+      justificacion: string | null
+      observaciones: string | null
+      marca: string | null
+      modelo: string | null
+      numero: string | null
+      fecha_extraccion: Date | null
+      ubicacion: string | null
+      id_usuario: number
+    }, ExtArgs["result"]["componente"]>
+    composites: {}
+  }
+
+  type ComponenteGetPayload<S extends boolean | null | undefined | ComponenteDefaultArgs> = $Result.GetResult<Prisma.$ComponentePayload, S>
+
+  type ComponenteCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ComponenteFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ComponenteCountAggregateInputType | true
+    }
+
+  export interface ComponenteDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Componente'], meta: { name: 'Componente' } }
+    /**
+     * Find zero or one Componente that matches the filter.
+     * @param {ComponenteFindUniqueArgs} args - Arguments to find a Componente
+     * @example
+     * // Get one Componente
+     * const componente = await prisma.componente.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ComponenteFindUniqueArgs>(args: SelectSubset<T, ComponenteFindUniqueArgs<ExtArgs>>): Prisma__ComponenteClient<$Result.GetResult<Prisma.$ComponentePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Componente that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ComponenteFindUniqueOrThrowArgs} args - Arguments to find a Componente
+     * @example
+     * // Get one Componente
+     * const componente = await prisma.componente.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ComponenteFindUniqueOrThrowArgs>(args: SelectSubset<T, ComponenteFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ComponenteClient<$Result.GetResult<Prisma.$ComponentePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Componente that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ComponenteFindFirstArgs} args - Arguments to find a Componente
+     * @example
+     * // Get one Componente
+     * const componente = await prisma.componente.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ComponenteFindFirstArgs>(args?: SelectSubset<T, ComponenteFindFirstArgs<ExtArgs>>): Prisma__ComponenteClient<$Result.GetResult<Prisma.$ComponentePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Componente that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ComponenteFindFirstOrThrowArgs} args - Arguments to find a Componente
+     * @example
+     * // Get one Componente
+     * const componente = await prisma.componente.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ComponenteFindFirstOrThrowArgs>(args?: SelectSubset<T, ComponenteFindFirstOrThrowArgs<ExtArgs>>): Prisma__ComponenteClient<$Result.GetResult<Prisma.$ComponentePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Componentes that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ComponenteFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Componentes
+     * const componentes = await prisma.componente.findMany()
+     * 
+     * // Get first 10 Componentes
+     * const componentes = await prisma.componente.findMany({ take: 10 })
+     * 
+     * // Only select the `id_componente`
+     * const componenteWithId_componenteOnly = await prisma.componente.findMany({ select: { id_componente: true } })
+     * 
+     */
+    findMany<T extends ComponenteFindManyArgs>(args?: SelectSubset<T, ComponenteFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ComponentePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Componente.
+     * @param {ComponenteCreateArgs} args - Arguments to create a Componente.
+     * @example
+     * // Create one Componente
+     * const Componente = await prisma.componente.create({
+     *   data: {
+     *     // ... data to create a Componente
+     *   }
+     * })
+     * 
+     */
+    create<T extends ComponenteCreateArgs>(args: SelectSubset<T, ComponenteCreateArgs<ExtArgs>>): Prisma__ComponenteClient<$Result.GetResult<Prisma.$ComponentePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Componentes.
+     * @param {ComponenteCreateManyArgs} args - Arguments to create many Componentes.
+     * @example
+     * // Create many Componentes
+     * const componente = await prisma.componente.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ComponenteCreateManyArgs>(args?: SelectSubset<T, ComponenteCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Componentes and returns the data saved in the database.
+     * @param {ComponenteCreateManyAndReturnArgs} args - Arguments to create many Componentes.
+     * @example
+     * // Create many Componentes
+     * const componente = await prisma.componente.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Componentes and only return the `id_componente`
+     * const componenteWithId_componenteOnly = await prisma.componente.createManyAndReturn({
+     *   select: { id_componente: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ComponenteCreateManyAndReturnArgs>(args?: SelectSubset<T, ComponenteCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ComponentePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Componente.
+     * @param {ComponenteDeleteArgs} args - Arguments to delete one Componente.
+     * @example
+     * // Delete one Componente
+     * const Componente = await prisma.componente.delete({
+     *   where: {
+     *     // ... filter to delete one Componente
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ComponenteDeleteArgs>(args: SelectSubset<T, ComponenteDeleteArgs<ExtArgs>>): Prisma__ComponenteClient<$Result.GetResult<Prisma.$ComponentePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Componente.
+     * @param {ComponenteUpdateArgs} args - Arguments to update one Componente.
+     * @example
+     * // Update one Componente
+     * const componente = await prisma.componente.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ComponenteUpdateArgs>(args: SelectSubset<T, ComponenteUpdateArgs<ExtArgs>>): Prisma__ComponenteClient<$Result.GetResult<Prisma.$ComponentePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Componentes.
+     * @param {ComponenteDeleteManyArgs} args - Arguments to filter Componentes to delete.
+     * @example
+     * // Delete a few Componentes
+     * const { count } = await prisma.componente.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ComponenteDeleteManyArgs>(args?: SelectSubset<T, ComponenteDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Componentes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ComponenteUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Componentes
+     * const componente = await prisma.componente.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ComponenteUpdateManyArgs>(args: SelectSubset<T, ComponenteUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Componentes and returns the data updated in the database.
+     * @param {ComponenteUpdateManyAndReturnArgs} args - Arguments to update many Componentes.
+     * @example
+     * // Update many Componentes
+     * const componente = await prisma.componente.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Componentes and only return the `id_componente`
+     * const componenteWithId_componenteOnly = await prisma.componente.updateManyAndReturn({
+     *   select: { id_componente: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ComponenteUpdateManyAndReturnArgs>(args: SelectSubset<T, ComponenteUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ComponentePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Componente.
+     * @param {ComponenteUpsertArgs} args - Arguments to update or create a Componente.
+     * @example
+     * // Update or create a Componente
+     * const componente = await prisma.componente.upsert({
+     *   create: {
+     *     // ... data to create a Componente
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Componente we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ComponenteUpsertArgs>(args: SelectSubset<T, ComponenteUpsertArgs<ExtArgs>>): Prisma__ComponenteClient<$Result.GetResult<Prisma.$ComponentePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Componentes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ComponenteCountArgs} args - Arguments to filter Componentes to count.
+     * @example
+     * // Count the number of Componentes
+     * const count = await prisma.componente.count({
+     *   where: {
+     *     // ... the filter for the Componentes we want to count
+     *   }
+     * })
+    **/
+    count<T extends ComponenteCountArgs>(
+      args?: Subset<T, ComponenteCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ComponenteCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Componente.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ComponenteAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ComponenteAggregateArgs>(args: Subset<T, ComponenteAggregateArgs>): Prisma.PrismaPromise<GetComponenteAggregateType<T>>
+
+    /**
+     * Group by Componente.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ComponenteGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ComponenteGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ComponenteGroupByArgs['orderBy'] }
+        : { orderBy?: ComponenteGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ComponenteGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetComponenteGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Componente model
+   */
+  readonly fields: ComponenteFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Componente.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ComponenteClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    usuario<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Componente model
+   */
+  interface ComponenteFieldRefs {
+    readonly id_componente: FieldRef<"Componente", 'Int'>
+    readonly tipo_componente: FieldRef<"Componente", 'String'>
+    readonly estado_general: FieldRef<"Componente", 'EstadoGeneral'>
+    readonly resultado: FieldRef<"Componente", 'ResultadoClasificacion'>
+    readonly justificacion: FieldRef<"Componente", 'String'>
+    readonly observaciones: FieldRef<"Componente", 'String'>
+    readonly marca: FieldRef<"Componente", 'String'>
+    readonly modelo: FieldRef<"Componente", 'String'>
+    readonly numero: FieldRef<"Componente", 'String'>
+    readonly fecha_extraccion: FieldRef<"Componente", 'DateTime'>
+    readonly ubicacion: FieldRef<"Componente", 'String'>
+    readonly id_usuario: FieldRef<"Componente", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Componente findUnique
+   */
+  export type ComponenteFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Componente
+     */
+    select?: ComponenteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Componente
+     */
+    omit?: ComponenteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComponenteInclude<ExtArgs> | null
+    /**
+     * Filter, which Componente to fetch.
+     */
+    where: ComponenteWhereUniqueInput
+  }
+
+  /**
+   * Componente findUniqueOrThrow
+   */
+  export type ComponenteFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Componente
+     */
+    select?: ComponenteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Componente
+     */
+    omit?: ComponenteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComponenteInclude<ExtArgs> | null
+    /**
+     * Filter, which Componente to fetch.
+     */
+    where: ComponenteWhereUniqueInput
+  }
+
+  /**
+   * Componente findFirst
+   */
+  export type ComponenteFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Componente
+     */
+    select?: ComponenteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Componente
+     */
+    omit?: ComponenteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComponenteInclude<ExtArgs> | null
+    /**
+     * Filter, which Componente to fetch.
+     */
+    where?: ComponenteWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Componentes to fetch.
+     */
+    orderBy?: ComponenteOrderByWithRelationInput | ComponenteOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Componentes.
+     */
+    cursor?: ComponenteWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Componentes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Componentes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Componentes.
+     */
+    distinct?: ComponenteScalarFieldEnum | ComponenteScalarFieldEnum[]
+  }
+
+  /**
+   * Componente findFirstOrThrow
+   */
+  export type ComponenteFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Componente
+     */
+    select?: ComponenteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Componente
+     */
+    omit?: ComponenteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComponenteInclude<ExtArgs> | null
+    /**
+     * Filter, which Componente to fetch.
+     */
+    where?: ComponenteWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Componentes to fetch.
+     */
+    orderBy?: ComponenteOrderByWithRelationInput | ComponenteOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Componentes.
+     */
+    cursor?: ComponenteWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Componentes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Componentes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Componentes.
+     */
+    distinct?: ComponenteScalarFieldEnum | ComponenteScalarFieldEnum[]
+  }
+
+  /**
+   * Componente findMany
+   */
+  export type ComponenteFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Componente
+     */
+    select?: ComponenteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Componente
+     */
+    omit?: ComponenteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComponenteInclude<ExtArgs> | null
+    /**
+     * Filter, which Componentes to fetch.
+     */
+    where?: ComponenteWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Componentes to fetch.
+     */
+    orderBy?: ComponenteOrderByWithRelationInput | ComponenteOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Componentes.
+     */
+    cursor?: ComponenteWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Componentes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Componentes.
+     */
+    skip?: number
+    distinct?: ComponenteScalarFieldEnum | ComponenteScalarFieldEnum[]
+  }
+
+  /**
+   * Componente create
+   */
+  export type ComponenteCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Componente
+     */
+    select?: ComponenteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Componente
+     */
+    omit?: ComponenteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComponenteInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Componente.
+     */
+    data: XOR<ComponenteCreateInput, ComponenteUncheckedCreateInput>
+  }
+
+  /**
+   * Componente createMany
+   */
+  export type ComponenteCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Componentes.
+     */
+    data: ComponenteCreateManyInput | ComponenteCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Componente createManyAndReturn
+   */
+  export type ComponenteCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Componente
+     */
+    select?: ComponenteSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Componente
+     */
+    omit?: ComponenteOmit<ExtArgs> | null
+    /**
+     * The data used to create many Componentes.
+     */
+    data: ComponenteCreateManyInput | ComponenteCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComponenteIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Componente update
+   */
+  export type ComponenteUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Componente
+     */
+    select?: ComponenteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Componente
+     */
+    omit?: ComponenteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComponenteInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Componente.
+     */
+    data: XOR<ComponenteUpdateInput, ComponenteUncheckedUpdateInput>
+    /**
+     * Choose, which Componente to update.
+     */
+    where: ComponenteWhereUniqueInput
+  }
+
+  /**
+   * Componente updateMany
+   */
+  export type ComponenteUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Componentes.
+     */
+    data: XOR<ComponenteUpdateManyMutationInput, ComponenteUncheckedUpdateManyInput>
+    /**
+     * Filter which Componentes to update
+     */
+    where?: ComponenteWhereInput
+    /**
+     * Limit how many Componentes to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Componente updateManyAndReturn
+   */
+  export type ComponenteUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Componente
+     */
+    select?: ComponenteSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Componente
+     */
+    omit?: ComponenteOmit<ExtArgs> | null
+    /**
+     * The data used to update Componentes.
+     */
+    data: XOR<ComponenteUpdateManyMutationInput, ComponenteUncheckedUpdateManyInput>
+    /**
+     * Filter which Componentes to update
+     */
+    where?: ComponenteWhereInput
+    /**
+     * Limit how many Componentes to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComponenteIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Componente upsert
+   */
+  export type ComponenteUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Componente
+     */
+    select?: ComponenteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Componente
+     */
+    omit?: ComponenteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComponenteInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Componente to update in case it exists.
+     */
+    where: ComponenteWhereUniqueInput
+    /**
+     * In case the Componente found by the `where` argument doesn't exist, create a new Componente with this data.
+     */
+    create: XOR<ComponenteCreateInput, ComponenteUncheckedCreateInput>
+    /**
+     * In case the Componente was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ComponenteUpdateInput, ComponenteUncheckedUpdateInput>
+  }
+
+  /**
+   * Componente delete
+   */
+  export type ComponenteDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Componente
+     */
+    select?: ComponenteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Componente
+     */
+    omit?: ComponenteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComponenteInclude<ExtArgs> | null
+    /**
+     * Filter which Componente to delete.
+     */
+    where: ComponenteWhereUniqueInput
+  }
+
+  /**
+   * Componente deleteMany
+   */
+  export type ComponenteDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Componentes to delete
+     */
+    where?: ComponenteWhereInput
+    /**
+     * Limit how many Componentes to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Componente without action
+   */
+  export type ComponenteDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Componente
+     */
+    select?: ComponenteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Componente
+     */
+    omit?: ComponenteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComponenteInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -3312,9 +6081,15 @@ export namespace Prisma {
     id: 'id',
     name: 'name',
     email: 'email',
-    emilVerified: 'emilVerified',
+    emailVerified: 'emailVerified',
     image: 'image',
-    password: 'password'
+    password: 'password',
+    gender: 'gender',
+    birthDate: 'birthDate',
+    country: 'country',
+    city: 'city',
+    university: 'university',
+    career: 'career'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -3336,6 +6111,44 @@ export namespace Prisma {
   };
 
   export type AccountScalarFieldEnum = (typeof AccountScalarFieldEnum)[keyof typeof AccountScalarFieldEnum]
+
+
+  export const DispositivoScalarFieldEnum: {
+    id_dispositivo: 'id_dispositivo',
+    nombre: 'nombre',
+    marca: 'marca',
+    modelo: 'modelo',
+    año_fabricacion: 'año_fabricacion',
+    estado_general: 'estado_general',
+    resultado: 'resultado',
+    justificacion: 'justificacion',
+    descripcion: 'descripcion',
+    categoria: 'categoria',
+    numero: 'numero',
+    ubicacion: 'ubicacion',
+    fecha_registro: 'fecha_registro',
+    id_usuario: 'id_usuario'
+  };
+
+  export type DispositivoScalarFieldEnum = (typeof DispositivoScalarFieldEnum)[keyof typeof DispositivoScalarFieldEnum]
+
+
+  export const ComponenteScalarFieldEnum: {
+    id_componente: 'id_componente',
+    tipo_componente: 'tipo_componente',
+    estado_general: 'estado_general',
+    resultado: 'resultado',
+    justificacion: 'justificacion',
+    observaciones: 'observaciones',
+    marca: 'marca',
+    modelo: 'modelo',
+    numero: 'numero',
+    fecha_extraccion: 'fecha_extraccion',
+    ubicacion: 'ubicacion',
+    id_usuario: 'id_usuario'
+  };
+
+  export type ComponenteScalarFieldEnum = (typeof ComponenteScalarFieldEnum)[keyof typeof ComponenteScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -3403,6 +6216,48 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'DateTime'
+   */
+  export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
+    
+
+
+  /**
+   * Reference to a field of type 'DateTime[]'
+   */
+  export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'EstadoGeneral'
+   */
+  export type EnumEstadoGeneralFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'EstadoGeneral'>
+    
+
+
+  /**
+   * Reference to a field of type 'EstadoGeneral[]'
+   */
+  export type ListEnumEstadoGeneralFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'EstadoGeneral[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'ResultadoClasificacion'
+   */
+  export type EnumResultadoClasificacionFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ResultadoClasificacion'>
+    
+
+
+  /**
+   * Reference to a field of type 'ResultadoClasificacion[]'
+   */
+  export type ListEnumResultadoClasificacionFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ResultadoClasificacion[]'>
+    
+
+
+  /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -3426,20 +6281,36 @@ export namespace Prisma {
     id?: IntFilter<"User"> | number
     name?: StringNullableFilter<"User"> | string | null
     email?: StringNullableFilter<"User"> | string | null
-    emilVerified?: BoolFilter<"User"> | boolean
+    emailVerified?: BoolFilter<"User"> | boolean
     image?: StringNullableFilter<"User"> | string | null
     password?: StringNullableFilter<"User"> | string | null
+    gender?: StringNullableFilter<"User"> | string | null
+    birthDate?: DateTimeNullableFilter<"User"> | Date | string | null
+    country?: StringNullableFilter<"User"> | string | null
+    city?: StringNullableFilter<"User"> | string | null
+    university?: StringNullableFilter<"User"> | string | null
+    career?: StringNullableFilter<"User"> | string | null
     accounts?: AccountListRelationFilter
+    dispositivos?: DispositivoListRelationFilter
+    componentes?: ComponenteListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrderInput | SortOrder
     email?: SortOrderInput | SortOrder
-    emilVerified?: SortOrder
+    emailVerified?: SortOrder
     image?: SortOrderInput | SortOrder
     password?: SortOrderInput | SortOrder
+    gender?: SortOrderInput | SortOrder
+    birthDate?: SortOrderInput | SortOrder
+    country?: SortOrderInput | SortOrder
+    city?: SortOrderInput | SortOrder
+    university?: SortOrderInput | SortOrder
+    career?: SortOrderInput | SortOrder
     accounts?: AccountOrderByRelationAggregateInput
+    dispositivos?: DispositivoOrderByRelationAggregateInput
+    componentes?: ComponenteOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -3449,19 +6320,33 @@ export namespace Prisma {
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
     name?: StringNullableFilter<"User"> | string | null
-    emilVerified?: BoolFilter<"User"> | boolean
+    emailVerified?: BoolFilter<"User"> | boolean
     image?: StringNullableFilter<"User"> | string | null
     password?: StringNullableFilter<"User"> | string | null
+    gender?: StringNullableFilter<"User"> | string | null
+    birthDate?: DateTimeNullableFilter<"User"> | Date | string | null
+    country?: StringNullableFilter<"User"> | string | null
+    city?: StringNullableFilter<"User"> | string | null
+    university?: StringNullableFilter<"User"> | string | null
+    career?: StringNullableFilter<"User"> | string | null
     accounts?: AccountListRelationFilter
+    dispositivos?: DispositivoListRelationFilter
+    componentes?: ComponenteListRelationFilter
   }, "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrderInput | SortOrder
     email?: SortOrderInput | SortOrder
-    emilVerified?: SortOrder
+    emailVerified?: SortOrder
     image?: SortOrderInput | SortOrder
     password?: SortOrderInput | SortOrder
+    gender?: SortOrderInput | SortOrder
+    birthDate?: SortOrderInput | SortOrder
+    country?: SortOrderInput | SortOrder
+    city?: SortOrderInput | SortOrder
+    university?: SortOrderInput | SortOrder
+    career?: SortOrderInput | SortOrder
     _count?: UserCountOrderByAggregateInput
     _avg?: UserAvgOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
@@ -3476,9 +6361,15 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"User"> | number
     name?: StringNullableWithAggregatesFilter<"User"> | string | null
     email?: StringNullableWithAggregatesFilter<"User"> | string | null
-    emilVerified?: BoolWithAggregatesFilter<"User"> | boolean
+    emailVerified?: BoolWithAggregatesFilter<"User"> | boolean
     image?: StringNullableWithAggregatesFilter<"User"> | string | null
     password?: StringNullableWithAggregatesFilter<"User"> | string | null
+    gender?: StringNullableWithAggregatesFilter<"User"> | string | null
+    birthDate?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
+    country?: StringNullableWithAggregatesFilter<"User"> | string | null
+    city?: StringNullableWithAggregatesFilter<"User"> | string | null
+    university?: StringNullableWithAggregatesFilter<"User"> | string | null
+    career?: StringNullableWithAggregatesFilter<"User"> | string | null
   }
 
   export type AccountWhereInput = {
@@ -3574,68 +6465,312 @@ export namespace Prisma {
     session_state?: StringNullableWithAggregatesFilter<"Account"> | string | null
   }
 
+  export type DispositivoWhereInput = {
+    AND?: DispositivoWhereInput | DispositivoWhereInput[]
+    OR?: DispositivoWhereInput[]
+    NOT?: DispositivoWhereInput | DispositivoWhereInput[]
+    id_dispositivo?: IntFilter<"Dispositivo"> | number
+    nombre?: StringFilter<"Dispositivo"> | string
+    marca?: StringFilter<"Dispositivo"> | string
+    modelo?: StringFilter<"Dispositivo"> | string
+    año_fabricacion?: IntFilter<"Dispositivo"> | number
+    estado_general?: EnumEstadoGeneralFilter<"Dispositivo"> | $Enums.EstadoGeneral
+    resultado?: EnumResultadoClasificacionFilter<"Dispositivo"> | $Enums.ResultadoClasificacion
+    justificacion?: StringNullableFilter<"Dispositivo"> | string | null
+    descripcion?: StringNullableFilter<"Dispositivo"> | string | null
+    categoria?: StringNullableFilter<"Dispositivo"> | string | null
+    numero?: StringNullableFilter<"Dispositivo"> | string | null
+    ubicacion?: StringNullableFilter<"Dispositivo"> | string | null
+    fecha_registro?: DateTimeFilter<"Dispositivo"> | Date | string
+    id_usuario?: IntFilter<"Dispositivo"> | number
+    usuario?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }
+
+  export type DispositivoOrderByWithRelationInput = {
+    id_dispositivo?: SortOrder
+    nombre?: SortOrder
+    marca?: SortOrder
+    modelo?: SortOrder
+    año_fabricacion?: SortOrder
+    estado_general?: SortOrder
+    resultado?: SortOrder
+    justificacion?: SortOrderInput | SortOrder
+    descripcion?: SortOrderInput | SortOrder
+    categoria?: SortOrderInput | SortOrder
+    numero?: SortOrderInput | SortOrder
+    ubicacion?: SortOrderInput | SortOrder
+    fecha_registro?: SortOrder
+    id_usuario?: SortOrder
+    usuario?: UserOrderByWithRelationInput
+  }
+
+  export type DispositivoWhereUniqueInput = Prisma.AtLeast<{
+    id_dispositivo?: number
+    numero?: string
+    AND?: DispositivoWhereInput | DispositivoWhereInput[]
+    OR?: DispositivoWhereInput[]
+    NOT?: DispositivoWhereInput | DispositivoWhereInput[]
+    nombre?: StringFilter<"Dispositivo"> | string
+    marca?: StringFilter<"Dispositivo"> | string
+    modelo?: StringFilter<"Dispositivo"> | string
+    año_fabricacion?: IntFilter<"Dispositivo"> | number
+    estado_general?: EnumEstadoGeneralFilter<"Dispositivo"> | $Enums.EstadoGeneral
+    resultado?: EnumResultadoClasificacionFilter<"Dispositivo"> | $Enums.ResultadoClasificacion
+    justificacion?: StringNullableFilter<"Dispositivo"> | string | null
+    descripcion?: StringNullableFilter<"Dispositivo"> | string | null
+    categoria?: StringNullableFilter<"Dispositivo"> | string | null
+    ubicacion?: StringNullableFilter<"Dispositivo"> | string | null
+    fecha_registro?: DateTimeFilter<"Dispositivo"> | Date | string
+    id_usuario?: IntFilter<"Dispositivo"> | number
+    usuario?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id_dispositivo" | "numero">
+
+  export type DispositivoOrderByWithAggregationInput = {
+    id_dispositivo?: SortOrder
+    nombre?: SortOrder
+    marca?: SortOrder
+    modelo?: SortOrder
+    año_fabricacion?: SortOrder
+    estado_general?: SortOrder
+    resultado?: SortOrder
+    justificacion?: SortOrderInput | SortOrder
+    descripcion?: SortOrderInput | SortOrder
+    categoria?: SortOrderInput | SortOrder
+    numero?: SortOrderInput | SortOrder
+    ubicacion?: SortOrderInput | SortOrder
+    fecha_registro?: SortOrder
+    id_usuario?: SortOrder
+    _count?: DispositivoCountOrderByAggregateInput
+    _avg?: DispositivoAvgOrderByAggregateInput
+    _max?: DispositivoMaxOrderByAggregateInput
+    _min?: DispositivoMinOrderByAggregateInput
+    _sum?: DispositivoSumOrderByAggregateInput
+  }
+
+  export type DispositivoScalarWhereWithAggregatesInput = {
+    AND?: DispositivoScalarWhereWithAggregatesInput | DispositivoScalarWhereWithAggregatesInput[]
+    OR?: DispositivoScalarWhereWithAggregatesInput[]
+    NOT?: DispositivoScalarWhereWithAggregatesInput | DispositivoScalarWhereWithAggregatesInput[]
+    id_dispositivo?: IntWithAggregatesFilter<"Dispositivo"> | number
+    nombre?: StringWithAggregatesFilter<"Dispositivo"> | string
+    marca?: StringWithAggregatesFilter<"Dispositivo"> | string
+    modelo?: StringWithAggregatesFilter<"Dispositivo"> | string
+    año_fabricacion?: IntWithAggregatesFilter<"Dispositivo"> | number
+    estado_general?: EnumEstadoGeneralWithAggregatesFilter<"Dispositivo"> | $Enums.EstadoGeneral
+    resultado?: EnumResultadoClasificacionWithAggregatesFilter<"Dispositivo"> | $Enums.ResultadoClasificacion
+    justificacion?: StringNullableWithAggregatesFilter<"Dispositivo"> | string | null
+    descripcion?: StringNullableWithAggregatesFilter<"Dispositivo"> | string | null
+    categoria?: StringNullableWithAggregatesFilter<"Dispositivo"> | string | null
+    numero?: StringNullableWithAggregatesFilter<"Dispositivo"> | string | null
+    ubicacion?: StringNullableWithAggregatesFilter<"Dispositivo"> | string | null
+    fecha_registro?: DateTimeWithAggregatesFilter<"Dispositivo"> | Date | string
+    id_usuario?: IntWithAggregatesFilter<"Dispositivo"> | number
+  }
+
+  export type ComponenteWhereInput = {
+    AND?: ComponenteWhereInput | ComponenteWhereInput[]
+    OR?: ComponenteWhereInput[]
+    NOT?: ComponenteWhereInput | ComponenteWhereInput[]
+    id_componente?: IntFilter<"Componente"> | number
+    tipo_componente?: StringFilter<"Componente"> | string
+    estado_general?: EnumEstadoGeneralFilter<"Componente"> | $Enums.EstadoGeneral
+    resultado?: EnumResultadoClasificacionFilter<"Componente"> | $Enums.ResultadoClasificacion
+    justificacion?: StringNullableFilter<"Componente"> | string | null
+    observaciones?: StringNullableFilter<"Componente"> | string | null
+    marca?: StringNullableFilter<"Componente"> | string | null
+    modelo?: StringNullableFilter<"Componente"> | string | null
+    numero?: StringNullableFilter<"Componente"> | string | null
+    fecha_extraccion?: DateTimeNullableFilter<"Componente"> | Date | string | null
+    ubicacion?: StringNullableFilter<"Componente"> | string | null
+    id_usuario?: IntFilter<"Componente"> | number
+    usuario?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }
+
+  export type ComponenteOrderByWithRelationInput = {
+    id_componente?: SortOrder
+    tipo_componente?: SortOrder
+    estado_general?: SortOrder
+    resultado?: SortOrder
+    justificacion?: SortOrderInput | SortOrder
+    observaciones?: SortOrderInput | SortOrder
+    marca?: SortOrderInput | SortOrder
+    modelo?: SortOrderInput | SortOrder
+    numero?: SortOrderInput | SortOrder
+    fecha_extraccion?: SortOrderInput | SortOrder
+    ubicacion?: SortOrderInput | SortOrder
+    id_usuario?: SortOrder
+    usuario?: UserOrderByWithRelationInput
+  }
+
+  export type ComponenteWhereUniqueInput = Prisma.AtLeast<{
+    id_componente?: number
+    numero?: string
+    AND?: ComponenteWhereInput | ComponenteWhereInput[]
+    OR?: ComponenteWhereInput[]
+    NOT?: ComponenteWhereInput | ComponenteWhereInput[]
+    tipo_componente?: StringFilter<"Componente"> | string
+    estado_general?: EnumEstadoGeneralFilter<"Componente"> | $Enums.EstadoGeneral
+    resultado?: EnumResultadoClasificacionFilter<"Componente"> | $Enums.ResultadoClasificacion
+    justificacion?: StringNullableFilter<"Componente"> | string | null
+    observaciones?: StringNullableFilter<"Componente"> | string | null
+    marca?: StringNullableFilter<"Componente"> | string | null
+    modelo?: StringNullableFilter<"Componente"> | string | null
+    fecha_extraccion?: DateTimeNullableFilter<"Componente"> | Date | string | null
+    ubicacion?: StringNullableFilter<"Componente"> | string | null
+    id_usuario?: IntFilter<"Componente"> | number
+    usuario?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id_componente" | "numero">
+
+  export type ComponenteOrderByWithAggregationInput = {
+    id_componente?: SortOrder
+    tipo_componente?: SortOrder
+    estado_general?: SortOrder
+    resultado?: SortOrder
+    justificacion?: SortOrderInput | SortOrder
+    observaciones?: SortOrderInput | SortOrder
+    marca?: SortOrderInput | SortOrder
+    modelo?: SortOrderInput | SortOrder
+    numero?: SortOrderInput | SortOrder
+    fecha_extraccion?: SortOrderInput | SortOrder
+    ubicacion?: SortOrderInput | SortOrder
+    id_usuario?: SortOrder
+    _count?: ComponenteCountOrderByAggregateInput
+    _avg?: ComponenteAvgOrderByAggregateInput
+    _max?: ComponenteMaxOrderByAggregateInput
+    _min?: ComponenteMinOrderByAggregateInput
+    _sum?: ComponenteSumOrderByAggregateInput
+  }
+
+  export type ComponenteScalarWhereWithAggregatesInput = {
+    AND?: ComponenteScalarWhereWithAggregatesInput | ComponenteScalarWhereWithAggregatesInput[]
+    OR?: ComponenteScalarWhereWithAggregatesInput[]
+    NOT?: ComponenteScalarWhereWithAggregatesInput | ComponenteScalarWhereWithAggregatesInput[]
+    id_componente?: IntWithAggregatesFilter<"Componente"> | number
+    tipo_componente?: StringWithAggregatesFilter<"Componente"> | string
+    estado_general?: EnumEstadoGeneralWithAggregatesFilter<"Componente"> | $Enums.EstadoGeneral
+    resultado?: EnumResultadoClasificacionWithAggregatesFilter<"Componente"> | $Enums.ResultadoClasificacion
+    justificacion?: StringNullableWithAggregatesFilter<"Componente"> | string | null
+    observaciones?: StringNullableWithAggregatesFilter<"Componente"> | string | null
+    marca?: StringNullableWithAggregatesFilter<"Componente"> | string | null
+    modelo?: StringNullableWithAggregatesFilter<"Componente"> | string | null
+    numero?: StringNullableWithAggregatesFilter<"Componente"> | string | null
+    fecha_extraccion?: DateTimeNullableWithAggregatesFilter<"Componente"> | Date | string | null
+    ubicacion?: StringNullableWithAggregatesFilter<"Componente"> | string | null
+    id_usuario?: IntWithAggregatesFilter<"Componente"> | number
+  }
+
   export type UserCreateInput = {
     name?: string | null
     email?: string | null
-    emilVerified?: boolean
+    emailVerified?: boolean
     image?: string | null
     password?: string | null
+    gender?: string | null
+    birthDate?: Date | string | null
+    country?: string | null
+    city?: string | null
+    university?: string | null
+    career?: string | null
     accounts?: AccountCreateNestedManyWithoutUserInput
+    dispositivos?: DispositivoCreateNestedManyWithoutUsuarioInput
+    componentes?: ComponenteCreateNestedManyWithoutUsuarioInput
   }
 
   export type UserUncheckedCreateInput = {
     id?: number
     name?: string | null
     email?: string | null
-    emilVerified?: boolean
+    emailVerified?: boolean
     image?: string | null
     password?: string | null
+    gender?: string | null
+    birthDate?: Date | string | null
+    country?: string | null
+    city?: string | null
+    university?: string | null
+    career?: string | null
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
+    dispositivos?: DispositivoUncheckedCreateNestedManyWithoutUsuarioInput
+    componentes?: ComponenteUncheckedCreateNestedManyWithoutUsuarioInput
   }
 
   export type UserUpdateInput = {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
-    emilVerified?: BoolFieldUpdateOperationsInput | boolean
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
     image?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    university?: NullableStringFieldUpdateOperationsInput | string | null
+    career?: NullableStringFieldUpdateOperationsInput | string | null
     accounts?: AccountUpdateManyWithoutUserNestedInput
+    dispositivos?: DispositivoUpdateManyWithoutUsuarioNestedInput
+    componentes?: ComponenteUpdateManyWithoutUsuarioNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
-    emilVerified?: BoolFieldUpdateOperationsInput | boolean
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
     image?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    university?: NullableStringFieldUpdateOperationsInput | string | null
+    career?: NullableStringFieldUpdateOperationsInput | string | null
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
+    dispositivos?: DispositivoUncheckedUpdateManyWithoutUsuarioNestedInput
+    componentes?: ComponenteUncheckedUpdateManyWithoutUsuarioNestedInput
   }
 
   export type UserCreateManyInput = {
     id?: number
     name?: string | null
     email?: string | null
-    emilVerified?: boolean
+    emailVerified?: boolean
     image?: string | null
     password?: string | null
+    gender?: string | null
+    birthDate?: Date | string | null
+    country?: string | null
+    city?: string | null
+    university?: string | null
+    career?: string | null
   }
 
   export type UserUpdateManyMutationInput = {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
-    emilVerified?: BoolFieldUpdateOperationsInput | boolean
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
     image?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    university?: NullableStringFieldUpdateOperationsInput | string | null
+    career?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type UserUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
-    emilVerified?: BoolFieldUpdateOperationsInput | boolean
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
     image?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    university?: NullableStringFieldUpdateOperationsInput | string | null
+    career?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type AccountCreateInput = {
@@ -3742,6 +6877,222 @@ export namespace Prisma {
     session_state?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
+  export type DispositivoCreateInput = {
+    nombre: string
+    marca: string
+    modelo: string
+    año_fabricacion: number
+    estado_general: $Enums.EstadoGeneral
+    resultado: $Enums.ResultadoClasificacion
+    justificacion?: string | null
+    descripcion?: string | null
+    categoria?: string | null
+    numero?: string | null
+    ubicacion?: string | null
+    fecha_registro?: Date | string
+    usuario: UserCreateNestedOneWithoutDispositivosInput
+  }
+
+  export type DispositivoUncheckedCreateInput = {
+    id_dispositivo?: number
+    nombre: string
+    marca: string
+    modelo: string
+    año_fabricacion: number
+    estado_general: $Enums.EstadoGeneral
+    resultado: $Enums.ResultadoClasificacion
+    justificacion?: string | null
+    descripcion?: string | null
+    categoria?: string | null
+    numero?: string | null
+    ubicacion?: string | null
+    fecha_registro?: Date | string
+    id_usuario: number
+  }
+
+  export type DispositivoUpdateInput = {
+    nombre?: StringFieldUpdateOperationsInput | string
+    marca?: StringFieldUpdateOperationsInput | string
+    modelo?: StringFieldUpdateOperationsInput | string
+    año_fabricacion?: IntFieldUpdateOperationsInput | number
+    estado_general?: EnumEstadoGeneralFieldUpdateOperationsInput | $Enums.EstadoGeneral
+    resultado?: EnumResultadoClasificacionFieldUpdateOperationsInput | $Enums.ResultadoClasificacion
+    justificacion?: NullableStringFieldUpdateOperationsInput | string | null
+    descripcion?: NullableStringFieldUpdateOperationsInput | string | null
+    categoria?: NullableStringFieldUpdateOperationsInput | string | null
+    numero?: NullableStringFieldUpdateOperationsInput | string | null
+    ubicacion?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha_registro?: DateTimeFieldUpdateOperationsInput | Date | string
+    usuario?: UserUpdateOneRequiredWithoutDispositivosNestedInput
+  }
+
+  export type DispositivoUncheckedUpdateInput = {
+    id_dispositivo?: IntFieldUpdateOperationsInput | number
+    nombre?: StringFieldUpdateOperationsInput | string
+    marca?: StringFieldUpdateOperationsInput | string
+    modelo?: StringFieldUpdateOperationsInput | string
+    año_fabricacion?: IntFieldUpdateOperationsInput | number
+    estado_general?: EnumEstadoGeneralFieldUpdateOperationsInput | $Enums.EstadoGeneral
+    resultado?: EnumResultadoClasificacionFieldUpdateOperationsInput | $Enums.ResultadoClasificacion
+    justificacion?: NullableStringFieldUpdateOperationsInput | string | null
+    descripcion?: NullableStringFieldUpdateOperationsInput | string | null
+    categoria?: NullableStringFieldUpdateOperationsInput | string | null
+    numero?: NullableStringFieldUpdateOperationsInput | string | null
+    ubicacion?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha_registro?: DateTimeFieldUpdateOperationsInput | Date | string
+    id_usuario?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type DispositivoCreateManyInput = {
+    id_dispositivo?: number
+    nombre: string
+    marca: string
+    modelo: string
+    año_fabricacion: number
+    estado_general: $Enums.EstadoGeneral
+    resultado: $Enums.ResultadoClasificacion
+    justificacion?: string | null
+    descripcion?: string | null
+    categoria?: string | null
+    numero?: string | null
+    ubicacion?: string | null
+    fecha_registro?: Date | string
+    id_usuario: number
+  }
+
+  export type DispositivoUpdateManyMutationInput = {
+    nombre?: StringFieldUpdateOperationsInput | string
+    marca?: StringFieldUpdateOperationsInput | string
+    modelo?: StringFieldUpdateOperationsInput | string
+    año_fabricacion?: IntFieldUpdateOperationsInput | number
+    estado_general?: EnumEstadoGeneralFieldUpdateOperationsInput | $Enums.EstadoGeneral
+    resultado?: EnumResultadoClasificacionFieldUpdateOperationsInput | $Enums.ResultadoClasificacion
+    justificacion?: NullableStringFieldUpdateOperationsInput | string | null
+    descripcion?: NullableStringFieldUpdateOperationsInput | string | null
+    categoria?: NullableStringFieldUpdateOperationsInput | string | null
+    numero?: NullableStringFieldUpdateOperationsInput | string | null
+    ubicacion?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha_registro?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DispositivoUncheckedUpdateManyInput = {
+    id_dispositivo?: IntFieldUpdateOperationsInput | number
+    nombre?: StringFieldUpdateOperationsInput | string
+    marca?: StringFieldUpdateOperationsInput | string
+    modelo?: StringFieldUpdateOperationsInput | string
+    año_fabricacion?: IntFieldUpdateOperationsInput | number
+    estado_general?: EnumEstadoGeneralFieldUpdateOperationsInput | $Enums.EstadoGeneral
+    resultado?: EnumResultadoClasificacionFieldUpdateOperationsInput | $Enums.ResultadoClasificacion
+    justificacion?: NullableStringFieldUpdateOperationsInput | string | null
+    descripcion?: NullableStringFieldUpdateOperationsInput | string | null
+    categoria?: NullableStringFieldUpdateOperationsInput | string | null
+    numero?: NullableStringFieldUpdateOperationsInput | string | null
+    ubicacion?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha_registro?: DateTimeFieldUpdateOperationsInput | Date | string
+    id_usuario?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ComponenteCreateInput = {
+    tipo_componente: string
+    estado_general: $Enums.EstadoGeneral
+    resultado: $Enums.ResultadoClasificacion
+    justificacion?: string | null
+    observaciones?: string | null
+    marca?: string | null
+    modelo?: string | null
+    numero?: string | null
+    fecha_extraccion?: Date | string | null
+    ubicacion?: string | null
+    usuario: UserCreateNestedOneWithoutComponentesInput
+  }
+
+  export type ComponenteUncheckedCreateInput = {
+    id_componente?: number
+    tipo_componente: string
+    estado_general: $Enums.EstadoGeneral
+    resultado: $Enums.ResultadoClasificacion
+    justificacion?: string | null
+    observaciones?: string | null
+    marca?: string | null
+    modelo?: string | null
+    numero?: string | null
+    fecha_extraccion?: Date | string | null
+    ubicacion?: string | null
+    id_usuario: number
+  }
+
+  export type ComponenteUpdateInput = {
+    tipo_componente?: StringFieldUpdateOperationsInput | string
+    estado_general?: EnumEstadoGeneralFieldUpdateOperationsInput | $Enums.EstadoGeneral
+    resultado?: EnumResultadoClasificacionFieldUpdateOperationsInput | $Enums.ResultadoClasificacion
+    justificacion?: NullableStringFieldUpdateOperationsInput | string | null
+    observaciones?: NullableStringFieldUpdateOperationsInput | string | null
+    marca?: NullableStringFieldUpdateOperationsInput | string | null
+    modelo?: NullableStringFieldUpdateOperationsInput | string | null
+    numero?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha_extraccion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ubicacion?: NullableStringFieldUpdateOperationsInput | string | null
+    usuario?: UserUpdateOneRequiredWithoutComponentesNestedInput
+  }
+
+  export type ComponenteUncheckedUpdateInput = {
+    id_componente?: IntFieldUpdateOperationsInput | number
+    tipo_componente?: StringFieldUpdateOperationsInput | string
+    estado_general?: EnumEstadoGeneralFieldUpdateOperationsInput | $Enums.EstadoGeneral
+    resultado?: EnumResultadoClasificacionFieldUpdateOperationsInput | $Enums.ResultadoClasificacion
+    justificacion?: NullableStringFieldUpdateOperationsInput | string | null
+    observaciones?: NullableStringFieldUpdateOperationsInput | string | null
+    marca?: NullableStringFieldUpdateOperationsInput | string | null
+    modelo?: NullableStringFieldUpdateOperationsInput | string | null
+    numero?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha_extraccion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ubicacion?: NullableStringFieldUpdateOperationsInput | string | null
+    id_usuario?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ComponenteCreateManyInput = {
+    id_componente?: number
+    tipo_componente: string
+    estado_general: $Enums.EstadoGeneral
+    resultado: $Enums.ResultadoClasificacion
+    justificacion?: string | null
+    observaciones?: string | null
+    marca?: string | null
+    modelo?: string | null
+    numero?: string | null
+    fecha_extraccion?: Date | string | null
+    ubicacion?: string | null
+    id_usuario: number
+  }
+
+  export type ComponenteUpdateManyMutationInput = {
+    tipo_componente?: StringFieldUpdateOperationsInput | string
+    estado_general?: EnumEstadoGeneralFieldUpdateOperationsInput | $Enums.EstadoGeneral
+    resultado?: EnumResultadoClasificacionFieldUpdateOperationsInput | $Enums.ResultadoClasificacion
+    justificacion?: NullableStringFieldUpdateOperationsInput | string | null
+    observaciones?: NullableStringFieldUpdateOperationsInput | string | null
+    marca?: NullableStringFieldUpdateOperationsInput | string | null
+    modelo?: NullableStringFieldUpdateOperationsInput | string | null
+    numero?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha_extraccion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ubicacion?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type ComponenteUncheckedUpdateManyInput = {
+    id_componente?: IntFieldUpdateOperationsInput | number
+    tipo_componente?: StringFieldUpdateOperationsInput | string
+    estado_general?: EnumEstadoGeneralFieldUpdateOperationsInput | $Enums.EstadoGeneral
+    resultado?: EnumResultadoClasificacionFieldUpdateOperationsInput | $Enums.ResultadoClasificacion
+    justificacion?: NullableStringFieldUpdateOperationsInput | string | null
+    observaciones?: NullableStringFieldUpdateOperationsInput | string | null
+    marca?: NullableStringFieldUpdateOperationsInput | string | null
+    modelo?: NullableStringFieldUpdateOperationsInput | string | null
+    numero?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha_extraccion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ubicacion?: NullableStringFieldUpdateOperationsInput | string | null
+    id_usuario?: IntFieldUpdateOperationsInput | number
+  }
+
   export type IntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -3773,10 +7124,33 @@ export namespace Prisma {
     not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
+  export type DateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
   export type AccountListRelationFilter = {
     every?: AccountWhereInput
     some?: AccountWhereInput
     none?: AccountWhereInput
+  }
+
+  export type DispositivoListRelationFilter = {
+    every?: DispositivoWhereInput
+    some?: DispositivoWhereInput
+    none?: DispositivoWhereInput
+  }
+
+  export type ComponenteListRelationFilter = {
+    every?: ComponenteWhereInput
+    some?: ComponenteWhereInput
+    none?: ComponenteWhereInput
   }
 
   export type SortOrderInput = {
@@ -3788,13 +7162,27 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
+  export type DispositivoOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ComponenteOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type UserCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
     email?: SortOrder
-    emilVerified?: SortOrder
+    emailVerified?: SortOrder
     image?: SortOrder
     password?: SortOrder
+    gender?: SortOrder
+    birthDate?: SortOrder
+    country?: SortOrder
+    city?: SortOrder
+    university?: SortOrder
+    career?: SortOrder
   }
 
   export type UserAvgOrderByAggregateInput = {
@@ -3805,18 +7193,30 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     email?: SortOrder
-    emilVerified?: SortOrder
+    emailVerified?: SortOrder
     image?: SortOrder
     password?: SortOrder
+    gender?: SortOrder
+    birthDate?: SortOrder
+    country?: SortOrder
+    city?: SortOrder
+    university?: SortOrder
+    career?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
     email?: SortOrder
-    emilVerified?: SortOrder
+    emailVerified?: SortOrder
     image?: SortOrder
     password?: SortOrder
+    gender?: SortOrder
+    birthDate?: SortOrder
+    country?: SortOrder
+    city?: SortOrder
+    university?: SortOrder
+    career?: SortOrder
   }
 
   export type UserSumOrderByAggregateInput = {
@@ -3863,6 +7263,20 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedBoolFilter<$PrismaModel>
     _max?: NestedBoolFilter<$PrismaModel>
+  }
+
+  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -3990,11 +7404,202 @@ export namespace Prisma {
     _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
+  export type EnumEstadoGeneralFilter<$PrismaModel = never> = {
+    equals?: $Enums.EstadoGeneral | EnumEstadoGeneralFieldRefInput<$PrismaModel>
+    in?: $Enums.EstadoGeneral[] | ListEnumEstadoGeneralFieldRefInput<$PrismaModel>
+    notIn?: $Enums.EstadoGeneral[] | ListEnumEstadoGeneralFieldRefInput<$PrismaModel>
+    not?: NestedEnumEstadoGeneralFilter<$PrismaModel> | $Enums.EstadoGeneral
+  }
+
+  export type EnumResultadoClasificacionFilter<$PrismaModel = never> = {
+    equals?: $Enums.ResultadoClasificacion | EnumResultadoClasificacionFieldRefInput<$PrismaModel>
+    in?: $Enums.ResultadoClasificacion[] | ListEnumResultadoClasificacionFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ResultadoClasificacion[] | ListEnumResultadoClasificacionFieldRefInput<$PrismaModel>
+    not?: NestedEnumResultadoClasificacionFilter<$PrismaModel> | $Enums.ResultadoClasificacion
+  }
+
+  export type DateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type DispositivoCountOrderByAggregateInput = {
+    id_dispositivo?: SortOrder
+    nombre?: SortOrder
+    marca?: SortOrder
+    modelo?: SortOrder
+    año_fabricacion?: SortOrder
+    estado_general?: SortOrder
+    resultado?: SortOrder
+    justificacion?: SortOrder
+    descripcion?: SortOrder
+    categoria?: SortOrder
+    numero?: SortOrder
+    ubicacion?: SortOrder
+    fecha_registro?: SortOrder
+    id_usuario?: SortOrder
+  }
+
+  export type DispositivoAvgOrderByAggregateInput = {
+    id_dispositivo?: SortOrder
+    año_fabricacion?: SortOrder
+    id_usuario?: SortOrder
+  }
+
+  export type DispositivoMaxOrderByAggregateInput = {
+    id_dispositivo?: SortOrder
+    nombre?: SortOrder
+    marca?: SortOrder
+    modelo?: SortOrder
+    año_fabricacion?: SortOrder
+    estado_general?: SortOrder
+    resultado?: SortOrder
+    justificacion?: SortOrder
+    descripcion?: SortOrder
+    categoria?: SortOrder
+    numero?: SortOrder
+    ubicacion?: SortOrder
+    fecha_registro?: SortOrder
+    id_usuario?: SortOrder
+  }
+
+  export type DispositivoMinOrderByAggregateInput = {
+    id_dispositivo?: SortOrder
+    nombre?: SortOrder
+    marca?: SortOrder
+    modelo?: SortOrder
+    año_fabricacion?: SortOrder
+    estado_general?: SortOrder
+    resultado?: SortOrder
+    justificacion?: SortOrder
+    descripcion?: SortOrder
+    categoria?: SortOrder
+    numero?: SortOrder
+    ubicacion?: SortOrder
+    fecha_registro?: SortOrder
+    id_usuario?: SortOrder
+  }
+
+  export type DispositivoSumOrderByAggregateInput = {
+    id_dispositivo?: SortOrder
+    año_fabricacion?: SortOrder
+    id_usuario?: SortOrder
+  }
+
+  export type EnumEstadoGeneralWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.EstadoGeneral | EnumEstadoGeneralFieldRefInput<$PrismaModel>
+    in?: $Enums.EstadoGeneral[] | ListEnumEstadoGeneralFieldRefInput<$PrismaModel>
+    notIn?: $Enums.EstadoGeneral[] | ListEnumEstadoGeneralFieldRefInput<$PrismaModel>
+    not?: NestedEnumEstadoGeneralWithAggregatesFilter<$PrismaModel> | $Enums.EstadoGeneral
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumEstadoGeneralFilter<$PrismaModel>
+    _max?: NestedEnumEstadoGeneralFilter<$PrismaModel>
+  }
+
+  export type EnumResultadoClasificacionWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.ResultadoClasificacion | EnumResultadoClasificacionFieldRefInput<$PrismaModel>
+    in?: $Enums.ResultadoClasificacion[] | ListEnumResultadoClasificacionFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ResultadoClasificacion[] | ListEnumResultadoClasificacionFieldRefInput<$PrismaModel>
+    not?: NestedEnumResultadoClasificacionWithAggregatesFilter<$PrismaModel> | $Enums.ResultadoClasificacion
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumResultadoClasificacionFilter<$PrismaModel>
+    _max?: NestedEnumResultadoClasificacionFilter<$PrismaModel>
+  }
+
+  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type ComponenteCountOrderByAggregateInput = {
+    id_componente?: SortOrder
+    tipo_componente?: SortOrder
+    estado_general?: SortOrder
+    resultado?: SortOrder
+    justificacion?: SortOrder
+    observaciones?: SortOrder
+    marca?: SortOrder
+    modelo?: SortOrder
+    numero?: SortOrder
+    fecha_extraccion?: SortOrder
+    ubicacion?: SortOrder
+    id_usuario?: SortOrder
+  }
+
+  export type ComponenteAvgOrderByAggregateInput = {
+    id_componente?: SortOrder
+    id_usuario?: SortOrder
+  }
+
+  export type ComponenteMaxOrderByAggregateInput = {
+    id_componente?: SortOrder
+    tipo_componente?: SortOrder
+    estado_general?: SortOrder
+    resultado?: SortOrder
+    justificacion?: SortOrder
+    observaciones?: SortOrder
+    marca?: SortOrder
+    modelo?: SortOrder
+    numero?: SortOrder
+    fecha_extraccion?: SortOrder
+    ubicacion?: SortOrder
+    id_usuario?: SortOrder
+  }
+
+  export type ComponenteMinOrderByAggregateInput = {
+    id_componente?: SortOrder
+    tipo_componente?: SortOrder
+    estado_general?: SortOrder
+    resultado?: SortOrder
+    justificacion?: SortOrder
+    observaciones?: SortOrder
+    marca?: SortOrder
+    modelo?: SortOrder
+    numero?: SortOrder
+    fecha_extraccion?: SortOrder
+    ubicacion?: SortOrder
+    id_usuario?: SortOrder
+  }
+
+  export type ComponenteSumOrderByAggregateInput = {
+    id_componente?: SortOrder
+    id_usuario?: SortOrder
+  }
+
   export type AccountCreateNestedManyWithoutUserInput = {
     create?: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput> | AccountCreateWithoutUserInput[] | AccountUncheckedCreateWithoutUserInput[]
     connectOrCreate?: AccountCreateOrConnectWithoutUserInput | AccountCreateOrConnectWithoutUserInput[]
     createMany?: AccountCreateManyUserInputEnvelope
     connect?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
+  }
+
+  export type DispositivoCreateNestedManyWithoutUsuarioInput = {
+    create?: XOR<DispositivoCreateWithoutUsuarioInput, DispositivoUncheckedCreateWithoutUsuarioInput> | DispositivoCreateWithoutUsuarioInput[] | DispositivoUncheckedCreateWithoutUsuarioInput[]
+    connectOrCreate?: DispositivoCreateOrConnectWithoutUsuarioInput | DispositivoCreateOrConnectWithoutUsuarioInput[]
+    createMany?: DispositivoCreateManyUsuarioInputEnvelope
+    connect?: DispositivoWhereUniqueInput | DispositivoWhereUniqueInput[]
+  }
+
+  export type ComponenteCreateNestedManyWithoutUsuarioInput = {
+    create?: XOR<ComponenteCreateWithoutUsuarioInput, ComponenteUncheckedCreateWithoutUsuarioInput> | ComponenteCreateWithoutUsuarioInput[] | ComponenteUncheckedCreateWithoutUsuarioInput[]
+    connectOrCreate?: ComponenteCreateOrConnectWithoutUsuarioInput | ComponenteCreateOrConnectWithoutUsuarioInput[]
+    createMany?: ComponenteCreateManyUsuarioInputEnvelope
+    connect?: ComponenteWhereUniqueInput | ComponenteWhereUniqueInput[]
   }
 
   export type AccountUncheckedCreateNestedManyWithoutUserInput = {
@@ -4004,12 +7609,30 @@ export namespace Prisma {
     connect?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
   }
 
+  export type DispositivoUncheckedCreateNestedManyWithoutUsuarioInput = {
+    create?: XOR<DispositivoCreateWithoutUsuarioInput, DispositivoUncheckedCreateWithoutUsuarioInput> | DispositivoCreateWithoutUsuarioInput[] | DispositivoUncheckedCreateWithoutUsuarioInput[]
+    connectOrCreate?: DispositivoCreateOrConnectWithoutUsuarioInput | DispositivoCreateOrConnectWithoutUsuarioInput[]
+    createMany?: DispositivoCreateManyUsuarioInputEnvelope
+    connect?: DispositivoWhereUniqueInput | DispositivoWhereUniqueInput[]
+  }
+
+  export type ComponenteUncheckedCreateNestedManyWithoutUsuarioInput = {
+    create?: XOR<ComponenteCreateWithoutUsuarioInput, ComponenteUncheckedCreateWithoutUsuarioInput> | ComponenteCreateWithoutUsuarioInput[] | ComponenteUncheckedCreateWithoutUsuarioInput[]
+    connectOrCreate?: ComponenteCreateOrConnectWithoutUsuarioInput | ComponenteCreateOrConnectWithoutUsuarioInput[]
+    createMany?: ComponenteCreateManyUsuarioInputEnvelope
+    connect?: ComponenteWhereUniqueInput | ComponenteWhereUniqueInput[]
+  }
+
   export type NullableStringFieldUpdateOperationsInput = {
     set?: string | null
   }
 
   export type BoolFieldUpdateOperationsInput = {
     set?: boolean
+  }
+
+  export type NullableDateTimeFieldUpdateOperationsInput = {
+    set?: Date | string | null
   }
 
   export type AccountUpdateManyWithoutUserNestedInput = {
@@ -4024,6 +7647,34 @@ export namespace Prisma {
     update?: AccountUpdateWithWhereUniqueWithoutUserInput | AccountUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: AccountUpdateManyWithWhereWithoutUserInput | AccountUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: AccountScalarWhereInput | AccountScalarWhereInput[]
+  }
+
+  export type DispositivoUpdateManyWithoutUsuarioNestedInput = {
+    create?: XOR<DispositivoCreateWithoutUsuarioInput, DispositivoUncheckedCreateWithoutUsuarioInput> | DispositivoCreateWithoutUsuarioInput[] | DispositivoUncheckedCreateWithoutUsuarioInput[]
+    connectOrCreate?: DispositivoCreateOrConnectWithoutUsuarioInput | DispositivoCreateOrConnectWithoutUsuarioInput[]
+    upsert?: DispositivoUpsertWithWhereUniqueWithoutUsuarioInput | DispositivoUpsertWithWhereUniqueWithoutUsuarioInput[]
+    createMany?: DispositivoCreateManyUsuarioInputEnvelope
+    set?: DispositivoWhereUniqueInput | DispositivoWhereUniqueInput[]
+    disconnect?: DispositivoWhereUniqueInput | DispositivoWhereUniqueInput[]
+    delete?: DispositivoWhereUniqueInput | DispositivoWhereUniqueInput[]
+    connect?: DispositivoWhereUniqueInput | DispositivoWhereUniqueInput[]
+    update?: DispositivoUpdateWithWhereUniqueWithoutUsuarioInput | DispositivoUpdateWithWhereUniqueWithoutUsuarioInput[]
+    updateMany?: DispositivoUpdateManyWithWhereWithoutUsuarioInput | DispositivoUpdateManyWithWhereWithoutUsuarioInput[]
+    deleteMany?: DispositivoScalarWhereInput | DispositivoScalarWhereInput[]
+  }
+
+  export type ComponenteUpdateManyWithoutUsuarioNestedInput = {
+    create?: XOR<ComponenteCreateWithoutUsuarioInput, ComponenteUncheckedCreateWithoutUsuarioInput> | ComponenteCreateWithoutUsuarioInput[] | ComponenteUncheckedCreateWithoutUsuarioInput[]
+    connectOrCreate?: ComponenteCreateOrConnectWithoutUsuarioInput | ComponenteCreateOrConnectWithoutUsuarioInput[]
+    upsert?: ComponenteUpsertWithWhereUniqueWithoutUsuarioInput | ComponenteUpsertWithWhereUniqueWithoutUsuarioInput[]
+    createMany?: ComponenteCreateManyUsuarioInputEnvelope
+    set?: ComponenteWhereUniqueInput | ComponenteWhereUniqueInput[]
+    disconnect?: ComponenteWhereUniqueInput | ComponenteWhereUniqueInput[]
+    delete?: ComponenteWhereUniqueInput | ComponenteWhereUniqueInput[]
+    connect?: ComponenteWhereUniqueInput | ComponenteWhereUniqueInput[]
+    update?: ComponenteUpdateWithWhereUniqueWithoutUsuarioInput | ComponenteUpdateWithWhereUniqueWithoutUsuarioInput[]
+    updateMany?: ComponenteUpdateManyWithWhereWithoutUsuarioInput | ComponenteUpdateManyWithWhereWithoutUsuarioInput[]
+    deleteMany?: ComponenteScalarWhereInput | ComponenteScalarWhereInput[]
   }
 
   export type IntFieldUpdateOperationsInput = {
@@ -4046,6 +7697,34 @@ export namespace Prisma {
     update?: AccountUpdateWithWhereUniqueWithoutUserInput | AccountUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: AccountUpdateManyWithWhereWithoutUserInput | AccountUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: AccountScalarWhereInput | AccountScalarWhereInput[]
+  }
+
+  export type DispositivoUncheckedUpdateManyWithoutUsuarioNestedInput = {
+    create?: XOR<DispositivoCreateWithoutUsuarioInput, DispositivoUncheckedCreateWithoutUsuarioInput> | DispositivoCreateWithoutUsuarioInput[] | DispositivoUncheckedCreateWithoutUsuarioInput[]
+    connectOrCreate?: DispositivoCreateOrConnectWithoutUsuarioInput | DispositivoCreateOrConnectWithoutUsuarioInput[]
+    upsert?: DispositivoUpsertWithWhereUniqueWithoutUsuarioInput | DispositivoUpsertWithWhereUniqueWithoutUsuarioInput[]
+    createMany?: DispositivoCreateManyUsuarioInputEnvelope
+    set?: DispositivoWhereUniqueInput | DispositivoWhereUniqueInput[]
+    disconnect?: DispositivoWhereUniqueInput | DispositivoWhereUniqueInput[]
+    delete?: DispositivoWhereUniqueInput | DispositivoWhereUniqueInput[]
+    connect?: DispositivoWhereUniqueInput | DispositivoWhereUniqueInput[]
+    update?: DispositivoUpdateWithWhereUniqueWithoutUsuarioInput | DispositivoUpdateWithWhereUniqueWithoutUsuarioInput[]
+    updateMany?: DispositivoUpdateManyWithWhereWithoutUsuarioInput | DispositivoUpdateManyWithWhereWithoutUsuarioInput[]
+    deleteMany?: DispositivoScalarWhereInput | DispositivoScalarWhereInput[]
+  }
+
+  export type ComponenteUncheckedUpdateManyWithoutUsuarioNestedInput = {
+    create?: XOR<ComponenteCreateWithoutUsuarioInput, ComponenteUncheckedCreateWithoutUsuarioInput> | ComponenteCreateWithoutUsuarioInput[] | ComponenteUncheckedCreateWithoutUsuarioInput[]
+    connectOrCreate?: ComponenteCreateOrConnectWithoutUsuarioInput | ComponenteCreateOrConnectWithoutUsuarioInput[]
+    upsert?: ComponenteUpsertWithWhereUniqueWithoutUsuarioInput | ComponenteUpsertWithWhereUniqueWithoutUsuarioInput[]
+    createMany?: ComponenteCreateManyUsuarioInputEnvelope
+    set?: ComponenteWhereUniqueInput | ComponenteWhereUniqueInput[]
+    disconnect?: ComponenteWhereUniqueInput | ComponenteWhereUniqueInput[]
+    delete?: ComponenteWhereUniqueInput | ComponenteWhereUniqueInput[]
+    connect?: ComponenteWhereUniqueInput | ComponenteWhereUniqueInput[]
+    update?: ComponenteUpdateWithWhereUniqueWithoutUsuarioInput | ComponenteUpdateWithWhereUniqueWithoutUsuarioInput[]
+    updateMany?: ComponenteUpdateManyWithWhereWithoutUsuarioInput | ComponenteUpdateManyWithWhereWithoutUsuarioInput[]
+    deleteMany?: ComponenteScalarWhereInput | ComponenteScalarWhereInput[]
   }
 
   export type UserCreateNestedOneWithoutAccountsInput = {
@@ -4072,6 +7751,46 @@ export namespace Prisma {
     upsert?: UserUpsertWithoutAccountsInput
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutAccountsInput, UserUpdateWithoutAccountsInput>, UserUncheckedUpdateWithoutAccountsInput>
+  }
+
+  export type UserCreateNestedOneWithoutDispositivosInput = {
+    create?: XOR<UserCreateWithoutDispositivosInput, UserUncheckedCreateWithoutDispositivosInput>
+    connectOrCreate?: UserCreateOrConnectWithoutDispositivosInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type EnumEstadoGeneralFieldUpdateOperationsInput = {
+    set?: $Enums.EstadoGeneral
+  }
+
+  export type EnumResultadoClasificacionFieldUpdateOperationsInput = {
+    set?: $Enums.ResultadoClasificacion
+  }
+
+  export type DateTimeFieldUpdateOperationsInput = {
+    set?: Date | string
+  }
+
+  export type UserUpdateOneRequiredWithoutDispositivosNestedInput = {
+    create?: XOR<UserCreateWithoutDispositivosInput, UserUncheckedCreateWithoutDispositivosInput>
+    connectOrCreate?: UserCreateOrConnectWithoutDispositivosInput
+    upsert?: UserUpsertWithoutDispositivosInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutDispositivosInput, UserUpdateWithoutDispositivosInput>, UserUncheckedUpdateWithoutDispositivosInput>
+  }
+
+  export type UserCreateNestedOneWithoutComponentesInput = {
+    create?: XOR<UserCreateWithoutComponentesInput, UserUncheckedCreateWithoutComponentesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutComponentesInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type UserUpdateOneRequiredWithoutComponentesNestedInput = {
+    create?: XOR<UserCreateWithoutComponentesInput, UserUncheckedCreateWithoutComponentesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutComponentesInput
+    upsert?: UserUpsertWithoutComponentesInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutComponentesInput, UserUpdateWithoutComponentesInput>, UserUncheckedUpdateWithoutComponentesInput>
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -4102,6 +7821,17 @@ export namespace Prisma {
   export type NestedBoolFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
@@ -4167,6 +7897,20 @@ export namespace Prisma {
     _max?: NestedBoolFilter<$PrismaModel>
   }
 
+  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
   export type NestedStringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -4225,6 +7969,65 @@ export namespace Prisma {
     not?: NestedFloatNullableFilter<$PrismaModel> | number | null
   }
 
+  export type NestedEnumEstadoGeneralFilter<$PrismaModel = never> = {
+    equals?: $Enums.EstadoGeneral | EnumEstadoGeneralFieldRefInput<$PrismaModel>
+    in?: $Enums.EstadoGeneral[] | ListEnumEstadoGeneralFieldRefInput<$PrismaModel>
+    notIn?: $Enums.EstadoGeneral[] | ListEnumEstadoGeneralFieldRefInput<$PrismaModel>
+    not?: NestedEnumEstadoGeneralFilter<$PrismaModel> | $Enums.EstadoGeneral
+  }
+
+  export type NestedEnumResultadoClasificacionFilter<$PrismaModel = never> = {
+    equals?: $Enums.ResultadoClasificacion | EnumResultadoClasificacionFieldRefInput<$PrismaModel>
+    in?: $Enums.ResultadoClasificacion[] | ListEnumResultadoClasificacionFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ResultadoClasificacion[] | ListEnumResultadoClasificacionFieldRefInput<$PrismaModel>
+    not?: NestedEnumResultadoClasificacionFilter<$PrismaModel> | $Enums.ResultadoClasificacion
+  }
+
+  export type NestedDateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type NestedEnumEstadoGeneralWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.EstadoGeneral | EnumEstadoGeneralFieldRefInput<$PrismaModel>
+    in?: $Enums.EstadoGeneral[] | ListEnumEstadoGeneralFieldRefInput<$PrismaModel>
+    notIn?: $Enums.EstadoGeneral[] | ListEnumEstadoGeneralFieldRefInput<$PrismaModel>
+    not?: NestedEnumEstadoGeneralWithAggregatesFilter<$PrismaModel> | $Enums.EstadoGeneral
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumEstadoGeneralFilter<$PrismaModel>
+    _max?: NestedEnumEstadoGeneralFilter<$PrismaModel>
+  }
+
+  export type NestedEnumResultadoClasificacionWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.ResultadoClasificacion | EnumResultadoClasificacionFieldRefInput<$PrismaModel>
+    in?: $Enums.ResultadoClasificacion[] | ListEnumResultadoClasificacionFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ResultadoClasificacion[] | ListEnumResultadoClasificacionFieldRefInput<$PrismaModel>
+    not?: NestedEnumResultadoClasificacionWithAggregatesFilter<$PrismaModel> | $Enums.ResultadoClasificacion
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumResultadoClasificacionFilter<$PrismaModel>
+    _max?: NestedEnumResultadoClasificacionFilter<$PrismaModel>
+  }
+
+  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
   export type AccountCreateWithoutUserInput = {
     id?: string
     type: string
@@ -4263,6 +8066,84 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type DispositivoCreateWithoutUsuarioInput = {
+    nombre: string
+    marca: string
+    modelo: string
+    año_fabricacion: number
+    estado_general: $Enums.EstadoGeneral
+    resultado: $Enums.ResultadoClasificacion
+    justificacion?: string | null
+    descripcion?: string | null
+    categoria?: string | null
+    numero?: string | null
+    ubicacion?: string | null
+    fecha_registro?: Date | string
+  }
+
+  export type DispositivoUncheckedCreateWithoutUsuarioInput = {
+    id_dispositivo?: number
+    nombre: string
+    marca: string
+    modelo: string
+    año_fabricacion: number
+    estado_general: $Enums.EstadoGeneral
+    resultado: $Enums.ResultadoClasificacion
+    justificacion?: string | null
+    descripcion?: string | null
+    categoria?: string | null
+    numero?: string | null
+    ubicacion?: string | null
+    fecha_registro?: Date | string
+  }
+
+  export type DispositivoCreateOrConnectWithoutUsuarioInput = {
+    where: DispositivoWhereUniqueInput
+    create: XOR<DispositivoCreateWithoutUsuarioInput, DispositivoUncheckedCreateWithoutUsuarioInput>
+  }
+
+  export type DispositivoCreateManyUsuarioInputEnvelope = {
+    data: DispositivoCreateManyUsuarioInput | DispositivoCreateManyUsuarioInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ComponenteCreateWithoutUsuarioInput = {
+    tipo_componente: string
+    estado_general: $Enums.EstadoGeneral
+    resultado: $Enums.ResultadoClasificacion
+    justificacion?: string | null
+    observaciones?: string | null
+    marca?: string | null
+    modelo?: string | null
+    numero?: string | null
+    fecha_extraccion?: Date | string | null
+    ubicacion?: string | null
+  }
+
+  export type ComponenteUncheckedCreateWithoutUsuarioInput = {
+    id_componente?: number
+    tipo_componente: string
+    estado_general: $Enums.EstadoGeneral
+    resultado: $Enums.ResultadoClasificacion
+    justificacion?: string | null
+    observaciones?: string | null
+    marca?: string | null
+    modelo?: string | null
+    numero?: string | null
+    fecha_extraccion?: Date | string | null
+    ubicacion?: string | null
+  }
+
+  export type ComponenteCreateOrConnectWithoutUsuarioInput = {
+    where: ComponenteWhereUniqueInput
+    create: XOR<ComponenteCreateWithoutUsuarioInput, ComponenteUncheckedCreateWithoutUsuarioInput>
+  }
+
+  export type ComponenteCreateManyUsuarioInputEnvelope = {
+    data: ComponenteCreateManyUsuarioInput | ComponenteCreateManyUsuarioInput[]
+    skipDuplicates?: boolean
+  }
+
   export type AccountUpsertWithWhereUniqueWithoutUserInput = {
     where: AccountWhereUniqueInput
     update: XOR<AccountUpdateWithoutUserInput, AccountUncheckedUpdateWithoutUserInput>
@@ -4297,21 +8178,107 @@ export namespace Prisma {
     session_state?: StringNullableFilter<"Account"> | string | null
   }
 
+  export type DispositivoUpsertWithWhereUniqueWithoutUsuarioInput = {
+    where: DispositivoWhereUniqueInput
+    update: XOR<DispositivoUpdateWithoutUsuarioInput, DispositivoUncheckedUpdateWithoutUsuarioInput>
+    create: XOR<DispositivoCreateWithoutUsuarioInput, DispositivoUncheckedCreateWithoutUsuarioInput>
+  }
+
+  export type DispositivoUpdateWithWhereUniqueWithoutUsuarioInput = {
+    where: DispositivoWhereUniqueInput
+    data: XOR<DispositivoUpdateWithoutUsuarioInput, DispositivoUncheckedUpdateWithoutUsuarioInput>
+  }
+
+  export type DispositivoUpdateManyWithWhereWithoutUsuarioInput = {
+    where: DispositivoScalarWhereInput
+    data: XOR<DispositivoUpdateManyMutationInput, DispositivoUncheckedUpdateManyWithoutUsuarioInput>
+  }
+
+  export type DispositivoScalarWhereInput = {
+    AND?: DispositivoScalarWhereInput | DispositivoScalarWhereInput[]
+    OR?: DispositivoScalarWhereInput[]
+    NOT?: DispositivoScalarWhereInput | DispositivoScalarWhereInput[]
+    id_dispositivo?: IntFilter<"Dispositivo"> | number
+    nombre?: StringFilter<"Dispositivo"> | string
+    marca?: StringFilter<"Dispositivo"> | string
+    modelo?: StringFilter<"Dispositivo"> | string
+    año_fabricacion?: IntFilter<"Dispositivo"> | number
+    estado_general?: EnumEstadoGeneralFilter<"Dispositivo"> | $Enums.EstadoGeneral
+    resultado?: EnumResultadoClasificacionFilter<"Dispositivo"> | $Enums.ResultadoClasificacion
+    justificacion?: StringNullableFilter<"Dispositivo"> | string | null
+    descripcion?: StringNullableFilter<"Dispositivo"> | string | null
+    categoria?: StringNullableFilter<"Dispositivo"> | string | null
+    numero?: StringNullableFilter<"Dispositivo"> | string | null
+    ubicacion?: StringNullableFilter<"Dispositivo"> | string | null
+    fecha_registro?: DateTimeFilter<"Dispositivo"> | Date | string
+    id_usuario?: IntFilter<"Dispositivo"> | number
+  }
+
+  export type ComponenteUpsertWithWhereUniqueWithoutUsuarioInput = {
+    where: ComponenteWhereUniqueInput
+    update: XOR<ComponenteUpdateWithoutUsuarioInput, ComponenteUncheckedUpdateWithoutUsuarioInput>
+    create: XOR<ComponenteCreateWithoutUsuarioInput, ComponenteUncheckedCreateWithoutUsuarioInput>
+  }
+
+  export type ComponenteUpdateWithWhereUniqueWithoutUsuarioInput = {
+    where: ComponenteWhereUniqueInput
+    data: XOR<ComponenteUpdateWithoutUsuarioInput, ComponenteUncheckedUpdateWithoutUsuarioInput>
+  }
+
+  export type ComponenteUpdateManyWithWhereWithoutUsuarioInput = {
+    where: ComponenteScalarWhereInput
+    data: XOR<ComponenteUpdateManyMutationInput, ComponenteUncheckedUpdateManyWithoutUsuarioInput>
+  }
+
+  export type ComponenteScalarWhereInput = {
+    AND?: ComponenteScalarWhereInput | ComponenteScalarWhereInput[]
+    OR?: ComponenteScalarWhereInput[]
+    NOT?: ComponenteScalarWhereInput | ComponenteScalarWhereInput[]
+    id_componente?: IntFilter<"Componente"> | number
+    tipo_componente?: StringFilter<"Componente"> | string
+    estado_general?: EnumEstadoGeneralFilter<"Componente"> | $Enums.EstadoGeneral
+    resultado?: EnumResultadoClasificacionFilter<"Componente"> | $Enums.ResultadoClasificacion
+    justificacion?: StringNullableFilter<"Componente"> | string | null
+    observaciones?: StringNullableFilter<"Componente"> | string | null
+    marca?: StringNullableFilter<"Componente"> | string | null
+    modelo?: StringNullableFilter<"Componente"> | string | null
+    numero?: StringNullableFilter<"Componente"> | string | null
+    fecha_extraccion?: DateTimeNullableFilter<"Componente"> | Date | string | null
+    ubicacion?: StringNullableFilter<"Componente"> | string | null
+    id_usuario?: IntFilter<"Componente"> | number
+  }
+
   export type UserCreateWithoutAccountsInput = {
     name?: string | null
     email?: string | null
-    emilVerified?: boolean
+    emailVerified?: boolean
     image?: string | null
     password?: string | null
+    gender?: string | null
+    birthDate?: Date | string | null
+    country?: string | null
+    city?: string | null
+    university?: string | null
+    career?: string | null
+    dispositivos?: DispositivoCreateNestedManyWithoutUsuarioInput
+    componentes?: ComponenteCreateNestedManyWithoutUsuarioInput
   }
 
   export type UserUncheckedCreateWithoutAccountsInput = {
     id?: number
     name?: string | null
     email?: string | null
-    emilVerified?: boolean
+    emailVerified?: boolean
     image?: string | null
     password?: string | null
+    gender?: string | null
+    birthDate?: Date | string | null
+    country?: string | null
+    city?: string | null
+    university?: string | null
+    career?: string | null
+    dispositivos?: DispositivoUncheckedCreateNestedManyWithoutUsuarioInput
+    componentes?: ComponenteUncheckedCreateNestedManyWithoutUsuarioInput
   }
 
   export type UserCreateOrConnectWithoutAccountsInput = {
@@ -4333,18 +8300,198 @@ export namespace Prisma {
   export type UserUpdateWithoutAccountsInput = {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
-    emilVerified?: BoolFieldUpdateOperationsInput | boolean
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
     image?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    university?: NullableStringFieldUpdateOperationsInput | string | null
+    career?: NullableStringFieldUpdateOperationsInput | string | null
+    dispositivos?: DispositivoUpdateManyWithoutUsuarioNestedInput
+    componentes?: ComponenteUpdateManyWithoutUsuarioNestedInput
   }
 
   export type UserUncheckedUpdateWithoutAccountsInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
-    emilVerified?: BoolFieldUpdateOperationsInput | boolean
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
     image?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    university?: NullableStringFieldUpdateOperationsInput | string | null
+    career?: NullableStringFieldUpdateOperationsInput | string | null
+    dispositivos?: DispositivoUncheckedUpdateManyWithoutUsuarioNestedInput
+    componentes?: ComponenteUncheckedUpdateManyWithoutUsuarioNestedInput
+  }
+
+  export type UserCreateWithoutDispositivosInput = {
+    name?: string | null
+    email?: string | null
+    emailVerified?: boolean
+    image?: string | null
+    password?: string | null
+    gender?: string | null
+    birthDate?: Date | string | null
+    country?: string | null
+    city?: string | null
+    university?: string | null
+    career?: string | null
+    accounts?: AccountCreateNestedManyWithoutUserInput
+    componentes?: ComponenteCreateNestedManyWithoutUsuarioInput
+  }
+
+  export type UserUncheckedCreateWithoutDispositivosInput = {
+    id?: number
+    name?: string | null
+    email?: string | null
+    emailVerified?: boolean
+    image?: string | null
+    password?: string | null
+    gender?: string | null
+    birthDate?: Date | string | null
+    country?: string | null
+    city?: string | null
+    university?: string | null
+    career?: string | null
+    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
+    componentes?: ComponenteUncheckedCreateNestedManyWithoutUsuarioInput
+  }
+
+  export type UserCreateOrConnectWithoutDispositivosInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutDispositivosInput, UserUncheckedCreateWithoutDispositivosInput>
+  }
+
+  export type UserUpsertWithoutDispositivosInput = {
+    update: XOR<UserUpdateWithoutDispositivosInput, UserUncheckedUpdateWithoutDispositivosInput>
+    create: XOR<UserCreateWithoutDispositivosInput, UserUncheckedCreateWithoutDispositivosInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutDispositivosInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutDispositivosInput, UserUncheckedUpdateWithoutDispositivosInput>
+  }
+
+  export type UserUpdateWithoutDispositivosInput = {
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    university?: NullableStringFieldUpdateOperationsInput | string | null
+    career?: NullableStringFieldUpdateOperationsInput | string | null
+    accounts?: AccountUpdateManyWithoutUserNestedInput
+    componentes?: ComponenteUpdateManyWithoutUsuarioNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutDispositivosInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    university?: NullableStringFieldUpdateOperationsInput | string | null
+    career?: NullableStringFieldUpdateOperationsInput | string | null
+    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
+    componentes?: ComponenteUncheckedUpdateManyWithoutUsuarioNestedInput
+  }
+
+  export type UserCreateWithoutComponentesInput = {
+    name?: string | null
+    email?: string | null
+    emailVerified?: boolean
+    image?: string | null
+    password?: string | null
+    gender?: string | null
+    birthDate?: Date | string | null
+    country?: string | null
+    city?: string | null
+    university?: string | null
+    career?: string | null
+    accounts?: AccountCreateNestedManyWithoutUserInput
+    dispositivos?: DispositivoCreateNestedManyWithoutUsuarioInput
+  }
+
+  export type UserUncheckedCreateWithoutComponentesInput = {
+    id?: number
+    name?: string | null
+    email?: string | null
+    emailVerified?: boolean
+    image?: string | null
+    password?: string | null
+    gender?: string | null
+    birthDate?: Date | string | null
+    country?: string | null
+    city?: string | null
+    university?: string | null
+    career?: string | null
+    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
+    dispositivos?: DispositivoUncheckedCreateNestedManyWithoutUsuarioInput
+  }
+
+  export type UserCreateOrConnectWithoutComponentesInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutComponentesInput, UserUncheckedCreateWithoutComponentesInput>
+  }
+
+  export type UserUpsertWithoutComponentesInput = {
+    update: XOR<UserUpdateWithoutComponentesInput, UserUncheckedUpdateWithoutComponentesInput>
+    create: XOR<UserCreateWithoutComponentesInput, UserUncheckedCreateWithoutComponentesInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutComponentesInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutComponentesInput, UserUncheckedUpdateWithoutComponentesInput>
+  }
+
+  export type UserUpdateWithoutComponentesInput = {
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    university?: NullableStringFieldUpdateOperationsInput | string | null
+    career?: NullableStringFieldUpdateOperationsInput | string | null
+    accounts?: AccountUpdateManyWithoutUserNestedInput
+    dispositivos?: DispositivoUpdateManyWithoutUsuarioNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutComponentesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    university?: NullableStringFieldUpdateOperationsInput | string | null
+    career?: NullableStringFieldUpdateOperationsInput | string | null
+    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
+    dispositivos?: DispositivoUncheckedUpdateManyWithoutUsuarioNestedInput
   }
 
   export type AccountCreateManyUserInput = {
@@ -4359,6 +8506,36 @@ export namespace Prisma {
     scope?: string | null
     id_token?: string | null
     session_state?: string | null
+  }
+
+  export type DispositivoCreateManyUsuarioInput = {
+    id_dispositivo?: number
+    nombre: string
+    marca: string
+    modelo: string
+    año_fabricacion: number
+    estado_general: $Enums.EstadoGeneral
+    resultado: $Enums.ResultadoClasificacion
+    justificacion?: string | null
+    descripcion?: string | null
+    categoria?: string | null
+    numero?: string | null
+    ubicacion?: string | null
+    fecha_registro?: Date | string
+  }
+
+  export type ComponenteCreateManyUsuarioInput = {
+    id_componente?: number
+    tipo_componente: string
+    estado_general: $Enums.EstadoGeneral
+    resultado: $Enums.ResultadoClasificacion
+    justificacion?: string | null
+    observaciones?: string | null
+    marca?: string | null
+    modelo?: string | null
+    numero?: string | null
+    fecha_extraccion?: Date | string | null
+    ubicacion?: string | null
   }
 
   export type AccountUpdateWithoutUserInput = {
@@ -4401,6 +8578,94 @@ export namespace Prisma {
     scope?: NullableStringFieldUpdateOperationsInput | string | null
     id_token?: NullableStringFieldUpdateOperationsInput | string | null
     session_state?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type DispositivoUpdateWithoutUsuarioInput = {
+    nombre?: StringFieldUpdateOperationsInput | string
+    marca?: StringFieldUpdateOperationsInput | string
+    modelo?: StringFieldUpdateOperationsInput | string
+    año_fabricacion?: IntFieldUpdateOperationsInput | number
+    estado_general?: EnumEstadoGeneralFieldUpdateOperationsInput | $Enums.EstadoGeneral
+    resultado?: EnumResultadoClasificacionFieldUpdateOperationsInput | $Enums.ResultadoClasificacion
+    justificacion?: NullableStringFieldUpdateOperationsInput | string | null
+    descripcion?: NullableStringFieldUpdateOperationsInput | string | null
+    categoria?: NullableStringFieldUpdateOperationsInput | string | null
+    numero?: NullableStringFieldUpdateOperationsInput | string | null
+    ubicacion?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha_registro?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DispositivoUncheckedUpdateWithoutUsuarioInput = {
+    id_dispositivo?: IntFieldUpdateOperationsInput | number
+    nombre?: StringFieldUpdateOperationsInput | string
+    marca?: StringFieldUpdateOperationsInput | string
+    modelo?: StringFieldUpdateOperationsInput | string
+    año_fabricacion?: IntFieldUpdateOperationsInput | number
+    estado_general?: EnumEstadoGeneralFieldUpdateOperationsInput | $Enums.EstadoGeneral
+    resultado?: EnumResultadoClasificacionFieldUpdateOperationsInput | $Enums.ResultadoClasificacion
+    justificacion?: NullableStringFieldUpdateOperationsInput | string | null
+    descripcion?: NullableStringFieldUpdateOperationsInput | string | null
+    categoria?: NullableStringFieldUpdateOperationsInput | string | null
+    numero?: NullableStringFieldUpdateOperationsInput | string | null
+    ubicacion?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha_registro?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DispositivoUncheckedUpdateManyWithoutUsuarioInput = {
+    id_dispositivo?: IntFieldUpdateOperationsInput | number
+    nombre?: StringFieldUpdateOperationsInput | string
+    marca?: StringFieldUpdateOperationsInput | string
+    modelo?: StringFieldUpdateOperationsInput | string
+    año_fabricacion?: IntFieldUpdateOperationsInput | number
+    estado_general?: EnumEstadoGeneralFieldUpdateOperationsInput | $Enums.EstadoGeneral
+    resultado?: EnumResultadoClasificacionFieldUpdateOperationsInput | $Enums.ResultadoClasificacion
+    justificacion?: NullableStringFieldUpdateOperationsInput | string | null
+    descripcion?: NullableStringFieldUpdateOperationsInput | string | null
+    categoria?: NullableStringFieldUpdateOperationsInput | string | null
+    numero?: NullableStringFieldUpdateOperationsInput | string | null
+    ubicacion?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha_registro?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ComponenteUpdateWithoutUsuarioInput = {
+    tipo_componente?: StringFieldUpdateOperationsInput | string
+    estado_general?: EnumEstadoGeneralFieldUpdateOperationsInput | $Enums.EstadoGeneral
+    resultado?: EnumResultadoClasificacionFieldUpdateOperationsInput | $Enums.ResultadoClasificacion
+    justificacion?: NullableStringFieldUpdateOperationsInput | string | null
+    observaciones?: NullableStringFieldUpdateOperationsInput | string | null
+    marca?: NullableStringFieldUpdateOperationsInput | string | null
+    modelo?: NullableStringFieldUpdateOperationsInput | string | null
+    numero?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha_extraccion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ubicacion?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type ComponenteUncheckedUpdateWithoutUsuarioInput = {
+    id_componente?: IntFieldUpdateOperationsInput | number
+    tipo_componente?: StringFieldUpdateOperationsInput | string
+    estado_general?: EnumEstadoGeneralFieldUpdateOperationsInput | $Enums.EstadoGeneral
+    resultado?: EnumResultadoClasificacionFieldUpdateOperationsInput | $Enums.ResultadoClasificacion
+    justificacion?: NullableStringFieldUpdateOperationsInput | string | null
+    observaciones?: NullableStringFieldUpdateOperationsInput | string | null
+    marca?: NullableStringFieldUpdateOperationsInput | string | null
+    modelo?: NullableStringFieldUpdateOperationsInput | string | null
+    numero?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha_extraccion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ubicacion?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type ComponenteUncheckedUpdateManyWithoutUsuarioInput = {
+    id_componente?: IntFieldUpdateOperationsInput | number
+    tipo_componente?: StringFieldUpdateOperationsInput | string
+    estado_general?: EnumEstadoGeneralFieldUpdateOperationsInput | $Enums.EstadoGeneral
+    resultado?: EnumResultadoClasificacionFieldUpdateOperationsInput | $Enums.ResultadoClasificacion
+    justificacion?: NullableStringFieldUpdateOperationsInput | string | null
+    observaciones?: NullableStringFieldUpdateOperationsInput | string | null
+    marca?: NullableStringFieldUpdateOperationsInput | string | null
+    modelo?: NullableStringFieldUpdateOperationsInput | string | null
+    numero?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha_extraccion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ubicacion?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
 

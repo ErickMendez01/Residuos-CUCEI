@@ -124,9 +124,15 @@ exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
   name: 'name',
   email: 'email',
-  emilVerified: 'emilVerified',
+  emailVerified: 'emailVerified',
   image: 'image',
-  password: 'password'
+  password: 'password',
+  gender: 'gender',
+  birthDate: 'birthDate',
+  country: 'country',
+  city: 'city',
+  university: 'university',
+  career: 'career'
 };
 
 exports.Prisma.AccountScalarFieldEnum = {
@@ -144,6 +150,38 @@ exports.Prisma.AccountScalarFieldEnum = {
   session_state: 'session_state'
 };
 
+exports.Prisma.DispositivoScalarFieldEnum = {
+  id_dispositivo: 'id_dispositivo',
+  nombre: 'nombre',
+  marca: 'marca',
+  modelo: 'modelo',
+  año_fabricacion: 'año_fabricacion',
+  estado_general: 'estado_general',
+  resultado: 'resultado',
+  justificacion: 'justificacion',
+  descripcion: 'descripcion',
+  categoria: 'categoria',
+  numero: 'numero',
+  ubicacion: 'ubicacion',
+  fecha_registro: 'fecha_registro',
+  id_usuario: 'id_usuario'
+};
+
+exports.Prisma.ComponenteScalarFieldEnum = {
+  id_componente: 'id_componente',
+  tipo_componente: 'tipo_componente',
+  estado_general: 'estado_general',
+  resultado: 'resultado',
+  justificacion: 'justificacion',
+  observaciones: 'observaciones',
+  marca: 'marca',
+  modelo: 'modelo',
+  numero: 'numero',
+  fecha_extraccion: 'fecha_extraccion',
+  ubicacion: 'ubicacion',
+  id_usuario: 'id_usuario'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -158,11 +196,23 @@ exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
+exports.EstadoGeneral = exports.$Enums.EstadoGeneral = {
+  FUNCIONAL: 'FUNCIONAL',
+  PARCIALMENTE_FUNCIONAL: 'PARCIALMENTE_FUNCIONAL',
+  DAÑADO: 'DAÑADO'
+};
 
+exports.ResultadoClasificacion = exports.$Enums.ResultadoClasificacion = {
+  REUTILIZAR: 'REUTILIZAR',
+  RECICLAR: 'RECICLAR',
+  DESECHABLE: 'DESECHABLE'
+};
 
 exports.Prisma.ModelName = {
   User: 'User',
-  Account: 'Account'
+  Account: 'Account',
+  Dispositivo: 'Dispositivo',
+  Componente: 'Componente'
 };
 
 /**

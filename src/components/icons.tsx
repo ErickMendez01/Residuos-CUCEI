@@ -3,6 +3,13 @@ import {
   FaUsers,
   FaComment,
   FaTrashAlt,
+  FaEnvelope,     // Para correo electrónico
+  FaVenusMars,    // Para género
+  FaBirthdayCake, // Para fecha de nacimiento
+  FaGlobe,        // Para país
+  FaCity,         // Para ciudad
+  FaUniversity,   // Para universidad
+  FaBriefcase 
 } from "react-icons/fa";
 import type { IconType } from "react-icons"; 
 
@@ -13,5 +20,12 @@ export const Icons = {
   users: FaUsers,
   trash: FaTrashAlt,
   comment: FaComment,
+  envelope: FaEnvelope,
+  venusMars:FaVenusMars,
+  birthdayCake: FaBirthdayCake,
+  globe: FaGlobe,
+  city: FaCity,
+  university: FaUniversity,
+  Fabriefcase: FaBriefcase,
 };
 

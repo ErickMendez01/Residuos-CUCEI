@@ -12,17 +12,20 @@ export default async function AppLayout({
   const session = await auth();
 
   return (
-    <main className="min-h-screen flex flex-col">
-      <DashboardNav items={dashboardConfig.mainNav} session={session ?? undefined} />
-      <div className="flex flex-1">
+    <div className="flex flex-col space-y-6">
+      <header>
+        <DashboardNav
+          items={dashboardConfig.mainNav}
+          session={session ?? undefined}
+        />
         <Sidebar items={dashboardConfig.sideBarNav} />
-
-        <div className="flex-1 p-6 overflow-auto bg-zinc-50 dark:bg-zinc-950">
+      </header>
+      <div>
+        <main className="flex w-full flex-1 flex-col overflow-hidden">
           {children}
-        </div>
+        </main>
       </div>
-
       <Footer />
-    </main>
+    </div>
   );
 }
