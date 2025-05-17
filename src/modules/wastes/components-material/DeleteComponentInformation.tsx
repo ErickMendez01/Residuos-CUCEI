@@ -3,7 +3,7 @@ import { useState, FormEvent } from "react";
 import { Button } from "@/components/ui/button";
 import { toast } from "react-toastify";
 
-export default function DeleteDispositiveInformation({ id }: { id: string }) {
+export default function DeleteComponentInformation({ id }: { id: string }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -15,7 +15,7 @@ export default function DeleteDispositiveInformation({ id }: { id: string }) {
     }
 
     try {
-      const response = await fetch("/api/dispositives/deleteDispositive", {
+      const response = await fetch("/api/components-material/deleteComponent", {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",

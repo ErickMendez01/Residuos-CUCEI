@@ -8,19 +8,19 @@ import {
   ModalFooter,
 } from "@nextui-org/react";
 import { Card, CardBody } from "@nextui-org/react";
-import { Dispositivo } from "@/generated/prisma/client";
+import { Componente } from "@/generated/prisma/client";
 import { Icons } from "@/components/icons";
 import { UserInformationSection } from "@/modules/_components/Dataschema";
 import { UserInformationItems } from "@/modules/_components/Informationschema";
 
-type CompleteDispositive = Dispositivo;
+type CompleteComponent = Componente;
 
-export function DispositiveInformationDialog({
+export function ComponentInformationDialog({
   isOpen,
   setIsOpen,
-  dispositive,
+  component,
 }: {
-  dispositive: CompleteDispositive;
+  component: CompleteComponent;
   isOpen: boolean;
   setIsOpen: (newValue: boolean) => void;
 }) {
@@ -36,83 +36,76 @@ export function DispositiveInformationDialog({
           <>
             <ModalHeader className="flex flex-col gap-1">
               <div className="flex flex-row items-center space-x-6">
-                  {""}Datos de dispositivo
+                  {""}Datos de componente
               </div>
             </ModalHeader>
             <ModalBody>
               <Card shadow="md" radius="lg" className="w-full ">
                 <CardBody className="grid gap-6 space-x-2 px-2">
-                  {dispositive && (
-                    <UserInformationSection title="Información de dispositivo">
-                      <UserInformationItems
-                        icon={
-                          <Icons.comment className="text-default-500 size-4" />
-                        }
-                        label="Nombre"
-                        value={dispositive.nombre}
-                      />
+                  {component && (
+                    <UserInformationSection title="Información de componente">
                       <UserInformationItems
                         icon={
                           <Icons.faTag className="text-default-500 size-4" />
                         }
                         label="Marca"
-                        value={dispositive.marca}
+                        value={component.marca}
                       />
                       <UserInformationItems
                         icon={
                           <Icons.mdDevices className="text-default-500 size-4" />
                         }
                         label="Modelo"
-                        value={dispositive.modelo}
+                        value={component.modelo}
                       />
                       <UserInformationItems
                         icon={
                           <Icons.biBarcode className="text-default-500 size-4" />
                         }
                         label="Numero Serie"
-                        value={dispositive.numero}
+                        value={component.numero}
                       />
                       <UserInformationItems
                         icon={
                           <Icons.faRegDotCircle className="text-default-500 size-4" />
                         }
                         label="Estado"
-                        value={dispositive.estado_general}
+                        value={component.estado_general}
                       />
                       <UserInformationItems
                         icon={
                           <Icons.mdCategory className="text-default-500 size-4" />
                         }
-                        label="Categoria"
-                        value={dispositive.categoria}
+                        label="Tipo Componente"
+                        value={component.tipo_componente}
                       />
                       <UserInformationItems
                         icon={
                           <Icons.faMapMarkerAlt className="text-default-500 size-4" />
                         }
                         label="Entrega Estatus"
-                        value={dispositive.ubicacion}
+                        value={component.ubicacion}
                       />
                       <UserInformationItems
                         icon={
                           <Icons.mdCheckCircle className="text-default-500 size-4" />
                         }
                         label="Resultado"
-                        value={dispositive.resultado}
+                        value={component.resultado}
                       />
                       <UserInformationItems
                         icon={
                           <Icons.faFileAlt className="text-default-500 size-4" />
                         }
                         label="Resultado justificación"
-                        value={dispositive.justificacion}
+                        value={component.justificacion}
                       />
                       <UserInformationItems
                         icon={
                           <Icons.mdNotes className="text-default-500 size-4" />
                         }
-                        label="Descripción"
-                        value={dispositive.descripcion}
+                        label="Observaciones"
+                        value={component.observaciones}
                       />
                     </UserInformationSection>
                   )}

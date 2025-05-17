@@ -20,13 +20,13 @@ export async function GET(
     const page = req.nextUrl.searchParams.get("page")
     const itemsPerPage = req.nextUrl.searchParams.get("itemsPerPage")
     
-    const users = await prisma.user.findMany({
+    const dispositives = await prisma.dispositivo.findMany({
       skip: (Number(page) - 1) * Number(itemsPerPage),
       take: Number(itemsPerPage),
     })
 
-    const total = await prisma.user.count({ })
-    return new Response(JSON.stringify({ users, total }), {
+    const total = await prisma.dispositivo.count({ })
+    return new Response(JSON.stringify({ dispositives, total }), {
       status: 200,
     })
   } catch (error) {

@@ -41,7 +41,8 @@ export namespace $Enums {
   export const ResultadoClasificacion: {
   REUTILIZAR: 'REUTILIZAR',
   RECICLAR: 'RECICLAR',
-  DESECHABLE: 'DESECHABLE'
+  DESECHABLE: 'DESECHABLE',
+  PENDIENTE: 'PENDIENTE'
 };
 
 export type ResultadoClasificacion = (typeof ResultadoClasificacion)[keyof typeof ResultadoClasificacion]
@@ -3673,13 +3674,11 @@ export namespace Prisma {
 
   export type DispositivoAvgAggregateOutputType = {
     id_dispositivo: number | null
-    año_fabricacion: number | null
     id_usuario: number | null
   }
 
   export type DispositivoSumAggregateOutputType = {
     id_dispositivo: number | null
-    año_fabricacion: number | null
     id_usuario: number | null
   }
 
@@ -3688,7 +3687,6 @@ export namespace Prisma {
     nombre: string | null
     marca: string | null
     modelo: string | null
-    año_fabricacion: number | null
     estado_general: $Enums.EstadoGeneral | null
     resultado: $Enums.ResultadoClasificacion | null
     justificacion: string | null
@@ -3696,7 +3694,6 @@ export namespace Prisma {
     categoria: string | null
     numero: string | null
     ubicacion: string | null
-    fecha_registro: Date | null
     id_usuario: number | null
   }
 
@@ -3705,7 +3702,6 @@ export namespace Prisma {
     nombre: string | null
     marca: string | null
     modelo: string | null
-    año_fabricacion: number | null
     estado_general: $Enums.EstadoGeneral | null
     resultado: $Enums.ResultadoClasificacion | null
     justificacion: string | null
@@ -3713,7 +3709,6 @@ export namespace Prisma {
     categoria: string | null
     numero: string | null
     ubicacion: string | null
-    fecha_registro: Date | null
     id_usuario: number | null
   }
 
@@ -3722,7 +3717,6 @@ export namespace Prisma {
     nombre: number
     marca: number
     modelo: number
-    año_fabricacion: number
     estado_general: number
     resultado: number
     justificacion: number
@@ -3730,7 +3724,6 @@ export namespace Prisma {
     categoria: number
     numero: number
     ubicacion: number
-    fecha_registro: number
     id_usuario: number
     _all: number
   }
@@ -3738,13 +3731,11 @@ export namespace Prisma {
 
   export type DispositivoAvgAggregateInputType = {
     id_dispositivo?: true
-    año_fabricacion?: true
     id_usuario?: true
   }
 
   export type DispositivoSumAggregateInputType = {
     id_dispositivo?: true
-    año_fabricacion?: true
     id_usuario?: true
   }
 
@@ -3753,7 +3744,6 @@ export namespace Prisma {
     nombre?: true
     marca?: true
     modelo?: true
-    año_fabricacion?: true
     estado_general?: true
     resultado?: true
     justificacion?: true
@@ -3761,7 +3751,6 @@ export namespace Prisma {
     categoria?: true
     numero?: true
     ubicacion?: true
-    fecha_registro?: true
     id_usuario?: true
   }
 
@@ -3770,7 +3759,6 @@ export namespace Prisma {
     nombre?: true
     marca?: true
     modelo?: true
-    año_fabricacion?: true
     estado_general?: true
     resultado?: true
     justificacion?: true
@@ -3778,7 +3766,6 @@ export namespace Prisma {
     categoria?: true
     numero?: true
     ubicacion?: true
-    fecha_registro?: true
     id_usuario?: true
   }
 
@@ -3787,7 +3774,6 @@ export namespace Prisma {
     nombre?: true
     marca?: true
     modelo?: true
-    año_fabricacion?: true
     estado_general?: true
     resultado?: true
     justificacion?: true
@@ -3795,7 +3781,6 @@ export namespace Prisma {
     categoria?: true
     numero?: true
     ubicacion?: true
-    fecha_registro?: true
     id_usuario?: true
     _all?: true
   }
@@ -3891,7 +3876,6 @@ export namespace Prisma {
     nombre: string
     marca: string
     modelo: string
-    año_fabricacion: number
     estado_general: $Enums.EstadoGeneral
     resultado: $Enums.ResultadoClasificacion
     justificacion: string | null
@@ -3899,7 +3883,6 @@ export namespace Prisma {
     categoria: string | null
     numero: string | null
     ubicacion: string | null
-    fecha_registro: Date
     id_usuario: number
     _count: DispositivoCountAggregateOutputType | null
     _avg: DispositivoAvgAggregateOutputType | null
@@ -3927,7 +3910,6 @@ export namespace Prisma {
     nombre?: boolean
     marca?: boolean
     modelo?: boolean
-    año_fabricacion?: boolean
     estado_general?: boolean
     resultado?: boolean
     justificacion?: boolean
@@ -3935,7 +3917,6 @@ export namespace Prisma {
     categoria?: boolean
     numero?: boolean
     ubicacion?: boolean
-    fecha_registro?: boolean
     id_usuario?: boolean
     usuario?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["dispositivo"]>
@@ -3945,7 +3926,6 @@ export namespace Prisma {
     nombre?: boolean
     marca?: boolean
     modelo?: boolean
-    año_fabricacion?: boolean
     estado_general?: boolean
     resultado?: boolean
     justificacion?: boolean
@@ -3953,7 +3933,6 @@ export namespace Prisma {
     categoria?: boolean
     numero?: boolean
     ubicacion?: boolean
-    fecha_registro?: boolean
     id_usuario?: boolean
     usuario?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["dispositivo"]>
@@ -3963,7 +3942,6 @@ export namespace Prisma {
     nombre?: boolean
     marca?: boolean
     modelo?: boolean
-    año_fabricacion?: boolean
     estado_general?: boolean
     resultado?: boolean
     justificacion?: boolean
@@ -3971,7 +3949,6 @@ export namespace Prisma {
     categoria?: boolean
     numero?: boolean
     ubicacion?: boolean
-    fecha_registro?: boolean
     id_usuario?: boolean
     usuario?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["dispositivo"]>
@@ -3981,7 +3958,6 @@ export namespace Prisma {
     nombre?: boolean
     marca?: boolean
     modelo?: boolean
-    año_fabricacion?: boolean
     estado_general?: boolean
     resultado?: boolean
     justificacion?: boolean
@@ -3989,11 +3965,10 @@ export namespace Prisma {
     categoria?: boolean
     numero?: boolean
     ubicacion?: boolean
-    fecha_registro?: boolean
     id_usuario?: boolean
   }
 
-  export type DispositivoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_dispositivo" | "nombre" | "marca" | "modelo" | "año_fabricacion" | "estado_general" | "resultado" | "justificacion" | "descripcion" | "categoria" | "numero" | "ubicacion" | "fecha_registro" | "id_usuario", ExtArgs["result"]["dispositivo"]>
+  export type DispositivoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_dispositivo" | "nombre" | "marca" | "modelo" | "estado_general" | "resultado" | "justificacion" | "descripcion" | "categoria" | "numero" | "ubicacion" | "id_usuario", ExtArgs["result"]["dispositivo"]>
   export type DispositivoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     usuario?: boolean | UserDefaultArgs<ExtArgs>
   }
@@ -4014,7 +3989,6 @@ export namespace Prisma {
       nombre: string
       marca: string
       modelo: string
-      año_fabricacion: number
       estado_general: $Enums.EstadoGeneral
       resultado: $Enums.ResultadoClasificacion
       justificacion: string | null
@@ -4022,7 +3996,6 @@ export namespace Prisma {
       categoria: string | null
       numero: string | null
       ubicacion: string | null
-      fecha_registro: Date
       id_usuario: number
     }, ExtArgs["result"]["dispositivo"]>
     composites: {}
@@ -4452,7 +4425,6 @@ export namespace Prisma {
     readonly nombre: FieldRef<"Dispositivo", 'String'>
     readonly marca: FieldRef<"Dispositivo", 'String'>
     readonly modelo: FieldRef<"Dispositivo", 'String'>
-    readonly año_fabricacion: FieldRef<"Dispositivo", 'Int'>
     readonly estado_general: FieldRef<"Dispositivo", 'EstadoGeneral'>
     readonly resultado: FieldRef<"Dispositivo", 'ResultadoClasificacion'>
     readonly justificacion: FieldRef<"Dispositivo", 'String'>
@@ -4460,7 +4432,6 @@ export namespace Prisma {
     readonly categoria: FieldRef<"Dispositivo", 'String'>
     readonly numero: FieldRef<"Dispositivo", 'String'>
     readonly ubicacion: FieldRef<"Dispositivo", 'String'>
-    readonly fecha_registro: FieldRef<"Dispositivo", 'DateTime'>
     readonly id_usuario: FieldRef<"Dispositivo", 'Int'>
   }
     
@@ -4908,7 +4879,6 @@ export namespace Prisma {
     marca: string | null
     modelo: string | null
     numero: string | null
-    fecha_extraccion: Date | null
     ubicacion: string | null
     id_usuario: number | null
   }
@@ -4923,7 +4893,6 @@ export namespace Prisma {
     marca: string | null
     modelo: string | null
     numero: string | null
-    fecha_extraccion: Date | null
     ubicacion: string | null
     id_usuario: number | null
   }
@@ -4938,7 +4907,6 @@ export namespace Prisma {
     marca: number
     modelo: number
     numero: number
-    fecha_extraccion: number
     ubicacion: number
     id_usuario: number
     _all: number
@@ -4965,7 +4933,6 @@ export namespace Prisma {
     marca?: true
     modelo?: true
     numero?: true
-    fecha_extraccion?: true
     ubicacion?: true
     id_usuario?: true
   }
@@ -4980,7 +4947,6 @@ export namespace Prisma {
     marca?: true
     modelo?: true
     numero?: true
-    fecha_extraccion?: true
     ubicacion?: true
     id_usuario?: true
   }
@@ -4995,7 +4961,6 @@ export namespace Prisma {
     marca?: true
     modelo?: true
     numero?: true
-    fecha_extraccion?: true
     ubicacion?: true
     id_usuario?: true
     _all?: true
@@ -5097,7 +5062,6 @@ export namespace Prisma {
     marca: string | null
     modelo: string | null
     numero: string | null
-    fecha_extraccion: Date | null
     ubicacion: string | null
     id_usuario: number
     _count: ComponenteCountAggregateOutputType | null
@@ -5131,7 +5095,6 @@ export namespace Prisma {
     marca?: boolean
     modelo?: boolean
     numero?: boolean
-    fecha_extraccion?: boolean
     ubicacion?: boolean
     id_usuario?: boolean
     usuario?: boolean | UserDefaultArgs<ExtArgs>
@@ -5147,7 +5110,6 @@ export namespace Prisma {
     marca?: boolean
     modelo?: boolean
     numero?: boolean
-    fecha_extraccion?: boolean
     ubicacion?: boolean
     id_usuario?: boolean
     usuario?: boolean | UserDefaultArgs<ExtArgs>
@@ -5163,7 +5125,6 @@ export namespace Prisma {
     marca?: boolean
     modelo?: boolean
     numero?: boolean
-    fecha_extraccion?: boolean
     ubicacion?: boolean
     id_usuario?: boolean
     usuario?: boolean | UserDefaultArgs<ExtArgs>
@@ -5179,12 +5140,11 @@ export namespace Prisma {
     marca?: boolean
     modelo?: boolean
     numero?: boolean
-    fecha_extraccion?: boolean
     ubicacion?: boolean
     id_usuario?: boolean
   }
 
-  export type ComponenteOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_componente" | "tipo_componente" | "estado_general" | "resultado" | "justificacion" | "observaciones" | "marca" | "modelo" | "numero" | "fecha_extraccion" | "ubicacion" | "id_usuario", ExtArgs["result"]["componente"]>
+  export type ComponenteOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_componente" | "tipo_componente" | "estado_general" | "resultado" | "justificacion" | "observaciones" | "marca" | "modelo" | "numero" | "ubicacion" | "id_usuario", ExtArgs["result"]["componente"]>
   export type ComponenteInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     usuario?: boolean | UserDefaultArgs<ExtArgs>
   }
@@ -5210,7 +5170,6 @@ export namespace Prisma {
       marca: string | null
       modelo: string | null
       numero: string | null
-      fecha_extraccion: Date | null
       ubicacion: string | null
       id_usuario: number
     }, ExtArgs["result"]["componente"]>
@@ -5646,7 +5605,6 @@ export namespace Prisma {
     readonly marca: FieldRef<"Componente", 'String'>
     readonly modelo: FieldRef<"Componente", 'String'>
     readonly numero: FieldRef<"Componente", 'String'>
-    readonly fecha_extraccion: FieldRef<"Componente", 'DateTime'>
     readonly ubicacion: FieldRef<"Componente", 'String'>
     readonly id_usuario: FieldRef<"Componente", 'Int'>
   }
@@ -6118,7 +6076,6 @@ export namespace Prisma {
     nombre: 'nombre',
     marca: 'marca',
     modelo: 'modelo',
-    año_fabricacion: 'año_fabricacion',
     estado_general: 'estado_general',
     resultado: 'resultado',
     justificacion: 'justificacion',
@@ -6126,7 +6083,6 @@ export namespace Prisma {
     categoria: 'categoria',
     numero: 'numero',
     ubicacion: 'ubicacion',
-    fecha_registro: 'fecha_registro',
     id_usuario: 'id_usuario'
   };
 
@@ -6143,7 +6099,6 @@ export namespace Prisma {
     marca: 'marca',
     modelo: 'modelo',
     numero: 'numero',
-    fecha_extraccion: 'fecha_extraccion',
     ubicacion: 'ubicacion',
     id_usuario: 'id_usuario'
   };
@@ -6473,7 +6428,6 @@ export namespace Prisma {
     nombre?: StringFilter<"Dispositivo"> | string
     marca?: StringFilter<"Dispositivo"> | string
     modelo?: StringFilter<"Dispositivo"> | string
-    año_fabricacion?: IntFilter<"Dispositivo"> | number
     estado_general?: EnumEstadoGeneralFilter<"Dispositivo"> | $Enums.EstadoGeneral
     resultado?: EnumResultadoClasificacionFilter<"Dispositivo"> | $Enums.ResultadoClasificacion
     justificacion?: StringNullableFilter<"Dispositivo"> | string | null
@@ -6481,7 +6435,6 @@ export namespace Prisma {
     categoria?: StringNullableFilter<"Dispositivo"> | string | null
     numero?: StringNullableFilter<"Dispositivo"> | string | null
     ubicacion?: StringNullableFilter<"Dispositivo"> | string | null
-    fecha_registro?: DateTimeFilter<"Dispositivo"> | Date | string
     id_usuario?: IntFilter<"Dispositivo"> | number
     usuario?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
@@ -6491,7 +6444,6 @@ export namespace Prisma {
     nombre?: SortOrder
     marca?: SortOrder
     modelo?: SortOrder
-    año_fabricacion?: SortOrder
     estado_general?: SortOrder
     resultado?: SortOrder
     justificacion?: SortOrderInput | SortOrder
@@ -6499,7 +6451,6 @@ export namespace Prisma {
     categoria?: SortOrderInput | SortOrder
     numero?: SortOrderInput | SortOrder
     ubicacion?: SortOrderInput | SortOrder
-    fecha_registro?: SortOrder
     id_usuario?: SortOrder
     usuario?: UserOrderByWithRelationInput
   }
@@ -6513,14 +6464,12 @@ export namespace Prisma {
     nombre?: StringFilter<"Dispositivo"> | string
     marca?: StringFilter<"Dispositivo"> | string
     modelo?: StringFilter<"Dispositivo"> | string
-    año_fabricacion?: IntFilter<"Dispositivo"> | number
     estado_general?: EnumEstadoGeneralFilter<"Dispositivo"> | $Enums.EstadoGeneral
     resultado?: EnumResultadoClasificacionFilter<"Dispositivo"> | $Enums.ResultadoClasificacion
     justificacion?: StringNullableFilter<"Dispositivo"> | string | null
     descripcion?: StringNullableFilter<"Dispositivo"> | string | null
     categoria?: StringNullableFilter<"Dispositivo"> | string | null
     ubicacion?: StringNullableFilter<"Dispositivo"> | string | null
-    fecha_registro?: DateTimeFilter<"Dispositivo"> | Date | string
     id_usuario?: IntFilter<"Dispositivo"> | number
     usuario?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id_dispositivo" | "numero">
@@ -6530,7 +6479,6 @@ export namespace Prisma {
     nombre?: SortOrder
     marca?: SortOrder
     modelo?: SortOrder
-    año_fabricacion?: SortOrder
     estado_general?: SortOrder
     resultado?: SortOrder
     justificacion?: SortOrderInput | SortOrder
@@ -6538,7 +6486,6 @@ export namespace Prisma {
     categoria?: SortOrderInput | SortOrder
     numero?: SortOrderInput | SortOrder
     ubicacion?: SortOrderInput | SortOrder
-    fecha_registro?: SortOrder
     id_usuario?: SortOrder
     _count?: DispositivoCountOrderByAggregateInput
     _avg?: DispositivoAvgOrderByAggregateInput
@@ -6555,7 +6502,6 @@ export namespace Prisma {
     nombre?: StringWithAggregatesFilter<"Dispositivo"> | string
     marca?: StringWithAggregatesFilter<"Dispositivo"> | string
     modelo?: StringWithAggregatesFilter<"Dispositivo"> | string
-    año_fabricacion?: IntWithAggregatesFilter<"Dispositivo"> | number
     estado_general?: EnumEstadoGeneralWithAggregatesFilter<"Dispositivo"> | $Enums.EstadoGeneral
     resultado?: EnumResultadoClasificacionWithAggregatesFilter<"Dispositivo"> | $Enums.ResultadoClasificacion
     justificacion?: StringNullableWithAggregatesFilter<"Dispositivo"> | string | null
@@ -6563,7 +6509,6 @@ export namespace Prisma {
     categoria?: StringNullableWithAggregatesFilter<"Dispositivo"> | string | null
     numero?: StringNullableWithAggregatesFilter<"Dispositivo"> | string | null
     ubicacion?: StringNullableWithAggregatesFilter<"Dispositivo"> | string | null
-    fecha_registro?: DateTimeWithAggregatesFilter<"Dispositivo"> | Date | string
     id_usuario?: IntWithAggregatesFilter<"Dispositivo"> | number
   }
 
@@ -6580,7 +6525,6 @@ export namespace Prisma {
     marca?: StringNullableFilter<"Componente"> | string | null
     modelo?: StringNullableFilter<"Componente"> | string | null
     numero?: StringNullableFilter<"Componente"> | string | null
-    fecha_extraccion?: DateTimeNullableFilter<"Componente"> | Date | string | null
     ubicacion?: StringNullableFilter<"Componente"> | string | null
     id_usuario?: IntFilter<"Componente"> | number
     usuario?: XOR<UserScalarRelationFilter, UserWhereInput>
@@ -6596,7 +6540,6 @@ export namespace Prisma {
     marca?: SortOrderInput | SortOrder
     modelo?: SortOrderInput | SortOrder
     numero?: SortOrderInput | SortOrder
-    fecha_extraccion?: SortOrderInput | SortOrder
     ubicacion?: SortOrderInput | SortOrder
     id_usuario?: SortOrder
     usuario?: UserOrderByWithRelationInput
@@ -6604,7 +6547,6 @@ export namespace Prisma {
 
   export type ComponenteWhereUniqueInput = Prisma.AtLeast<{
     id_componente?: number
-    numero?: string
     AND?: ComponenteWhereInput | ComponenteWhereInput[]
     OR?: ComponenteWhereInput[]
     NOT?: ComponenteWhereInput | ComponenteWhereInput[]
@@ -6615,11 +6557,11 @@ export namespace Prisma {
     observaciones?: StringNullableFilter<"Componente"> | string | null
     marca?: StringNullableFilter<"Componente"> | string | null
     modelo?: StringNullableFilter<"Componente"> | string | null
-    fecha_extraccion?: DateTimeNullableFilter<"Componente"> | Date | string | null
+    numero?: StringNullableFilter<"Componente"> | string | null
     ubicacion?: StringNullableFilter<"Componente"> | string | null
     id_usuario?: IntFilter<"Componente"> | number
     usuario?: XOR<UserScalarRelationFilter, UserWhereInput>
-  }, "id_componente" | "numero">
+  }, "id_componente">
 
   export type ComponenteOrderByWithAggregationInput = {
     id_componente?: SortOrder
@@ -6631,7 +6573,6 @@ export namespace Prisma {
     marca?: SortOrderInput | SortOrder
     modelo?: SortOrderInput | SortOrder
     numero?: SortOrderInput | SortOrder
-    fecha_extraccion?: SortOrderInput | SortOrder
     ubicacion?: SortOrderInput | SortOrder
     id_usuario?: SortOrder
     _count?: ComponenteCountOrderByAggregateInput
@@ -6654,7 +6595,6 @@ export namespace Prisma {
     marca?: StringNullableWithAggregatesFilter<"Componente"> | string | null
     modelo?: StringNullableWithAggregatesFilter<"Componente"> | string | null
     numero?: StringNullableWithAggregatesFilter<"Componente"> | string | null
-    fecha_extraccion?: DateTimeNullableWithAggregatesFilter<"Componente"> | Date | string | null
     ubicacion?: StringNullableWithAggregatesFilter<"Componente"> | string | null
     id_usuario?: IntWithAggregatesFilter<"Componente"> | number
   }
@@ -6881,7 +6821,6 @@ export namespace Prisma {
     nombre: string
     marca: string
     modelo: string
-    año_fabricacion: number
     estado_general: $Enums.EstadoGeneral
     resultado: $Enums.ResultadoClasificacion
     justificacion?: string | null
@@ -6889,7 +6828,6 @@ export namespace Prisma {
     categoria?: string | null
     numero?: string | null
     ubicacion?: string | null
-    fecha_registro?: Date | string
     usuario: UserCreateNestedOneWithoutDispositivosInput
   }
 
@@ -6898,7 +6836,6 @@ export namespace Prisma {
     nombre: string
     marca: string
     modelo: string
-    año_fabricacion: number
     estado_general: $Enums.EstadoGeneral
     resultado: $Enums.ResultadoClasificacion
     justificacion?: string | null
@@ -6906,7 +6843,6 @@ export namespace Prisma {
     categoria?: string | null
     numero?: string | null
     ubicacion?: string | null
-    fecha_registro?: Date | string
     id_usuario: number
   }
 
@@ -6914,7 +6850,6 @@ export namespace Prisma {
     nombre?: StringFieldUpdateOperationsInput | string
     marca?: StringFieldUpdateOperationsInput | string
     modelo?: StringFieldUpdateOperationsInput | string
-    año_fabricacion?: IntFieldUpdateOperationsInput | number
     estado_general?: EnumEstadoGeneralFieldUpdateOperationsInput | $Enums.EstadoGeneral
     resultado?: EnumResultadoClasificacionFieldUpdateOperationsInput | $Enums.ResultadoClasificacion
     justificacion?: NullableStringFieldUpdateOperationsInput | string | null
@@ -6922,7 +6857,6 @@ export namespace Prisma {
     categoria?: NullableStringFieldUpdateOperationsInput | string | null
     numero?: NullableStringFieldUpdateOperationsInput | string | null
     ubicacion?: NullableStringFieldUpdateOperationsInput | string | null
-    fecha_registro?: DateTimeFieldUpdateOperationsInput | Date | string
     usuario?: UserUpdateOneRequiredWithoutDispositivosNestedInput
   }
 
@@ -6931,7 +6865,6 @@ export namespace Prisma {
     nombre?: StringFieldUpdateOperationsInput | string
     marca?: StringFieldUpdateOperationsInput | string
     modelo?: StringFieldUpdateOperationsInput | string
-    año_fabricacion?: IntFieldUpdateOperationsInput | number
     estado_general?: EnumEstadoGeneralFieldUpdateOperationsInput | $Enums.EstadoGeneral
     resultado?: EnumResultadoClasificacionFieldUpdateOperationsInput | $Enums.ResultadoClasificacion
     justificacion?: NullableStringFieldUpdateOperationsInput | string | null
@@ -6939,7 +6872,6 @@ export namespace Prisma {
     categoria?: NullableStringFieldUpdateOperationsInput | string | null
     numero?: NullableStringFieldUpdateOperationsInput | string | null
     ubicacion?: NullableStringFieldUpdateOperationsInput | string | null
-    fecha_registro?: DateTimeFieldUpdateOperationsInput | Date | string
     id_usuario?: IntFieldUpdateOperationsInput | number
   }
 
@@ -6948,7 +6880,6 @@ export namespace Prisma {
     nombre: string
     marca: string
     modelo: string
-    año_fabricacion: number
     estado_general: $Enums.EstadoGeneral
     resultado: $Enums.ResultadoClasificacion
     justificacion?: string | null
@@ -6956,7 +6887,6 @@ export namespace Prisma {
     categoria?: string | null
     numero?: string | null
     ubicacion?: string | null
-    fecha_registro?: Date | string
     id_usuario: number
   }
 
@@ -6964,7 +6894,6 @@ export namespace Prisma {
     nombre?: StringFieldUpdateOperationsInput | string
     marca?: StringFieldUpdateOperationsInput | string
     modelo?: StringFieldUpdateOperationsInput | string
-    año_fabricacion?: IntFieldUpdateOperationsInput | number
     estado_general?: EnumEstadoGeneralFieldUpdateOperationsInput | $Enums.EstadoGeneral
     resultado?: EnumResultadoClasificacionFieldUpdateOperationsInput | $Enums.ResultadoClasificacion
     justificacion?: NullableStringFieldUpdateOperationsInput | string | null
@@ -6972,7 +6901,6 @@ export namespace Prisma {
     categoria?: NullableStringFieldUpdateOperationsInput | string | null
     numero?: NullableStringFieldUpdateOperationsInput | string | null
     ubicacion?: NullableStringFieldUpdateOperationsInput | string | null
-    fecha_registro?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type DispositivoUncheckedUpdateManyInput = {
@@ -6980,7 +6908,6 @@ export namespace Prisma {
     nombre?: StringFieldUpdateOperationsInput | string
     marca?: StringFieldUpdateOperationsInput | string
     modelo?: StringFieldUpdateOperationsInput | string
-    año_fabricacion?: IntFieldUpdateOperationsInput | number
     estado_general?: EnumEstadoGeneralFieldUpdateOperationsInput | $Enums.EstadoGeneral
     resultado?: EnumResultadoClasificacionFieldUpdateOperationsInput | $Enums.ResultadoClasificacion
     justificacion?: NullableStringFieldUpdateOperationsInput | string | null
@@ -6988,7 +6915,6 @@ export namespace Prisma {
     categoria?: NullableStringFieldUpdateOperationsInput | string | null
     numero?: NullableStringFieldUpdateOperationsInput | string | null
     ubicacion?: NullableStringFieldUpdateOperationsInput | string | null
-    fecha_registro?: DateTimeFieldUpdateOperationsInput | Date | string
     id_usuario?: IntFieldUpdateOperationsInput | number
   }
 
@@ -7001,7 +6927,6 @@ export namespace Prisma {
     marca?: string | null
     modelo?: string | null
     numero?: string | null
-    fecha_extraccion?: Date | string | null
     ubicacion?: string | null
     usuario: UserCreateNestedOneWithoutComponentesInput
   }
@@ -7016,7 +6941,6 @@ export namespace Prisma {
     marca?: string | null
     modelo?: string | null
     numero?: string | null
-    fecha_extraccion?: Date | string | null
     ubicacion?: string | null
     id_usuario: number
   }
@@ -7030,7 +6954,6 @@ export namespace Prisma {
     marca?: NullableStringFieldUpdateOperationsInput | string | null
     modelo?: NullableStringFieldUpdateOperationsInput | string | null
     numero?: NullableStringFieldUpdateOperationsInput | string | null
-    fecha_extraccion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     ubicacion?: NullableStringFieldUpdateOperationsInput | string | null
     usuario?: UserUpdateOneRequiredWithoutComponentesNestedInput
   }
@@ -7045,7 +6968,6 @@ export namespace Prisma {
     marca?: NullableStringFieldUpdateOperationsInput | string | null
     modelo?: NullableStringFieldUpdateOperationsInput | string | null
     numero?: NullableStringFieldUpdateOperationsInput | string | null
-    fecha_extraccion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     ubicacion?: NullableStringFieldUpdateOperationsInput | string | null
     id_usuario?: IntFieldUpdateOperationsInput | number
   }
@@ -7060,7 +6982,6 @@ export namespace Prisma {
     marca?: string | null
     modelo?: string | null
     numero?: string | null
-    fecha_extraccion?: Date | string | null
     ubicacion?: string | null
     id_usuario: number
   }
@@ -7074,7 +6995,6 @@ export namespace Prisma {
     marca?: NullableStringFieldUpdateOperationsInput | string | null
     modelo?: NullableStringFieldUpdateOperationsInput | string | null
     numero?: NullableStringFieldUpdateOperationsInput | string | null
-    fecha_extraccion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     ubicacion?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
@@ -7088,7 +7008,6 @@ export namespace Prisma {
     marca?: NullableStringFieldUpdateOperationsInput | string | null
     modelo?: NullableStringFieldUpdateOperationsInput | string | null
     numero?: NullableStringFieldUpdateOperationsInput | string | null
-    fecha_extraccion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     ubicacion?: NullableStringFieldUpdateOperationsInput | string | null
     id_usuario?: IntFieldUpdateOperationsInput | number
   }
@@ -7418,23 +7337,11 @@ export namespace Prisma {
     not?: NestedEnumResultadoClasificacionFilter<$PrismaModel> | $Enums.ResultadoClasificacion
   }
 
-  export type DateTimeFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
-  }
-
   export type DispositivoCountOrderByAggregateInput = {
     id_dispositivo?: SortOrder
     nombre?: SortOrder
     marca?: SortOrder
     modelo?: SortOrder
-    año_fabricacion?: SortOrder
     estado_general?: SortOrder
     resultado?: SortOrder
     justificacion?: SortOrder
@@ -7442,13 +7349,11 @@ export namespace Prisma {
     categoria?: SortOrder
     numero?: SortOrder
     ubicacion?: SortOrder
-    fecha_registro?: SortOrder
     id_usuario?: SortOrder
   }
 
   export type DispositivoAvgOrderByAggregateInput = {
     id_dispositivo?: SortOrder
-    año_fabricacion?: SortOrder
     id_usuario?: SortOrder
   }
 
@@ -7457,7 +7362,6 @@ export namespace Prisma {
     nombre?: SortOrder
     marca?: SortOrder
     modelo?: SortOrder
-    año_fabricacion?: SortOrder
     estado_general?: SortOrder
     resultado?: SortOrder
     justificacion?: SortOrder
@@ -7465,7 +7369,6 @@ export namespace Prisma {
     categoria?: SortOrder
     numero?: SortOrder
     ubicacion?: SortOrder
-    fecha_registro?: SortOrder
     id_usuario?: SortOrder
   }
 
@@ -7474,7 +7377,6 @@ export namespace Prisma {
     nombre?: SortOrder
     marca?: SortOrder
     modelo?: SortOrder
-    año_fabricacion?: SortOrder
     estado_general?: SortOrder
     resultado?: SortOrder
     justificacion?: SortOrder
@@ -7482,13 +7384,11 @@ export namespace Prisma {
     categoria?: SortOrder
     numero?: SortOrder
     ubicacion?: SortOrder
-    fecha_registro?: SortOrder
     id_usuario?: SortOrder
   }
 
   export type DispositivoSumOrderByAggregateInput = {
     id_dispositivo?: SortOrder
-    año_fabricacion?: SortOrder
     id_usuario?: SortOrder
   }
 
@@ -7512,20 +7412,6 @@ export namespace Prisma {
     _max?: NestedEnumResultadoClasificacionFilter<$PrismaModel>
   }
 
-  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
-  }
-
   export type ComponenteCountOrderByAggregateInput = {
     id_componente?: SortOrder
     tipo_componente?: SortOrder
@@ -7536,7 +7422,6 @@ export namespace Prisma {
     marca?: SortOrder
     modelo?: SortOrder
     numero?: SortOrder
-    fecha_extraccion?: SortOrder
     ubicacion?: SortOrder
     id_usuario?: SortOrder
   }
@@ -7556,7 +7441,6 @@ export namespace Prisma {
     marca?: SortOrder
     modelo?: SortOrder
     numero?: SortOrder
-    fecha_extraccion?: SortOrder
     ubicacion?: SortOrder
     id_usuario?: SortOrder
   }
@@ -7571,7 +7455,6 @@ export namespace Prisma {
     marca?: SortOrder
     modelo?: SortOrder
     numero?: SortOrder
-    fecha_extraccion?: SortOrder
     ubicacion?: SortOrder
     id_usuario?: SortOrder
   }
@@ -7765,10 +7648,6 @@ export namespace Prisma {
 
   export type EnumResultadoClasificacionFieldUpdateOperationsInput = {
     set?: $Enums.ResultadoClasificacion
-  }
-
-  export type DateTimeFieldUpdateOperationsInput = {
-    set?: Date | string
   }
 
   export type UserUpdateOneRequiredWithoutDispositivosNestedInput = {
@@ -7983,17 +7862,6 @@ export namespace Prisma {
     not?: NestedEnumResultadoClasificacionFilter<$PrismaModel> | $Enums.ResultadoClasificacion
   }
 
-  export type NestedDateTimeFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
-  }
-
   export type NestedEnumEstadoGeneralWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.EstadoGeneral | EnumEstadoGeneralFieldRefInput<$PrismaModel>
     in?: $Enums.EstadoGeneral[] | ListEnumEstadoGeneralFieldRefInput<$PrismaModel>
@@ -8012,20 +7880,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumResultadoClasificacionFilter<$PrismaModel>
     _max?: NestedEnumResultadoClasificacionFilter<$PrismaModel>
-  }
-
-  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
   export type AccountCreateWithoutUserInput = {
@@ -8070,7 +7924,6 @@ export namespace Prisma {
     nombre: string
     marca: string
     modelo: string
-    año_fabricacion: number
     estado_general: $Enums.EstadoGeneral
     resultado: $Enums.ResultadoClasificacion
     justificacion?: string | null
@@ -8078,7 +7931,6 @@ export namespace Prisma {
     categoria?: string | null
     numero?: string | null
     ubicacion?: string | null
-    fecha_registro?: Date | string
   }
 
   export type DispositivoUncheckedCreateWithoutUsuarioInput = {
@@ -8086,7 +7938,6 @@ export namespace Prisma {
     nombre: string
     marca: string
     modelo: string
-    año_fabricacion: number
     estado_general: $Enums.EstadoGeneral
     resultado: $Enums.ResultadoClasificacion
     justificacion?: string | null
@@ -8094,7 +7945,6 @@ export namespace Prisma {
     categoria?: string | null
     numero?: string | null
     ubicacion?: string | null
-    fecha_registro?: Date | string
   }
 
   export type DispositivoCreateOrConnectWithoutUsuarioInput = {
@@ -8116,7 +7966,6 @@ export namespace Prisma {
     marca?: string | null
     modelo?: string | null
     numero?: string | null
-    fecha_extraccion?: Date | string | null
     ubicacion?: string | null
   }
 
@@ -8130,7 +7979,6 @@ export namespace Prisma {
     marca?: string | null
     modelo?: string | null
     numero?: string | null
-    fecha_extraccion?: Date | string | null
     ubicacion?: string | null
   }
 
@@ -8202,7 +8050,6 @@ export namespace Prisma {
     nombre?: StringFilter<"Dispositivo"> | string
     marca?: StringFilter<"Dispositivo"> | string
     modelo?: StringFilter<"Dispositivo"> | string
-    año_fabricacion?: IntFilter<"Dispositivo"> | number
     estado_general?: EnumEstadoGeneralFilter<"Dispositivo"> | $Enums.EstadoGeneral
     resultado?: EnumResultadoClasificacionFilter<"Dispositivo"> | $Enums.ResultadoClasificacion
     justificacion?: StringNullableFilter<"Dispositivo"> | string | null
@@ -8210,7 +8057,6 @@ export namespace Prisma {
     categoria?: StringNullableFilter<"Dispositivo"> | string | null
     numero?: StringNullableFilter<"Dispositivo"> | string | null
     ubicacion?: StringNullableFilter<"Dispositivo"> | string | null
-    fecha_registro?: DateTimeFilter<"Dispositivo"> | Date | string
     id_usuario?: IntFilter<"Dispositivo"> | number
   }
 
@@ -8243,7 +8089,6 @@ export namespace Prisma {
     marca?: StringNullableFilter<"Componente"> | string | null
     modelo?: StringNullableFilter<"Componente"> | string | null
     numero?: StringNullableFilter<"Componente"> | string | null
-    fecha_extraccion?: DateTimeNullableFilter<"Componente"> | Date | string | null
     ubicacion?: StringNullableFilter<"Componente"> | string | null
     id_usuario?: IntFilter<"Componente"> | number
   }
@@ -8513,7 +8358,6 @@ export namespace Prisma {
     nombre: string
     marca: string
     modelo: string
-    año_fabricacion: number
     estado_general: $Enums.EstadoGeneral
     resultado: $Enums.ResultadoClasificacion
     justificacion?: string | null
@@ -8521,7 +8365,6 @@ export namespace Prisma {
     categoria?: string | null
     numero?: string | null
     ubicacion?: string | null
-    fecha_registro?: Date | string
   }
 
   export type ComponenteCreateManyUsuarioInput = {
@@ -8534,7 +8377,6 @@ export namespace Prisma {
     marca?: string | null
     modelo?: string | null
     numero?: string | null
-    fecha_extraccion?: Date | string | null
     ubicacion?: string | null
   }
 
@@ -8584,7 +8426,6 @@ export namespace Prisma {
     nombre?: StringFieldUpdateOperationsInput | string
     marca?: StringFieldUpdateOperationsInput | string
     modelo?: StringFieldUpdateOperationsInput | string
-    año_fabricacion?: IntFieldUpdateOperationsInput | number
     estado_general?: EnumEstadoGeneralFieldUpdateOperationsInput | $Enums.EstadoGeneral
     resultado?: EnumResultadoClasificacionFieldUpdateOperationsInput | $Enums.ResultadoClasificacion
     justificacion?: NullableStringFieldUpdateOperationsInput | string | null
@@ -8592,7 +8433,6 @@ export namespace Prisma {
     categoria?: NullableStringFieldUpdateOperationsInput | string | null
     numero?: NullableStringFieldUpdateOperationsInput | string | null
     ubicacion?: NullableStringFieldUpdateOperationsInput | string | null
-    fecha_registro?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type DispositivoUncheckedUpdateWithoutUsuarioInput = {
@@ -8600,7 +8440,6 @@ export namespace Prisma {
     nombre?: StringFieldUpdateOperationsInput | string
     marca?: StringFieldUpdateOperationsInput | string
     modelo?: StringFieldUpdateOperationsInput | string
-    año_fabricacion?: IntFieldUpdateOperationsInput | number
     estado_general?: EnumEstadoGeneralFieldUpdateOperationsInput | $Enums.EstadoGeneral
     resultado?: EnumResultadoClasificacionFieldUpdateOperationsInput | $Enums.ResultadoClasificacion
     justificacion?: NullableStringFieldUpdateOperationsInput | string | null
@@ -8608,7 +8447,6 @@ export namespace Prisma {
     categoria?: NullableStringFieldUpdateOperationsInput | string | null
     numero?: NullableStringFieldUpdateOperationsInput | string | null
     ubicacion?: NullableStringFieldUpdateOperationsInput | string | null
-    fecha_registro?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type DispositivoUncheckedUpdateManyWithoutUsuarioInput = {
@@ -8616,7 +8454,6 @@ export namespace Prisma {
     nombre?: StringFieldUpdateOperationsInput | string
     marca?: StringFieldUpdateOperationsInput | string
     modelo?: StringFieldUpdateOperationsInput | string
-    año_fabricacion?: IntFieldUpdateOperationsInput | number
     estado_general?: EnumEstadoGeneralFieldUpdateOperationsInput | $Enums.EstadoGeneral
     resultado?: EnumResultadoClasificacionFieldUpdateOperationsInput | $Enums.ResultadoClasificacion
     justificacion?: NullableStringFieldUpdateOperationsInput | string | null
@@ -8624,7 +8461,6 @@ export namespace Prisma {
     categoria?: NullableStringFieldUpdateOperationsInput | string | null
     numero?: NullableStringFieldUpdateOperationsInput | string | null
     ubicacion?: NullableStringFieldUpdateOperationsInput | string | null
-    fecha_registro?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ComponenteUpdateWithoutUsuarioInput = {
@@ -8636,7 +8472,6 @@ export namespace Prisma {
     marca?: NullableStringFieldUpdateOperationsInput | string | null
     modelo?: NullableStringFieldUpdateOperationsInput | string | null
     numero?: NullableStringFieldUpdateOperationsInput | string | null
-    fecha_extraccion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     ubicacion?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
@@ -8650,7 +8485,6 @@ export namespace Prisma {
     marca?: NullableStringFieldUpdateOperationsInput | string | null
     modelo?: NullableStringFieldUpdateOperationsInput | string | null
     numero?: NullableStringFieldUpdateOperationsInput | string | null
-    fecha_extraccion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     ubicacion?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
@@ -8664,7 +8498,6 @@ export namespace Prisma {
     marca?: NullableStringFieldUpdateOperationsInput | string | null
     modelo?: NullableStringFieldUpdateOperationsInput | string | null
     numero?: NullableStringFieldUpdateOperationsInput | string | null
-    fecha_extraccion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     ubicacion?: NullableStringFieldUpdateOperationsInput | string | null
   }
 

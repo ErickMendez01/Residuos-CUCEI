@@ -16,40 +16,37 @@ import {
   TableBody,
   TableRow,
   TableCell,
-  User as Avatar,
-  Chip,
 } from "@nextui-org/react";
 import { BsThreeDotsVertical } from "react-icons/bs";
 
-import { User } from "@/generated/prisma/client";
-import UsersMoreOptionsButton from "./DispositiveOptionsButton";
+import { Dispositivo } from "@/generated/prisma/client";
+import DispositiveMoreOptionsButton from "./DispositiveOptionsButton";
 import { Button } from "@/components/ui/button";
+import {NewDispositiveRegister} from "./NewDispositiveRegister";
 
-type CompleteUser = User;
+type CompleteDispositive = Dispositivo;
 
-export default function UsersDisplayContent() {
-  const [filterName, setFilterName] = useState("");
-  const [filterCode, setFilterCode] = useState("");
-  const [filterRol, setFilterRol] = useState("");
+export default function DispositiveDisplayContent() {
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(10);
-  const [users, setUsers] = useState<CompleteUser[]>([]);
+  const [dispositives, setDispositives] = useState<CompleteDispositive[]>([]);
   const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   useEffect(() => {
-    const fetchUsers = async () => {
+    const fetchDispositives = async () => {
       setLoading(true);
       try {
         const response = await fetch(
-          `/api/users?page=${currentPage}&itemsPerPage=${itemsPerPage}`
+          `/api/dispositives?page=${currentPage}&itemsPerPage=${itemsPerPage}`
         );
         if (!response.ok) {
-          throw new Error("Failed to fetch users");
+          throw new Error("Failed to fetch dispositives");
         }
         const data = await response.json();
-        setUsers(data.users as CompleteUser[]);
+        setDispositives(data.dispositives as CompleteDispositive[]);
         setTotal(data.total);
       } catch (error) {
         if (error instanceof Error) {
@@ -61,7 +58,7 @@ export default function UsersDisplayContent() {
         setLoading(false);
       }
     };
-    fetchUsers();
+    fetchDispositives();
   }, [currentPage, itemsPerPage]);
 
   const totalPages = Math.ceil(total / itemsPerPage);
@@ -71,6 +68,16 @@ export default function UsersDisplayContent() {
 
   return (
     <div className="container mx-auto w-full pb-8 pt-2">
+       <NewDispositiveRegister isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
+
+      <div className="flex justify-end mb-4">
+        <Button
+          onClick={() => setIsModalOpen(true)}
+          className="bg-black text-white dark:bg-white dark:text-black px-4 py-2 rounded-lg font-bold"
+        >
+          + Nuevo dispositivo
+        </Button>
+      </div>
       <div className="mt-6 overflow-x-auto">
         {loading ? (
           <div className="flex items-center justify-center h-64">
@@ -81,36 +88,29 @@ export default function UsersDisplayContent() {
             <p className="text-red-500">{error}</p>
           </div>
         ) : (
-          <Table aria-label="Lista de usuarios" isHeaderSticky removeWrapper>
+          <Table aria-label="Lista de dispositivos" isHeaderSticky removeWrapper>
             <TableHeader>
               <TableColumn>Nombre</TableColumn>
-              <TableColumn>Genero</TableColumn>
-              <TableColumn>Origen</TableColumn>
+              <TableColumn>Marca</TableColumn>
+              <TableColumn>Numero Serie</TableColumn>
               <TableColumn>Opciones</TableColumn>
             </TableHeader>
             <TableBody>
-              {users.map((user) => (
-                <TableRow key={user.id}>
+              {dispositives.map((dispositive) => (
+                <TableRow key={dispositive.id_dispositivo}>
                   <TableCell>
-                    <Avatar
-                      name={user.name || user.email || "Usuario"}
-                      avatarProps={{
-                        radius: "lg",
-                        src: user.image || "/image/user.png",
-                      }}
-                      description={user.email}
-                    />
+                    {dispositive.nombre}
                   </TableCell>
-                  <TableCell>{user.gender}</TableCell>
+                  <TableCell>{dispositive.marca}</TableCell>
                   <TableCell>
-                    {user.country}, {user.city}
+                    {dispositive.numero}
                   </TableCell>
                   <TableCell>
-                    <UsersMoreOptionsButton user={user} userId={user.id}>
+                    <DispositiveMoreOptionsButton dispositive={dispositive} dispositiveId={dispositive.id_dispositivo}>
                       <Button className="bg-black full-width text-white  dark:bg-white dark:text-black px-4 py-2 rounded-lg font-bold">
                         <BsThreeDotsVertical/>
                       </Button>
-                    </UsersMoreOptionsButton>
+                    </DispositiveMoreOptionsButton>
                   </TableCell>
                 </TableRow>
               ))}

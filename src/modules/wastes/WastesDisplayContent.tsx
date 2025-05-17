@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import DispositiveDisplayContent from "./DispositiveDisplayContent";
-import ComponentesDisplayContent from "./components-material/ComponentsDisplayContent";
+import ComponentDisplayContent from "./components-material/ComponentDisplayContent";
 
 export default function WastesDisplayContent() {
   const [currentTab, setCurrentTab] = useState("Dispositivos");
@@ -12,10 +12,8 @@ export default function WastesDisplayContent() {
     switch (currentTab) {
       case "Dispositivos":
         return <DispositiveDisplayContent />;
-        {
-          /*case "Componentes":
-        return <ComponentesDisplayContent /> */
-        }
+      case "Componentes":
+        return <ComponentDisplayContent />;
       default:
         return null;
     }

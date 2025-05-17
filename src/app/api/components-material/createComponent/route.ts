@@ -1,50 +1,51 @@
-import { z } from "zod"
-import { db } from "@/lib/db"
-
-// Define or import the UserRole type
-type UserRole = "admin" | "medico" // Replace with actual roles if different
-
+import { z } from "zod";
+import { prisma } from "@/lib/prisma";
+import { EstadoGeneral } from "@/generated/prisma";
+import {auth}  from "@/auth"
 const routeContextSchema = z.object({
-  code: z.string(),
-  password: z.string(),
-  name: z.string(),
-  firstLastName: z.string(),
-  role: z.string(),
-})
+  marca: z.string(),
+  modelo: z.string(),
+  estado_general: z.string(),
+  observaciones: z.string().optional(),
+  tipo_componente: z.string().optional(),
+  numero: z.string().optional(),
+  ubicacion: z.string().optional(),
+});
+
 export async function POST(req: Request) {
+  const session = await auth();
+   const json = await req.json()
+   const body = routeContextSchema.parse(json)
   try {
-    const json = await req.json()
-    const body = routeContextSchema.parse(json)
-    const createdWithCode = await db.user.findFirst({
-      where: {
-        codigo: body.code,
-      },
-    })
-    if (createdWithCode?.codigo) {
-      return new Response(
-        JSON.stringify({ message: "CODE_EXISTS", created: false }),
-        {
-          status: 200,
-        }
-      )
+    const data: any = {
+      marca: body.marca,
+      modelo: body.modelo,
+      estado_general: body.estado_general as EstadoGeneral,
+      observaciones: body.observaciones || null,
+      tipo_componente: body.tipo_componente || null,
+      numero: body.numero || null,
+      ubicacion: body.ubicacion || null,
+      resultado : "PENDIENTE",
+      justificacion: "",
+    };
+
+    if (session?.user?.id) {
+      data.id_usuario = Number(session.user.id);
     }
 
-    const newUser = await db.user.create({
-      data: {
-        codigo: body.code,
-        password: body.password,
-        nombre: body.name,
-        apellido: body.firstLastName,
-        role: body.role as UserRole,
-      },
-    })
-    return new Response(JSON.stringify({ user: newUser, created: true }), {
-      status: 200,
-    })
+    const newComponent = await prisma.componente.create({
+      data,
+    });
+
+    return new Response(
+      JSON.stringify({ component: newComponent, created: true }),
+      { status: 200 }
+    );
   } catch (error) {
-    console.log(error)
-    return new Response(JSON.stringify({ message: "INTERNAL_ERROR" }), {
-      status: 500,
-    })
+    console.error(error);
+    return new Response(
+      JSON.stringify({ message: "INTERNAL_ERROR" }),
+      { status: 500 }
+    );
   }
 }

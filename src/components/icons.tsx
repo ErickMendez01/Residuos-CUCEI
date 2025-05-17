@@ -9,8 +9,14 @@ import {
   FaGlobe,        // Para país
   FaCity,         // Para ciudad
   FaUniversity,   // Para universidad
-  FaBriefcase 
+  FaBriefcase,
+  FaTag,
+  FaRegDotCircle, 
+  FaMapMarkerAlt, 
+  FaFileAlt ,
 } from "react-icons/fa";
+import { MdDevices, MdCategory, MdCheckCircle, MdNotes } from "react-icons/md";
+import { BiBarcode } from "react-icons/bi";
 import type { IconType } from "react-icons"; 
 
 export type Icon = IconType; 
@@ -27,5 +33,15 @@ export const Icons = {
   city: FaCity,
   university: FaUniversity,
   Fabriefcase: FaBriefcase,
+  faTag: FaTag,
+  faRegDotCircle: FaRegDotCircle,
+  faMapMarkerAlt:  FaMapMarkerAlt,
+  faFileAlt:  FaFileAlt,
+  mdDevices:  MdDevices,
+  mdCategory: MdCategory,
+  mdCheckCircle:  MdCheckCircle,
+  mdNotes:  MdNotes,
+  biBarcode:  BiBarcode,
 };
+
 

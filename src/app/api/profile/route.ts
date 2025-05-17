@@ -7,8 +7,7 @@ import { NextRequest } from "next/server"
 
 const routeContextSchema = z.object({
   params: z.object({
-    page: z.number().optional(),
-    itemsPerPage: z.number().optional(),
+    id: z.number()
   }),
 })
 
@@ -17,16 +16,22 @@ export async function GET(
   
 ) {
   try {
-    const page = req.nextUrl.searchParams.get("page")
-    const itemsPerPage = req.nextUrl.searchParams.get("itemsPerPage")
-    
-    const components= await prisma.componente.findMany({
-      skip: (Number(page) - 1) * Number(itemsPerPage),
-      take: Number(itemsPerPage),
+    const idParam = req.nextUrl.searchParams.get("id")
+    const id = idParam ? Number(idParam) : undefined
+
+    if (typeof id !== "number" || isNaN(id)) {
+      return new Response(JSON.stringify({ message: "Invalid or missing id parameter" }), {
+        status: 400,
+      })
+    }
+
+    const user = await prisma.user.findUnique({
+      where: {
+        id: id
+      }
     })
 
-    const total = await prisma.componente.count({ })
-    return new Response(JSON.stringify({ components, total }), {
+    return new Response(JSON.stringify({ user }), {
       status: 200,
     })
   } catch (error) {

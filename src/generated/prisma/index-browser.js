@@ -155,7 +155,6 @@ exports.Prisma.DispositivoScalarFieldEnum = {
   nombre: 'nombre',
   marca: 'marca',
   modelo: 'modelo',
-  año_fabricacion: 'año_fabricacion',
   estado_general: 'estado_general',
   resultado: 'resultado',
   justificacion: 'justificacion',
@@ -163,7 +162,6 @@ exports.Prisma.DispositivoScalarFieldEnum = {
   categoria: 'categoria',
   numero: 'numero',
   ubicacion: 'ubicacion',
-  fecha_registro: 'fecha_registro',
   id_usuario: 'id_usuario'
 };
 
@@ -177,7 +175,6 @@ exports.Prisma.ComponenteScalarFieldEnum = {
   marca: 'marca',
   modelo: 'modelo',
   numero: 'numero',
-  fecha_extraccion: 'fecha_extraccion',
   ubicacion: 'ubicacion',
   id_usuario: 'id_usuario'
 };
@@ -205,7 +202,8 @@ exports.EstadoGeneral = exports.$Enums.EstadoGeneral = {
 exports.ResultadoClasificacion = exports.$Enums.ResultadoClasificacion = {
   REUTILIZAR: 'REUTILIZAR',
   RECICLAR: 'RECICLAR',
-  DESECHABLE: 'DESECHABLE'
+  DESECHABLE: 'DESECHABLE',
+  PENDIENTE: 'PENDIENTE'
 };
 
 exports.Prisma.ModelName = {

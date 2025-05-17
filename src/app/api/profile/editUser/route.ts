@@ -1,10 +1,9 @@
 import { z } from "zod";
 import { prisma } from "@/lib/prisma";
 
-// Extendemos el esquema para incluir todos los campos opcionales
 const routeContextSchema = z.object({
   id: z.number(),
-  password: z.string().optional(),
+  password: z.string().optional(), // No lo estás usando, pero lo dejamos por si acaso
   name: z.string().optional(),
   gender: z.string().optional(),
   country: z.string().optional(),
@@ -19,7 +18,7 @@ export async function POST(req: Request) {
     const json = await req.json();
     const body = routeContextSchema.parse(json);
 
-    const user = await prisma.user.findFirst({
+    const user = await prisma.user.findUnique({
       where: { id: body.id },
     });
 
@@ -30,27 +29,13 @@ export async function POST(req: Request) {
       );
     }
 
-    const userUpdateData: Partial<typeof user> = {};
-
-    if (body.password) userUpdateData.password = body.password;
-    if (body.name) userUpdateData.name = body.name;
-    if (body.gender) userUpdateData.gender = body.gender;
-    if (body.country) userUpdateData.country = body.country;
-    if (body.city) userUpdateData.city = body.city;
-    if (body.university) userUpdateData.university = body.university;
-    if (body.career) userUpdateData.career = body.career;
-    if (body.email) userUpdateData.email = body.email;
-
-    if (Object.keys(userUpdateData).length === 0) {
-      return new Response(
-        JSON.stringify({ message: "NO_FIELDS_TO_UPDATE", update: false }),
-        { status: 200 }
-      );
-    }
+    const { id, ...dataToUpdate } = body;
 
     const updatedUser = await prisma.user.update({
-      where: { id: user.id },
-      data: userUpdateData,
+      where: { id },
+      data: {
+        ...dataToUpdate,
+      },
     });
 
     return new Response(

@@ -9,26 +9,26 @@ export async function DELETE(req: Request) {
   try {
     const json = await req.json()
     const body = routeContextSchema.parse(json)
-    const deleteWithId = await prisma.user.findFirst({
+    const deleteWithId = await prisma.dispositivo.findFirst({
         where: {
-        id: Number(body.id),
+        id_dispositivo: Number(body.id),
       },
     })
     
-    if(deleteWithId?.id) {
+    if(deleteWithId?.id_dispositivo) {
 
-        const deleteUser = await prisma.user.delete({
-            where: { id: Number(body.id) },
+        const deleteDispositive = await prisma.dispositivo.delete({
+            where: { id_dispositivo: Number(body.id) },
         });
 
        
-        return new Response(JSON.stringify({ user: deleteUser, delete: true }), {
+        return new Response(JSON.stringify({ dispositive: deleteDispositive, delete: true }), {
             status: 200,
         })
         
     }else{
         return new Response(
-            JSON.stringify({ message: "USER_DELETE_ERROR", delete: false }),
+            JSON.stringify({ message: "DISPOSITIVE_DELETE_ERROR", delete: false }),
             {
                 status: 200,
             }

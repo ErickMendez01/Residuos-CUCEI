@@ -46,43 +46,41 @@ model Account {
 }
 
 model Dispositivo {
-  id_dispositivo   Int                    @id @default(autoincrement())
-  nombre           String
-  marca            String
-  modelo           String
-  año_fabricacion Int
-  estado_general   EstadoGeneral
-  resultado        ResultadoClasificacion
-  justificacion    String?
-  descripcion      String?
-  categoria        String?
-  numero           String?                @unique
-  ubicacion        String?
-  fecha_registro   DateTime               @default(now())
-  id_usuario       Int
-  usuario          User                   @relation(fields: [id_usuario], references: [id], onDelete: Cascade)
+  id_dispositivo Int                    @id @default(autoincrement())
+  nombre         String
+  marca          String
+  modelo         String
+  estado_general EstadoGeneral
+  resultado      ResultadoClasificacion
+  justificacion  String?
+  descripcion    String?
+  categoria      String?
+  numero         String?                @unique
+  ubicacion      String?
+  id_usuario     Int
+  usuario        User                   @relation(fields: [id_usuario], references: [id], onDelete: Cascade)
 }
 
 model Componente {
-  id_componente    Int                    @id @default(autoincrement())
-  tipo_componente  String
-  estado_general   EstadoGeneral
-  resultado        ResultadoClasificacion
-  justificacion    String?
-  observaciones    String?
-  marca            String?
-  modelo           String?
-  numero           String?                @unique
-  fecha_extraccion DateTime?
-  ubicacion        String?
-  id_usuario       Int
-  usuario          User                   @relation(fields: [id_usuario], references: [id], onDelete: Cascade)
+  id_componente   Int                    @id @default(autoincrement())
+  tipo_componente String
+  estado_general  EstadoGeneral
+  resultado       ResultadoClasificacion
+  justificacion   String?
+  observaciones   String?
+  marca           String?
+  modelo          String?
+  numero          String?
+  ubicacion       String?
+  id_usuario      Int
+  usuario         User                   @relation(fields: [id_usuario], references: [id], onDelete: Cascade)
 }
 
 enum ResultadoClasificacion {
   REUTILIZAR
   RECICLAR
   DESECHABLE
+  PENDIENTE
 }
 
 enum EstadoGeneral {

@@ -8,18 +8,18 @@ import {
   ModalFooter,
   Button,
 } from "@nextui-org/react";
-import DeleteDispositiveInformation from "./DeleteDispositiveInformation";
-import { Dispositivo } from "@/generated/prisma/client";
+import DeleteComponentInformation from "./DeleteComponentInformation";
+import { Componente } from "@/generated/prisma/client";
 
-type CompleteDispositive = Dispositivo
+type CompleteComponent = Componente
 
-export function DeleteDispositiveDialog({
+export function DeleteComponentDialog({
   isOpen,
   setIsOpen,
-  dispositive,
+  component,
 }: {
   isOpen: boolean;
-  dispositive: CompleteDispositive;
+  component: CompleteComponent;
   setIsOpen: (newValue: boolean) => void;
 }) {
   return (
@@ -28,7 +28,7 @@ export function DeleteDispositiveDialog({
         {(onClose) => (
           <>
             <ModalHeader className="flex flex-col gap-1">
-              Eliminar Dispositivo
+              Eliminar Componente
             </ModalHeader>
             <ModalBody>
               <p className="text-sm text-default-500">
@@ -38,7 +38,7 @@ export function DeleteDispositiveDialog({
               </p>
             </ModalBody>
             <ModalFooter>
-              <DeleteDispositiveInformation id={dispositive.id_dispositivo.toString()} />
+              <DeleteComponentInformation id={component.id_componente.toString()} />
               <Button
                 className="bg-white text-black dark:bg-black dark:text-white dark:border-white font-bold border-black"
                 variant="faded"

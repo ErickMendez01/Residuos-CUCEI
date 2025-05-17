@@ -50,7 +50,6 @@ model Dispositivo {
   nombre           String
   marca            String
   modelo           String
-  año_fabricacion Int
   estado_general   EstadoGeneral
   resultado        ResultadoClasificacion
   justificacion    String?
@@ -58,7 +57,6 @@ model Dispositivo {
   categoria        String?
   numero           String?                @unique
   ubicacion        String?
-  fecha_registro   DateTime               @default(now())
   id_usuario       Int
   usuario          User                   @relation(fields: [id_usuario], references: [id], onDelete: Cascade)
 }
@@ -72,8 +70,7 @@ model Componente {
   observaciones    String?
   marca            String?
   modelo           String?
-  numero           String?                @unique
-  fecha_extraccion DateTime?
+  numero           String?                
   ubicacion        String?
   id_usuario       Int
   usuario          User                   @relation(fields: [id_usuario], references: [id], onDelete: Cascade)
@@ -83,6 +80,7 @@ enum ResultadoClasificacion {
   REUTILIZAR
   RECICLAR
   DESECHABLE
+  PENDIENTE
 }
 
 enum EstadoGeneral {

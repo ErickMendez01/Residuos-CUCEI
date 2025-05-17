@@ -8,16 +8,16 @@ import {
   DropdownItem,
 } from "@nextui-org/react";
 import { FaTrash, FaEye } from "react-icons/fa";
-import { DeleteDispositiveDialog } from "./DeleteDispositiveDialog";
-import { DispositiveInformationDialog } from "./DispositiveInformationDialog";
+import { DeleteComponentDialog } from "./DeleteComponentDialog";
+import { ComponentInformationDialog } from "./ComponentInformationDialog";
 
-const DispositiveMoreOptionsButton = ({
+const ComponentMoreOptionsButton = ({
   children,
-  dispositive,
-  dispositiveId,
+  component,
+  componentId,
 }: {
-  dispositive: any;
-  dispositiveId: number;
+  component: any;
+  componentId: number;
   children: ReactNode;
 }) => {
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
@@ -26,13 +26,13 @@ const DispositiveMoreOptionsButton = ({
   return (
     <div>
      
-      <DeleteDispositiveDialog
-        dispositive={dispositive}
+      <DeleteComponentDialog
+        component={component}
         isOpen={isDeleteOpen}
         setIsOpen={setIsDeleteOpen}
       /> 
-      <DispositiveInformationDialog
-        dispositive={dispositive}
+      <ComponentInformationDialog
+        component={component}
         isOpen={isViewOpen}
         setIsOpen={setIsViewOpen}
       />
@@ -62,4 +62,4 @@ const DispositiveMoreOptionsButton = ({
   );
 };
 
-export default DispositiveMoreOptionsButton;
+export default ComponentMoreOptionsButton;
