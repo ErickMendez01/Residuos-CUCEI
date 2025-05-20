@@ -13,9 +13,9 @@ export default async function AppLayout({
 
   return (
     <div className="flex flex-col space-y-6">
-      <header>
+      <header className="flexbox">
         <DashboardNav
-          items={dashboardConfig.mainNav}
+          items={[]}
           session={session ?? undefined}
         />
         <Sidebar items={dashboardConfig.sideBarNav} />
@@ -25,7 +25,7 @@ export default async function AppLayout({
           {children}
         </main>
       </div>
-      <Footer />
+      <Footer className="mt-1000 fixed bottom-0 w-full border-t bg-muted/50" />
     </div>
   );
 }

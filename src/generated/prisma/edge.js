@@ -195,7 +195,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\mende\\Desktop\\To_do_list\\src\\generated\\prisma",
+      "value": "C:\\Users\\mende\\Desktop\\residuos_CUCEI\\src\\generated\\prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -209,7 +209,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "C:\\Users\\mende\\Desktop\\To_do_list\\prisma\\schema.prisma",
+    "sourceFilePath": "C:\\Users\\mende\\Desktop\\residuos_CUCEI\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
@@ -223,6 +223,7 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
+  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {

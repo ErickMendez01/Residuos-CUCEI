@@ -162,7 +162,7 @@ export function NewComponentRegister({
                 type="submit"
                 disabled={loading}
               >
-                {loading ? "Guardando..." : "Guardar dispositivo"}
+                {loading ? "Guardando..." : "Guardar Componente"}
               </Button>
             </ModalFooter>
           </form>

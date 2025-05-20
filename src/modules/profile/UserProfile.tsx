@@ -90,9 +90,9 @@ export default function UserProfile({ id }: { id: number }) {
   return (
     <Card shadow="md" className="max-w-5xl mx-auto mt-10 p-6">
       <CardBody className="p-6 flex flex-col md:flex-row items-center md:items-start gap-8">
-        {/* Avatar y nombre */}
         <div className="flex flex-col items-center w-full md:w-1/3 text-center md:text-left">
           <Avatar
+            isBordered
             src={user?.image || "/images/user.png"}
             alt="Foto de perfil"
             className="w-60 h-60 rounded-full object-cover"
@@ -108,7 +108,7 @@ export default function UserProfile({ id }: { id: number }) {
           onSubmit={handleSubmit}
           className="w-full md:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-6 bg-white dark:bg-zinc-900 dark:text-white p-6 rounded-xl border dark:border-zinc-700 shadow-lg"
         >
-          <div className="py-2">
+          <div className="px-2 py-2">
             <Input
               name="name"
               label="Nombre"
@@ -117,7 +117,7 @@ export default function UserProfile({ id }: { id: number }) {
               isRequired
             />
           </div>
-          <div className="py-2">
+          <div className="px-2 py-2">
             <Input
               name="email"
               label="Correo electrónico"
@@ -126,7 +126,7 @@ export default function UserProfile({ id }: { id: number }) {
               isRequired
             />
           </div>
-          <div className="py-2">
+          <div className="px-2 py-2">
             <Input
               name="gender"
               label="Género"
@@ -134,7 +134,7 @@ export default function UserProfile({ id }: { id: number }) {
               onChange={handleChange}
             />
           </div>
-          <div className="py-2">
+          <div className="px-2 py-2">
             <Input
               name="country"
               label="País"
@@ -142,7 +142,7 @@ export default function UserProfile({ id }: { id: number }) {
               onChange={handleChange}
             />
           </div>
-          <div className="py-2">
+          <div className="px-2 py-2">
             <Input
               name="city"
               label="Ciudad"
@@ -150,7 +150,7 @@ export default function UserProfile({ id }: { id: number }) {
               onChange={handleChange}
             />
           </div>
-          <div className="py-2">
+          <div className=" px-2 py-2">
             <Input
               name="university"
               label="Universidad"
@@ -158,7 +158,7 @@ export default function UserProfile({ id }: { id: number }) {
               onChange={handleChange}
             />
           </div>
-          <div className="py-2">
+          <div className="px-2 py-2">
             <Input
               name="career"
               label="Carrera"
@@ -166,10 +166,10 @@ export default function UserProfile({ id }: { id: number }) {
               onChange={handleChange}
             />
           </div>
-          <div className="col-span-1 py-2 md:col-span-2 flex justify-center mt-2">
+          <div className="px-2 col-span-1 py-2 md:col-span-2 flex justify-center mt-2">
             <Button
               type="submit"
-              className="bg-black text-white dark:bg-white dark:text-black font-semibold px-6 py-2 border border-black hover:opacity-90 transition"
+              className=" w-full px-2 bg-black text-white dark:bg-white dark:text-black font-semibold py-2 border border-black hover:opacity-90 transition"
             >
               Guardar cambios
             </Button>

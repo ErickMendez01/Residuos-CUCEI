@@ -12,6 +12,7 @@ import { Input } from "@nextui-org/react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { registerSchema, RegisterSchema } from "@/lib/register-schema";
 import { registerUser } from "@/actions/authActions";
+import { toast } from 'react-toastify'
 interface RegisterFormProps {
   isOpen: boolean;
   onClose: () => void;
@@ -31,7 +32,7 @@ const RegisterForm = ({ isOpen, onClose }: RegisterFormProps) => {
   const onSubmit = async (data: RegisterSchema) => {
     const result = await registerUser(data);
     if (result.status === "success") {
-      console.log("Usuario registrado:", result.data);
+      toast.success("Usuario registrado");
     } else {
       if (Array.isArray(result.error)) {
         result.error.forEach((e) => {
@@ -90,7 +91,7 @@ const RegisterForm = ({ isOpen, onClose }: RegisterFormProps) => {
                   isLoading={isSubmitting}
                   fullWidth
                   isDisabled={!isValid}
-                  className="bg-black full-width text-white  dark:bg-white dark:text-black px-4 py-2 rounded-lg font-bold"
+                  className="bg-black w-full text-white  dark:bg-white dark:text-black px-4 py-2 rounded-lg font-bold"
                 >
                   Registrarse
                 </Button>

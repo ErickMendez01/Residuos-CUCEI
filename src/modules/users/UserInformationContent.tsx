@@ -99,8 +99,8 @@ export default function UserInformationContent({
         </CardHeader>
 
         <CardBody className="grid gap-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="space-y-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+            <div className="py-2">
               <Input
                 label="Nombre(s)"
                 placeholder="Ingrese su nombre"
@@ -109,7 +109,7 @@ export default function UserInformationContent({
                 onChange={(e) => setName(e.target.value)}
               />
             </div>
-            <div className="space-y-6">
+            <div className="py-2">
               <Input
                 label="Contraseña"
                 placeholder="Ingrese la contraseña"
@@ -120,9 +120,8 @@ export default function UserInformationContent({
               />
             </div>
           </div>
-
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="space-y-6">
+            <div className="py-2">
               <Input
                 label="Correo Electrónico"
                 placeholder="Ingrese su correo"
@@ -131,7 +130,7 @@ export default function UserInformationContent({
                 type="email"
               />
             </div>
-            <div className="space-y-6">
+            <div className="py-2">
               <Input
                 label="Género"
                 placeholder="Ingrese genero"
@@ -143,7 +142,7 @@ export default function UserInformationContent({
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="space-y-6">
+            <div className="py-6">
               <Input
                 label="País"
                 value={country}
@@ -155,7 +154,7 @@ export default function UserInformationContent({
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="space-y-6">
+            <div className="py-6">
               <Input
                 label="Ciudad"
                 value={city}
@@ -164,7 +163,7 @@ export default function UserInformationContent({
                 type="text"
               />
             </div>
-            <div className="space-y-6">
+            <div className="py-6">
               <Input
                 label="Universidad"
                 value={university}
@@ -176,7 +175,7 @@ export default function UserInformationContent({
           </div>
 
           <div className="grid grid-cols-1">
-            <div className="space-y-6">
+            <div className="py-6">
               <Input
                 label="Carrera"
                 value={career}
