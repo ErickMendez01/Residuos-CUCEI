@@ -1,9 +1,10 @@
+export { GET, POST } from  "@/auth"
 import NextAuth from "next-auth";
 import authConfig from "@/auth.config";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import { prisma } from "@/lib/prisma";
 
-const handler = NextAuth({
+const authHandler = NextAuth({
   adapter: PrismaAdapter(prisma),
   session: {
     strategy: "jwt",
@@ -19,5 +20,3 @@ const handler = NextAuth({
   ...authConfig,
 });
 
-export const GET = handler;
-export const POST = handler;
