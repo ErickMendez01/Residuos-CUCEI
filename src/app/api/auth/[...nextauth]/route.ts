@@ -1,9 +1,9 @@
-// src/app/api/auth/[...nextauth]/route.ts
 import NextAuth from "next-auth";
 import authConfig from "@/auth.config";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import { prisma } from "@/lib/prisma";
 
+// Usa directamente NextAuth pasando la configuración
 const handler = NextAuth({
   adapter: PrismaAdapter(prisma),
   session: {
@@ -20,4 +20,5 @@ const handler = NextAuth({
   ...authConfig,
 });
 
-export default handler;
+// Aquí está el punto clave: `handler` devuelve un objeto con `handlers.GET` y `handlers.POST`
+export const { GET, POST } = handler.handlers;

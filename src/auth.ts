@@ -1,10 +1,10 @@
-// src/auth.ts
+// src/lib/auth.ts
 import NextAuth from "next-auth";
-import authConfig from "./auth.config";
+import authConfig from "@/auth.config";
 import { PrismaAdapter } from "@auth/prisma-adapter";
-import { prisma } from "./lib/prisma";
+import { prisma } from "@/lib/prisma";
 
-const handler = NextAuth({
+const authHandler = NextAuth({
   adapter: PrismaAdapter(prisma),
   session: {
     strategy: "jwt",
@@ -20,6 +20,7 @@ const handler = NextAuth({
   ...authConfig,
 });
 
-export const auth = handler.auth;
-export const signIn = handler.signIn;
-export const signOut = handler.signOut;
+// Solo importa esto desde el middleware o desde componentes cliente
+export const auth = authHandler.auth;
+export const signIn = authHandler.signIn;
+export const signOut = authHandler.signOut;
