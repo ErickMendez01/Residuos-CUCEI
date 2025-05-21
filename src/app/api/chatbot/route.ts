@@ -13,7 +13,7 @@ export async function POST(req: Request) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        model: "command-r", // Modelo de Cohere (gratis)
+        model: "command-r", 
         message: question,
         connectors: [],
         chat_history: [
