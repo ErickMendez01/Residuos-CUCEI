@@ -1,13 +1,7 @@
-await import("./src/env.mjs");
+import type { NextConfig } from "next";
 
-/** @type {import("next").NextConfig} */
-const config = {
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
+const nextConfig: NextConfig = {
+  /* config options here */
 };
 
-export default config;
+export default nextConfig;
